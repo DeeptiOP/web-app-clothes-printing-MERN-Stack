@@ -2,12 +2,12 @@
 
 PrintTeeQ is a modern, full-stack e-commerce platform built to let users design and order personalized apparel. From uploading custom artwork to seeing it on live product mockups, PrintTeeQ makes it easy to create and shop uniquely styled wear.
 
-Built with the powerful MERN stack, Cloudinary for media uploads, Stripe for payments, and deployed via Vercel and Render.
+Built with the powerfull MERN stack, Cloudinary for media uploads, Stripe for payments, and deployed via Vercel and Render.
 
 
 ---
 
-🌐 Live Preview
+🌐 Live Preview 
 
 Frontend: Coming Soon...
 
