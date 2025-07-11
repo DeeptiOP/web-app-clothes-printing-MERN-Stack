@@ -9,9 +9,9 @@ Built with the powerful MERN stack, Cloudinary for media uploads, Stripe for pay
 
 🌐 Live Preview
 
-Frontend: Coming Soon
+Frontend: Coming Soon...
 
-Backend: Coming Soon
+Backend: Coming Soon...
 
 
 
