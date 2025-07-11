@@ -52,8 +52,7 @@ Manage order statuses (e.g., pending, shipped, delivered)
 
 ⚙️ Tech Stack
 
-FRONTEND
-__________
+!FRONTEND!
 
 React.js
 
@@ -62,8 +61,7 @@ Tailwind CSS
 React Router DOM
 
 
-BACKEND 
-__________
+!BACKEND!
 
 Node.js + Express
 
