@@ -52,7 +52,8 @@ Manage order statuses (e.g., pending, shipped, delivered)
 
 ⚙️ Tech Stack
 
-Frontend
+FRONTEND
+__________
 
 React.js
 
@@ -61,7 +62,8 @@ Tailwind CSS
 React Router DOM
 
 
-Backend
+BACKEND 
+__________
 
 Node.js + Express
 
@@ -80,14 +82,14 @@ JWT for Authentication
 🗂 Project Structure
 
 printteeq/
-├── client/               # React frontend
+├── client/              
 │   ├── public/
 │   └── src/
 │       ├── components/
 │       ├── pages/
 │       ├── App.js
 │       └── ...
-├── server/               # Express backend
+├── server/              
 │   ├── controllers/
 │   ├── models/
 │   ├── routes/
@@ -160,10 +162,13 @@ Database: MongoDB Atlas
 
 Week	Tasks
 
-Week 1	Set up frontend & backend boilerplates, JWT authentication
-Week 2	Product models, listing pages, Cloudinary upload with preview
-Week 3	Cart, checkout, Stripe payment gateway
-Week 4	Admin tools, order tracking, user profile, testing & deploy
+Week 1	:- Set up frontend & backend boilerplates, JWT authentication.
+
+Week 2	:- Product models, listing pages, Cloudinary upload with preview.
+
+Week 3	:- Cart, checkout, Stripe payment gateway.
+
+Week 4 :- Admin tools, order tracking, user profile, testing & deploy.
 
 
 
@@ -171,7 +176,7 @@ Week 4	Admin tools, order tracking, user profile, testing & deploy
 
 👥 Contributors
 
-👩‍💻 @DeeptiOP – Project Creator & Full-Stack Developer
+👩‍💻 @DeeptiOP – Stack Developer
 
 🧠 @Biswapriti – Frontend Developer
 
