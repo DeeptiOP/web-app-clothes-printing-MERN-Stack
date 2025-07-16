@@ -1,9 +1,12 @@
 {
+  "homepage": "https://DeeptiOP.github.io/web-app-clothes-printing-MERN-Stack",
   "name": "my-project",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist -f",
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
