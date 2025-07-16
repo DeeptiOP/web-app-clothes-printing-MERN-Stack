@@ -13,7 +13,9 @@ const router = createBrowserRouter([
     path: '/product/',
     element: <Product />,
   },
-]);
+], {
+  basename: '/web-app-clothes-printing-MERN-Stack'
+});
 
 function App() {
   return <RouterProvider router={router} />;
