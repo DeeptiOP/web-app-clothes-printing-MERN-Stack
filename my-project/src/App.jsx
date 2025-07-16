@@ -10,7 +10,7 @@ const router = createBrowserRouter([
     element: <Front />,
   },
   {
-    path: '/product',
+    path: '/product/',
     element: <Product />,
   },
 ]);

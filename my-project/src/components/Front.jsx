@@ -45,10 +45,10 @@ const Front = () => {
           <input type="text" placeholder="Search the Products..." />
         </div>
         <div>
-          <img src={cart_icon} alt="Cart Icon" className="w-10 h-10 " />
+          <img src={cart_icon} alt="Cart Icon" className="w-16 h-12 lg:w-10 lg:h-10 " />
         </div>
         <div>
-          <img src={user_icon} alt="User Icon" className="w-12 h-10" />
+          <img src={user_icon} alt="User Icon" className="w-16 h-10" />
         </div>
         <div>
           <button className="bg-gray-50 text-green-400 px-3 py-2 rounded-lg mx-10 font-semibold">SIGN UP</button>
