@@ -55,17 +55,54 @@ PrinTeeQ is a modern e-commerce platform designed for custom clothes printing bu
 - Deploy frontend on Vercel, backend on Render, and database on MongoDB Atlas.
 
 ---
+# printteeq Project Structure
 
-## 🏗️ Project Structure
+This project is organized into **backend** and **frontend** directories, each containing relevant source files and folders.
 
 ```
-PrinTeeQ/
-├── client/      # React frontend
-├── server/      # Node/Express backend
-├── README.md
-└── ...
+printteeq/
+├── backend/
+│   ├── controllers/
+│   ├── models/
+│   ├── routes/
+│   ├── middleware/
+│   ├── utils/
+│   └── server.js
+├── frontend/
+│   ├── public/
+│   ├── src/
+│   │   ├── assets/
+│   │   ├── components/
+│   │   ├── pages/
+│   │   ├── context/
+│   │   ├── App.jsx
+│   │   └── main.jsx
+│   └── tailwind.config.js
 ```
 
+## Backend
+
+- **controllers/**: Contains route handler logic.
+- **models/**: Database models and schemas.
+- **routes/**: API route definitions.
+- **middleware/**: Express middleware functions.
+- **utils/**: Utility/helper functions.
+- **server.js**: Entry point for the backend server.
+
+## Frontend
+
+- **public/**: Static files.
+- **src/**: Main source directory.
+  - **assets/**: Images and other static assets.
+  - **components/**: Reusable React components.
+  - **pages/**: Page-level React components.
+  - **context/**: React context providers.
+  - **App.jsx**: Main app component.
+  - **main.jsx**: React entry point.
+- **tailwind.config.js**: Tailwind CSS configuration file.
+
+---
+*Update this structure as your project grows to help contributors and maintainers understand the layout and organization!*
 ---
 
 ## 💡 How to Get Started
