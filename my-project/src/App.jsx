@@ -28,7 +28,9 @@ const router = createBrowserRouter([
     path:'/cart',
     element:<CartPage/>
   }
-]);
+], {
+  basename: import.meta.env.DEV ? '' : '/web-app-clothes-printing-MERN-Stack'
+});
 
 function App() {
   return <RouterProvider router={router} />;
