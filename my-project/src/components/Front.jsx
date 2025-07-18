@@ -138,7 +138,7 @@ const Front = () => {
         </h2>
         <ul className="flex justify-evenly mb-10">
           <li className="flex flex-col align-middle items-center gap-5">
-            <Link to="/Product">
+            <Link to="/Product/1">
               <img
                 src={T_shirt}
                 alt="T-shirt"
@@ -149,7 +149,7 @@ const Front = () => {
             <p className="text-lg">T-shirt</p>
           </li>
           <li className="flex flex-col align-middle items-center gap-5">
-            <Link to="/Product">
+            <Link to="/Product/2">
               <img
                 src={long}
                 alt="Long-Sleeves"
@@ -160,7 +160,7 @@ const Front = () => {
             <p className="text-lg">Long-Sleeves</p>
           </li>
           <li className="flex flex-col align-middle items-center gap-5">
-            <Link to="/Product">
+            <Link to="/Product/3">
               <img
                 src={sweater}
                 alt="Sweater"
@@ -171,7 +171,7 @@ const Front = () => {
             <p className="text-lg">Sweater</p>
           </li>
           <li className="flex flex-col align-middle items-center gap-5">
-            <Link to="/Product">
+            <Link to="/Product/4">
               <img
                 src={hoodies}
                 alt="Hoodies"
@@ -182,7 +182,7 @@ const Front = () => {
             <p className="text-lg">Hoodies</p>
           </li>
           <li className="flex flex-col align-middle items-center gap-5">
-            <Link to="/Product">
+            <Link to="/Product/5">
               <img
                 src={tanktop}
                 alt="TankTop"
@@ -213,28 +213,28 @@ const Front = () => {
             </button>
           </div>
           <div className="flex flex-wrap justify-center gap-5">
-            <Link to="/Product">
+            <Link to="/Product/6">
               <img
                 src={pic5}
                 alt=""
                 className="w-32 h-40 object-cover rounded-lg"
               />
             </Link>
-            <Link to="/Product">
+            <Link to="/Product/7">
               <img
                 src={pic2}
                 alt=""
                 className="w-32 h-40 object-cover rounded-lg"
               />
             </Link>
-            <Link to="/Product">
+            <Link to="/Product/8">
               <img
                 src={pic3}
                 alt=""
                 className="w-32 h-40 object-cover rounded-lg"
               />
             </Link>
-            <Link to="/Product">
+            <Link to="/Product/9">
               <img
                 src={pic4}
                 alt=""
@@ -261,28 +261,28 @@ const Front = () => {
             </button>
           </div>
           <div className="flex flex-wrap justify-center gap-5">
-            <Link to="/Product">
+            <Link to="/Product/10">
               <img
                 src={pic6}
                 alt=""
                 className="w-32 h-40 object-cover rounded-lg"
               />
             </Link>
-            <Link to="/Product">
+            <Link to="/Product/11">
               <img
                 src={pic2}
                 alt=""
                 className="w-32 h-40 object-cover rounded-lg"
               />
             </Link>
-            <Link to="/Product">
+            <Link to="/Product/12">
               <img
                 src={pic3}
                 alt=""
                 className="w-32 h-40 object-cover rounded-lg"
               />
             </Link>
-            <Link to="/Product">
+            <Link to="/Product/13">
               <img
                 src={pic4}
                 alt=""
@@ -302,7 +302,7 @@ const Front = () => {
 
         <div className="flex flex-wrap gap-20 w-full justify-center px-5">
           <div>
-            <Link to="/Product">
+            <Link to="/Product/14">
               <img
                 src={image_1}
                 alt=""
@@ -311,7 +311,7 @@ const Front = () => {
             </Link>
           </div>
           <div>
-            <Link to="/Product">
+            <Link to="/Product/15">
               <img
                 src={image_2}
                 alt=""
@@ -320,7 +320,7 @@ const Front = () => {
             </Link>
           </div>
           <div>
-            <Link to="/Product">
+            <Link to="/Product/16">
               {" "}
               <img
                 src={image_3}
@@ -330,7 +330,7 @@ const Front = () => {
             </Link>
           </div>
           <div>
-            <Link to="/Product">
+            <Link to="/Product/17">
               <img
                 src={image_4}
                 alt=""
@@ -353,7 +353,7 @@ const Front = () => {
 
         <div className="flex flex-wrap gap-20 w-full justify-center px-5">
           <div>
-            <Link to="/Product">
+            <Link to="/Product/18">
               <img
                 src={image_1}
                 alt=""
@@ -367,7 +367,7 @@ const Front = () => {
             </ul>
           </div>
           <div>
-            <Link to="/Product">
+            <Link to="/Product/19">
               <img
                 src={image_2}
                 alt=""
@@ -381,7 +381,7 @@ const Front = () => {
             </ul>
           </div>
           <div>
-            <Link to="/Product">
+            <Link to="/Product/20">
               <img
                 src={image_3}
                 alt=""
@@ -395,7 +395,7 @@ const Front = () => {
             </ul>
           </div>
           <div>
-            <Link to="/Product">
+            <Link to="/Product/21">
               <img
                 src={image_4}
                 alt=""
