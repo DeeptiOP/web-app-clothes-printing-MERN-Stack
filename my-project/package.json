@@ -1,5 +1,5 @@
 {
-  "homepage": "https://DeeptiOP.github.io/web-app-clothes-printing-MERN-Stack",
+  "homepage": "https://Biswapriti.github.io/web-app-clothes-printing-MERN-Stack",
   "name": "my-project",
   "private": true,
   "version": "0.0.0",
@@ -16,6 +16,7 @@
     "mongodb": "^6.17.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
+    "react-icons": "^5.5.0",
     "react-router-dom": "^7.6.3"
   },
   "devDependencies": {

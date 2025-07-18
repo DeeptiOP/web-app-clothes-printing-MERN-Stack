@@ -2,72 +2,90 @@ import React from "react";
 import search_icon from "../assets/search.png";
 import cart_icon from "../assets/cart.png";
 import user_icon from "../assets/user.png";
-import cover_pic from "../assets/pic7.png";
+import cover_pic from "../assets/product6.jpg";
 import T_shirt from "../assets/pic4.png";
 import long from "../assets/pic2.png";
 import sweater from "../assets/pic3.png";
 import hoodies from "../assets/pic5.png";
 import tanktop from "../assets/pic6.png";
-import pic5 from "../assets/pic5.png";
-import pic2 from "../assets/pic2.png";
-import pic3 from "../assets/pic3.png";
-import pic4 from "../assets/pic4.png";
-import pic6 from "../assets/pic6.png";
-import image_1 from "../assets/pic4.png";
-import image_2 from "../assets/pic5.png";
-import image_3 from "../assets/pic6.png";
-import image_4 from "../assets/pic4.png";
+import pic5 from "../assets/product5.jpg";
+import pic2 from "../assets/product2.jpg";
+import pic3 from "../assets/product3.jpg";
+import pic4 from "../assets/product4.jpg";
+import pic6 from "../assets/product6.jpg";
+import image_1 from "../assets/product4.jpg";
+import image_2 from "../assets/product5.jpg";
+import image_3 from "../assets/product6.jpg";
+import image_4 from "../assets/product4.jpg";
 import tshirt from "../assets/banner.png";
 import image_5 from "../assets/banner.png";
 import image_6 from "../assets/banner.png";
 import { Link } from "react-router-dom";
+import { FaShoppingCart } from "react-icons/fa";
+import { MdAccountCircle } from "react-icons/md";
+import { IoSearchSharp } from "react-icons/io5";
 
 const Front = () => {
   return (
     <div className="w-fit lg:w-max-full h-screen">
-      <nav className="flex justify-around items-center bg-blue-100 shadow-md h-20 space-x-5 ">
+      <nav className="flex justify-evenly items-center shadow-md h-20 ">
         <div className="text-2xl font-bold text-gray-800">
-          <h2 className="text-blue-600 text-3xl">PrinTeeQ </h2>
+          <h2 className="text-orange-700 text-3xl">PrinTeeQ </h2>
         </div>
-        <ul className="hidden lg:flex space-x-4 text-gray-700 gap-3 font-bold text-lg">
-          <li>
+        <ul className="hidden lg:flex space-x-8 text-gray-700 gap-3 font-bold text-lg ">
+          <li className="hover:underline underline-offset-8">
             <Link to="/">Home</Link>
           </li>
-          <li>
-            <Link to="/Product">Shop</Link>
+          <li className="hover:underline underline-offset-8">
+            <Link to="/shop">Shop</Link>
           </li>
-          <li>On Show</li>
-          <li>New Arrivals</li>
-          <li>Brands</li>
+          <li className="hover:underline underline-offset-8">
+            <Link to="/customize">On Show</Link>
+          </li>
+          <li className="hover:underline underline-offset-8">New Arrivals</li>
+          <li className="hover:underline underline-offset-8">Brands</li>
         </ul>
-        <div className="w-full lg:w-auto h-10 flex border border-gray-300 rounded-lg px-4 items-center gap-3 mt-2 md:mt-0">
-          <img src={search_icon} alt="Search Icon" className="w-8 h-8 " />
+        <div className="w-full lg:w-auto h-10 flex border border-black rounded-3xl px-4 items-center gap-3 mt-2 md:mt-0">
+          <IoSearchSharp size={30} />
           <input type="text" placeholder="Search the Products..." />
         </div>
         <div>
-          <img src={cart_icon} alt="Cart Icon" className="w-16 h-12 lg:w-10 lg:h-10 " />
+          <FaShoppingCart size={30} />
+        </div>
+        <div className="flex space-x-1">
+          <button className="bg-white text-blue-950 text-md border border-blue-950 hover:text-white hover:bg-blue-950 px-3 py-2 rounded-3xl font-semibold">
+            LOGIN
+          </button>
+          <button className="bg-white text-blue-950 text-md border border-blue-950 hover:text-white hover:bg-blue-950 px-3 py-2 rounded-3xl font-semibold">
+            SIGN UP
+          </button>
         </div>
         <div>
-          <img src={user_icon} alt="User Icon" className="w-16 h-10" />
-        </div>
-        <div>
-          <button className="bg-gray-50 text-green-400 px-3 py-2 rounded-lg mx-10 font-semibold">SIGN UP</button>
+          <MdAccountCircle size={40} />
         </div>
       </nav>
 
-      <section className="w-full flex flex-col lg:flex-row justify-between px-5 items-center py-35 border border-zinc-700 gap-6">
+      <section className="w-full flex flex-col lg:flex-row justify-between px-5 items-center py-12 border border-zinc-700 gap-6">
         <div className="flex flex-col gap-5 items-center mx-5 font-bold text-black border-zinc-400  text-center md:text-left">
           <h3 className="text-5xl">FIND CLOTHES THAT MATCH YOUR STYLE</h3>
           <p className="text-xl font-light">
             Wear your art — bold, custom-printed dresses designed to express
             your unique style.
           </p>
-          <button
-            type="button"
-            className="bg-black text-white px-5 py-2 my-10 rounded hover:bg-zinc-800 transition"
-          >
-            Shop Now
-          </button>
+          <div className="flex gap-8 rounded-3xl ">
+            <button
+              type="button"
+              className="bg-blue-950 text-white px-5 py-2 my-10 rounded-3xl hover:text-blue-950 hover:bg-white border border-blue-950 transition"
+            >
+              Shop Now
+            </button>
+            <button
+              type="button"
+              className="bg-blue-950 text-white px-5 py-2 my-10 rounded-3xl hover:text-blue-950 hover:bg-white border border-blue-950 transition"
+            >
+              Customize Your Design
+            </button>
+          </div>
 
           <div className="flex  gap-10 ">
             <div className="flex flex-col align-middle items-center gap-2">
@@ -89,21 +107,28 @@ const Front = () => {
           <img
             src={cover_pic}
             alt="cover"
-            className="rounded-xl w-auto h-96 lg:h-80 mx-20 object-cover"
+            className="rounded-xl w-auto h-96 lg:h-[500px] mx-20 object-cover"
           />
         </div>
       </section>
 
       <div className="overflow-x-auto whitespace-nowrap bg-black text-white py-4">
-        <ul
-          className="flex justify-evenly
-         gap-10 px-5 min-w-max text-xl md:text-3xl"
-        >
-          <li>VERACE</li>
-          <li>ZARA</li>
-          <li>GUCCI</li>
-          <li>PRADA</li>
-          <li>Calvin Klein</li>
+        <ul className="flex justify-evenly gap-10 px-5 min-w-max text-xl lg:text-4xl">
+          <li className="font-cinzel tracking-tighter uppercase font-semibold">
+            VERSACE
+          </li>
+          <li className="font-serif italic font-semibold ">
+            ZARA
+          </li>
+          <li className="font-serif -tracking-tighter ">
+            GUCCI
+          </li>
+          <li className="font-serif font-extrabold tracking-normal ">
+            PRADA
+          </li>
+          <li className="font-raleway font-light tracking-tighter ">
+            Calvin Klein
+          </li>
         </ul>
       </div>
 
@@ -172,7 +197,7 @@ const Front = () => {
 
       <section className="mx-5 md:mx-20 my-10 py-10 flex flex-row gap-10">
         {/* Section 1 */}
-        <div className="flex flex-wrap lg:flex-nowrap justify-around items-center bg-purple-200 rounded-2xl border-2 px-6 py-10 gap-8">
+        <div className="flex flex-wrap lg:flex-nowrap justify-around items-center  rounded-2xl border-2 px-6 py-10 gap-8">
           <div className="flex flex-col gap-6 justify-center items-center text-center mx-5 lg:items-start lg:text-left max-w-md">
             <h1 className="text-3xl md:text-4xl font-bold">
               Thousands of Free Templates
@@ -182,7 +207,7 @@ const Front = () => {
             </p>
             <button
               type="button"
-              className="px-4 py-2 bg-green-500 text-white text-lg rounded hover:bg-green-600"
+              className="px-4 py-2 bg-purple-950 text-white text-lg rounded-3xl hover:bg-purple-300 hover:text-purple-950 hover:font-bold hover:border border-purple-950"
             >
               Explore More
             </button>
@@ -220,7 +245,7 @@ const Front = () => {
         </div>
 
         {/* Section 2 */}
-        <div className="flex flex-wrap lg:flex-nowrap justify-around items-center bg-purple-200 rounded-2xl border-2 px-6 py-10 gap-8">
+        <div className="flex flex-wrap lg:flex-nowrap justify-around items-center  rounded-2xl border-2 px-3 py-10 gap-8">
           <div className="flex flex-col gap-6 justify-center items-center text-center mx-5 lg:items-start lg:text-left max-w-md">
             <h1 className="text-3xl md:text-4xl font-bold">
               Create Your Unique Style
@@ -230,7 +255,7 @@ const Front = () => {
             </p>
             <button
               type="button"
-              className="px-4 py-2 bg-green-500 text-white text-lg rounded hover:bg-green-600"
+              className="px-4 py-2  bg-purple-950 text-white text-lg rounded-3xl hover:bg-purple-300 hover:text-purple-950 hover:font-bold hover:border border-purple-950"
             >
               Shop Now
             </button>
@@ -268,14 +293,14 @@ const Front = () => {
         </div>
       </section>
 
-      <section className="flex flex-col bg-purple-100 gap-10 mx-20 rounded-lg py-5 my-10">
-        <ul className="flex flex-wrap gap-5 mx-5 md:mx-25 text-xl md:text-2xl py-5">
-          <li>New Arrivals</li>
-          <li>Best Seller</li>
-          <li>Sale</li>
+      <section className="flex flex-col  gap-10 mx-10 rounded-lg py-5">
+        <ul className="flex flex-wrap gap-7 mx-5 md:mx-28 text-xl md:text-3xl py-5 ">
+          <li className="font-semibold hover:underline underline-offset-8">New Arrivals</li>
+          <li className="font-semibold hover:underline underline-offset-8">Best Seller</li>
+          <li className="font-semibold hover:underline underline-offset-8">Sale</li>
         </ul>
 
-        <div className="flex flex-wrap gap-10 w-full justify-center px-5">
+        <div className="flex flex-wrap gap-20 w-full justify-center px-5">
           <div>
             <Link to="/Product">
               <img
@@ -316,60 +341,68 @@ const Front = () => {
         </div>
       </section>
 
-      <section className="flex flex-col bg-purple-100 gap-10 mx-20 rounded-lg py-5">
-        <ul className="flex flex-wrap justify-between gap-5 mx-5 md:mx-30 text-xl md:text-2xl py-5">
-          <li>Hot Under $39</li>
+      <section className="flex flex-col  gap-10 mx-10 rounded-lg py-5">
+        <ul className="flex flex-wrap justify-between gap-5 mx-5 md:mx-20 text-xl md:text-2xl py-5">
+          <li className="font-bold text-3xl ">Hot Under $39</li>
           <li>
-            <button type="button" className="underline">
+            <button type="button" className="underline font-semibold">
               View All
             </button>
           </li>
         </ul>
 
-        <div className="flex flex-wrap gap-10 w-full justify-center px-5">
+        <div className="flex flex-wrap gap-20 w-full justify-center px-5">
           <div>
-            <Link to="/Product"><img
-              src={image_1}
-              alt=""
-              className="w-40 sm:w-52 md:w-64 h-80 md:h-96 object-cover rounded-lg"
-            /></Link>
-            
+            <Link to="/Product">
+              <img
+                src={image_1}
+                alt=""
+                className="w-40 sm:w-52 md:w-64 h-80 md:h-96 object-cover rounded-lg"
+              />
+            </Link>
+
             <ul className="flex flex-col items-center gap-3 mt-6 text-xl font-bold">
               <li>Adult Quantity Tee</li>
               <li>$26.00-$29.00</li>
             </ul>
           </div>
           <div>
-            <Link to="/Product"><img
-              src={image_2}
-              alt=""
-              className="w-40 sm:w-52 md:w-64 h-80 md:h-96 object-cover rounded-lg"
-            /></Link>
-            
+            <Link to="/Product">
+              <img
+                src={image_2}
+                alt=""
+                className="w-40 sm:w-52 md:w-64 h-80 md:h-96 object-cover rounded-lg"
+              />
+            </Link>
+
             <ul className="flex flex-col items-center gap-3 mt-6 text-xl font-bold">
               <li>All-Over-Print Hoodie</li>
               <li>$26.00-$29.00</li>
             </ul>
           </div>
           <div>
-            <Link to="/Product"><img
-              src={image_3}
-              alt=""
-              className="w-40 sm:w-52 md:w-64 h-80 md:h-96 object-cover rounded-lg"
-            /></Link>
-            
+            <Link to="/Product">
+              <img
+                src={image_3}
+                alt=""
+                className="w-40 sm:w-52 md:w-64 h-80 md:h-96 object-cover rounded-lg"
+              />
+            </Link>
+
             <ul className="flex flex-col items-center gap-3 mt-6 text-xl font-bold">
               <li>AOP Cut & Sew Tee</li>
               <li>$26.00-$29.00</li>
             </ul>
           </div>
           <div>
-            <Link to="/Product"><img
-              src={image_4}
-              alt=""
-              className="w-40 sm:w-52 md:w-64 h-80 md:h-96 object-cover rounded-lg"
-            /></Link>
-            
+            <Link to="/Product">
+              <img
+                src={image_4}
+                alt=""
+                className="w-40 sm:w-52 md:w-64 h-80 md:h-96 object-cover rounded-lg"
+              />
+            </Link>
+
             <ul className="flex flex-col items-center gap-3 mt-6 text-xl font-bold">
               <li>Fine Jersey Tee</li>
               <li>$26.00-$29.00</li>

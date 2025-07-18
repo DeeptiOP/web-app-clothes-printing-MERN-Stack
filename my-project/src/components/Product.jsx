@@ -1,11 +1,37 @@
 import React from "react";
+import { useParams, Link } from "react-router-dom";
 import search_icon from "../assets/search.png";
 import cart_icon from "../assets/cart.png";
 import user_icon from "../assets/user.png";
-import image from "../assets/cover_pic.png";
-import { Link } from "react-router-dom";
+import product1 from "../assets/product1.jpg";
+import product2 from "../assets/product2.jpg";
+import product3 from "../assets/product3.jpg";
+import product4 from "../assets/product4.jpg";
+import product5 from "../assets/product5.jpg";
+import product6 from "../assets/product6.jpg";
+import product7 from "../assets/product7.jpg";
+import product8 from "../assets/product8.jpg";
+import product9 from "../assets/product9.jpg";
+
+const productImages = [product1, product2, product3, product4, product5, product6, product7, product8, product9];
+const productNames = [
+  "Adult Quantity Tee", "All-Over-Print Hoodie", "AOP Cut & Sew Tee",
+  "Fine Jersey Tee", "Fit Round-neck T-shirt", "Hooded Sweatshirt",
+  "Kids Hoodie", "Lightweight Fashion Tee", "Midweight Cotton Tee"
+];
+const productPrices = ["$20", "$25", "$28", "$30", "$22", "$26", "$24", "$27", "$29"];
 
 const Product = () => {
+  const { id } = useParams();
+  const index = parseInt(id, 10) - 1;
+
+  if (index < 0 || index >= productImages.length) {
+    return (
+      <div className="text-center py-20 text-2xl font-bold text-red-500">
+        Product Not Found
+      </div>
+    );
+  }
   return (
     <div>
       <nav className="flex justify-around items-center bg-blue-100 shadow-md h-20 space-x-5 ">
@@ -17,7 +43,7 @@ const Product = () => {
             <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="/Product">Shop</Link>
+            <Link to="/shop">Shop</Link>
           </li>
           <li>On Show</li>
           <li>New Arrivals</li>
@@ -35,138 +61,59 @@ const Product = () => {
         </div>
       </nav>
 
-      <section className="py-12 px-4 lg:px-20 flex flex-col lg:flex-row gap-10">
-        {/* Left Image Section */}
+      {/* Product Section */}
+      <section className="py-12 px-5 lg:px-20 flex flex-col lg:flex-row gap-10">
         <div className="flex flex-col gap-4 w-full lg:w-1/2">
-          {/* Main Product Image */}
-          <div className="relative w-full h-[400px] lg:h-[600px] bg-gray-100 rounded-lg overflow-hidden">
-            <img
-              src={image}
-              alt="product"
-              className="w-full h-full object-cover"
-            />
+          <div className="relative h-[400px] lg:h-[600px] bg-gray-100 rounded-lg overflow-hidden">
+            <img src={productImages[index]} alt={productNames[index]} className="w-full h-full object-cover"/>
             <div className="absolute top-4 left-4 flex gap-2">
-              <span className="bg-green-500 text-white text-xs px-2 py-1 rounded-md">
-                Sale!
-              </span>
-              <span className="bg-purple-500 text-white text-xs px-2 py-1 rounded-md">
-                New
-              </span>
+              <span className="bg-green-500 text-white text-xs px-2 py-1 rounded-md">Sale!</span>
+              <span className="bg-purple-500 text-white text-xs px-2 py-1 rounded-md">New</span>
             </div>
           </div>
-          {/* Thumbnail Images */}
-          {/* <div className="flex gap-3">
-            {[thumb1, thumb2, thumb3, thumb4].map((thumb, idx) => (
-              <img
-                key={idx}
-                src={thumb}
-                alt=""
-                className="w-20 h-20 border rounded-md object-cover cursor-pointer"
-              />
-            ))}
-          </div> */}
         </div>
 
-        {/* Right Product Info */}
-        <div className="w-full lg:w-1/2 flex flex-col gap-5">
+        <div className="flex flex-col gap-4 w-full lg:w-1/2">
           <div className="flex justify-between items-center">
-            <span className="text-xl font-semibold">$26.00 - $29.00</span>
+            <span className="text-xl font-semibold">{productPrices[index]}</span>
             <span className="text-gray-500 text-sm">&lt; PREV NEXT &gt;</span>
           </div>
-          <h1 className="text-3xl font-bold">Pullover Hoodie Sweatshirt</h1>
-          <p className="text-gray-500">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
-            tristique malesuada elit, ut facilisis tellus elementum id.
-          </p>
-
-          {/* Product Guide */}
-          <p className="font-semibold underline text-sm cursor-pointer">
-            Product Guide
-          </p>
+          <h1 className="text-3xl font-bold">{productNames[index]}</h1>
+          <p className="text-gray-500">High-quality {productNames[index]} designed for your comfort and style.</p>
 
           {/* Colors */}
-          <div className="flex items-center gap-3">
+          <div className="flex gap-2 items-center">
             <span className="font-medium">Color:</span>
-            {["black", "red", "peachpuff", "yellow", "white"].map(
-              (color, idx) => (
-                <div
-                  key={idx}
-                  className={`w-6 h-6 rounded-full border cursor-pointer`}
-                  style={{ backgroundColor: color }}
-                ></div>
-              )
-            )}
+            {["black", "red", "peachpuff", "yellow", "white"].map((color, idx) => (
+              <div key={idx} className="w-6 h-6 rounded-full border" style={{ backgroundColor: color }}></div>
+            ))}
           </div>
 
           {/* Sizes */}
-          <div className="flex items-center gap-2 flex-wrap">
+          <div className="flex gap-2 items-center flex-wrap">
             <span className="font-medium">Size:</span>
-            {["2XL", "3XL", "L", "M", "S", "XL", "XS"].map((size) => (
-              <button
-                key={size}
-                className="px-3 py-1 border rounded-md hover:bg-gray-200"
-              >
-                {size}
-              </button>
+            {["XS", "S", "M", "L", "XL", "2XL", "3XL"].map(size => (
+              <button key={size} className="px-3 py-1 border rounded-md hover:bg-gray-100">{size}</button>
             ))}
           </div>
 
-          {/* Material */}
-          {/* <div className="flex flex-col gap-2">
-            <p className="font-medium">Material: METAL</p>
-            <div className="flex gap-3">
-              {[material1, material2, material3, material4].map((mat, idx) => (
-                <img
-                  key={idx}
-                  src={mat}
-                  alt="material"
-                  className="w-20 h-20 rounded-md border object-cover"
-                />
-              ))}
-            </div>
-          </div> */}
-
           {/* Delivery */}
           <div>
-            <p className="font-medium">
-              Delivery: <span className="font-bold">1 TO 3 BUSINESS DAYS</span>
-            </p>
+            <p className="font-medium">Delivery: <span className="font-bold">1 TO 3 BUSINESS DAYS</span></p>
             <select className="border rounded-md p-2 mt-2 w-full">
-              <option>1 to 3 business days</option>
-              <option>3 to 8 business days</option>
+              <option>1 to 3 days</option>
+              <option>3 to 8 days</option>
             </select>
           </div>
 
-          {/* Price */}
-          <div className="flex items-center gap-4 text-xl font-bold">
-            <span className="text-green-500">$27.00</span>
-            <span className="line-through text-gray-400 text-lg">$34.00</span>
-          </div>
-
-          {/* File Upload */}
-          <div className="border-dashed border-2 border-gray-300 p-4 rounded-md text-center">
-            <p>
-              Drag & Drop Files Here or{" "}
-              <button className="text-blue-500 font-semibold">
-                Browse Files
-              </button>
-            </p>
-          </div>
-
-          {/* Cart Options */}
+          {/* Quantity */}
           <div className="flex gap-4 items-center">
             <div className="flex border rounded-md overflow-hidden">
               <button className="px-3 font-bold">-</button>
-              <input
-                type="number"
-                defaultValue={1}
-                className="w-12 text-center border-l border-r"
-              />
+              <input type="number" defaultValue={1} className="w-12 text-center border-l border-r" />
               <button className="px-3 font-bold">+</button>
             </div>
-            <button className="flex-1 bg-green-500 text-white py-3 rounded-md font-semibold">
-              Add To Cart
-            </button>
+            <button className="flex-1 bg-green-500 text-white py-3 rounded-md font-semibold">Add To Cart</button>
           </div>
 
           <div className="flex gap-4 text-gray-600">
