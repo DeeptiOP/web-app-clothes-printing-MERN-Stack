@@ -11,22 +11,32 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <Front />,
+    errorElement: <div>Something went wrong!</div>,
   },
   {
     path: '/Product/:id',
     element: <MenTshirts />,
+    errorElement: <div>Something went wrong!</div>,
   },
   {
     path:'/shop',
-    element:<ProductListing/>
+    element:<ProductListing/>,
+    errorElement: <div>Something went wrong!</div>,
   },
   {
     path:'/customize',
-    element:<CustomDesign/>
+    element:<CustomDesign/>,
+    errorElement: <div>Something went wrong!</div>,
   },
   {
     path:'/cart',
-    element:<CartPage/>
+    element:<CartPage/>,
+    errorElement: <div>Something went wrong!</div>,
+  },
+  {
+    path: '*',
+    element: <Front />,
+    errorElement: <div>Something went wrong!</div>,
   }
 ], {
   basename: import.meta.env.DEV ? '' : '/web-app-clothes-printing-MERN-Stack'
