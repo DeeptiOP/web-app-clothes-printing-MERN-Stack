@@ -46,8 +46,9 @@ const router = createBrowserRouter([
     path:'/Signin',
     element:<Signin/>
   }
-
-]);
+], {
+  basename: import.meta.env.PROD ? '/web-app-clothes-printing-MERN-Stack' : ''
+});
 
 function App() {
   return (
