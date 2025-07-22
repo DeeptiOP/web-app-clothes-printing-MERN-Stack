@@ -1,49 +1,60 @@
 import React from 'react';
 import Front from './components/Front';
-import MenTshirts from './components/Product';
+import Product from './components/Product';
 import ProductListing from './components/shop';
-import CustomDesign from './components/customize';
-import CartPage from './components/cart';
+import TShirtCustomizer from './components/customize';
+import PaymentPage from './components/payment';
+import CartPage, { CartProvider } from './components/cart';  // ✅ Import both CartPage and CartProvider
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './App.css';
+import Signup from './components/Signup';
+import Signin from './components/Signin';
+
+
+
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <Front />,
-    errorElement: <div>Something went wrong!</div>,
   },
   {
     path: '/Product/:id',
-    element: <MenTshirts />,
-    errorElement: <div>Something went wrong!</div>,
+    element: <Product />,
   },
   {
     path:'/shop',
-    element:<ProductListing/>,
-    errorElement: <div>Something went wrong!</div>,
+    element:<ProductListing/>
   },
   {
     path:'/customize',
-    element:<CustomDesign/>,
-    errorElement: <div>Something went wrong!</div>,
+    element:<TShirtCustomizer/>
   },
   {
     path:'/cart',
-    element:<CartPage/>,
-    errorElement: <div>Something went wrong!</div>,
+    element:<CartPage/>
   },
   {
-    path: '*',
-    element: <Front />,
-    errorElement: <div>Something went wrong!</div>,
+    path:'/payment',
+    element:<PaymentPage/>
+  },
+  {
+    path:'/Signup',
+    element:<Signup/>
+  },
+  {
+    path:'/Signin',
+    element:<Signin/>
   }
-], {
-  basename: import.meta.env.DEV ? '' : '/web-app-clothes-printing-MERN-Stack'
-});
+
+]);
 
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <CartProvider> {/* ✅ Wrap RouterProvider inside CartProvider */}
+      <RouterProvider router={router} />
+    </CartProvider>
+  );
 }
 
 export default App;

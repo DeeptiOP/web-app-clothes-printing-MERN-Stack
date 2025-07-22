@@ -3,3 +3,10 @@
 @tailwind utilities;
 
 Custom styles can be added here */
+body {
+  font-family: Arial, sans-serif;
+  background: #f9f9f9;
+}
+button {
+  cursor: pointer;
+}

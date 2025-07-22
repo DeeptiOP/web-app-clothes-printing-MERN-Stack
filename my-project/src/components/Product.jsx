@@ -3,29 +3,15 @@ import { useParams, Link } from "react-router-dom";
 import search_icon from "../assets/search.png";
 import cart_icon from "../assets/cart.png";
 import user_icon from "../assets/user.png";
-import product1 from "../assets/product1.jpg";
-import product2 from "../assets/product2.jpg";
-import product3 from "../assets/product3.jpg";
-import product4 from "../assets/product4.jpg";
-import product5 from "../assets/product5.jpg";
-import product6 from "../assets/product6.jpg";
-import product7 from "../assets/product7.jpg";
-import product8 from "../assets/product8.jpg";
-import product9 from "../assets/product9.jpg";
-
-const productImages = [product1, product2, product3, product4, product5, product6, product7, product8, product9];
-const productNames = [
-  "Adult Quantity Tee", "All-Over-Print Hoodie", "AOP Cut & Sew Tee",
-  "Fine Jersey Tee", "Fit Round-neck T-shirt", "Hooded Sweatshirt",
-  "Kids Hoodie", "Lightweight Fashion Tee", "Midweight Cotton Tee"
-];
-const productPrices = ["$20", "$25", "$28", "$30", "$22", "$26", "$24", "$27", "$29"];
+import { useCart } from "./cart";
+import {products} from "./Data";
 
 const Product = () => {
   const { id } = useParams();
-  const index = parseInt(id, 10) - 1;
+  const { addToCart } = useCart();
+  const product = products.find((item)=> item.id === parseInt(id) );
 
-  if (index < 0 || index >= productImages.length) {
+  if (!product) {
     return (
       <div className="text-center py-20 text-2xl font-bold text-red-500">
         Product Not Found
@@ -33,7 +19,7 @@ const Product = () => {
     );
   }
   return (
-    <div>
+    <div className="w-fit lg:w-max-full h-screen">
       <nav className="flex justify-around items-center bg-blue-100 shadow-md h-20 space-x-5 ">
         <div className="text-2xl font-bold text-gray-800">
           <h2 className="text-blue-600 text-3xl">PrinTeeQ </h2>
@@ -62,44 +48,69 @@ const Product = () => {
       </nav>
 
       {/* Product Section */}
-      <section className="py-12 px-5 lg:px-20 flex flex-col lg:flex-row gap-10">
+      <section className="py-12 px-5 lg:px-20 flex flex-row lg:flex-row gap-10">
         <div className="flex flex-col gap-4 w-full lg:w-1/2">
           <div className="relative h-[400px] lg:h-[600px] bg-gray-100 rounded-lg overflow-hidden">
-            <img src={productImages[index]} alt={productNames[index]} className="w-full h-full object-cover"/>
+            <img
+              src={product.image}
+              alt={product.name}
+              className="w-full h-full object-cover"
+            />
             <div className="absolute top-4 left-4 flex gap-2">
-              <span className="bg-green-500 text-white text-xs px-2 py-1 rounded-md">Sale!</span>
-              <span className="bg-purple-500 text-white text-xs px-2 py-1 rounded-md">New</span>
+              <span className="bg-green-500 text-white text-xs px-2 py-1 rounded-md">
+                Sale!
+              </span>
+              <span className="bg-purple-500 text-white text-xs px-2 py-1 rounded-md">
+                New
+              </span>
             </div>
           </div>
         </div>
 
         <div className="flex flex-col gap-4 w-full lg:w-1/2">
           <div className="flex justify-between items-center">
-            <span className="text-xl font-semibold">{productPrices[index]}</span>
+            <span className="text-xl font-semibold">
+              {product.price}
+            </span>
             <span className="text-gray-500 text-sm">&lt; PREV NEXT &gt;</span>
           </div>
-          <h1 className="text-3xl font-bold">{productNames[index]}</h1>
-          <p className="text-gray-500">High-quality {productNames[index]} designed for your comfort and style.</p>
+          <h1 className="text-3xl font-bold">{product.name}</h1>
+          <p className="text-gray-500">
+            {product.description}
+          </p>
 
           {/* Colors */}
           <div className="flex gap-2 items-center">
             <span className="font-medium">Color:</span>
-            {["black", "red", "peachpuff", "yellow", "white"].map((color, idx) => (
-              <div key={idx} className="w-6 h-6 rounded-full border" style={{ backgroundColor: color }}></div>
-            ))}
+            {["black", "red", "peachpuff", "yellow", "white"].map(
+              (color, idx) => (
+                <div
+                  key={idx}
+                  className="w-6 h-6 rounded-full border"
+                  style={{ backgroundColor: color }}
+                ></div>
+              )
+            )}
           </div>
 
           {/* Sizes */}
           <div className="flex gap-2 items-center flex-wrap">
             <span className="font-medium">Size:</span>
-            {["XS", "S", "M", "L", "XL", "2XL", "3XL"].map(size => (
-              <button key={size} className="px-3 py-1 border rounded-md hover:bg-gray-100">{size}</button>
+            {["XS", "S", "M", "L", "XL", "2XL", "3XL"].map((size) => (
+              <button
+                key={size}
+                className="px-3 py-1 border rounded-md hover:bg-gray-100"
+              >
+                {size}
+              </button>
             ))}
           </div>
 
           {/* Delivery */}
           <div>
-            <p className="font-medium">Delivery: <span className="font-bold">1 TO 3 BUSINESS DAYS</span></p>
+            <p className="font-medium">
+              Delivery: <span className="font-bold">1 TO 3 BUSINESS DAYS</span>
+            </p>
             <select className="border rounded-md p-2 mt-2 w-full">
               <option>1 to 3 days</option>
               <option>3 to 8 days</option>
@@ -110,10 +121,24 @@ const Product = () => {
           <div className="flex gap-4 items-center">
             <div className="flex border rounded-md overflow-hidden">
               <button className="px-3 font-bold">-</button>
-              <input type="number" defaultValue={1} className="w-12 text-center border-l border-r" />
+              <input
+                type="number"
+                defaultValue={1}
+                className="w-12 text-center border-l border-r"
+              />
               <button className="px-3 font-bold">+</button>
             </div>
-            <button className="flex-1 bg-green-500 text-white py-3 rounded-md font-semibold">Add To Cart</button>
+
+            <Link to="/cart" className="flex-1">
+              <button
+                onClick={() =>
+                  addToCart(product)
+                }
+                className="w-full bg-green-500 text-white py-3 rounded-md font-semibold hover:bg-green-600 transition"
+              >
+                Add To Cart
+              </button>
+            </Link>
           </div>
 
           <div className="flex gap-4 text-gray-600">
