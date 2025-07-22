@@ -6,6 +6,7 @@ import react from '@vitejs/plugin-react'
 export default defineConfig(({ command }) => {
   const config = {
     plugins: [react(), tailwindcss()],
+    publicDir: 'public',
   }
   
   // Only set base path for build (GitHub Pages)

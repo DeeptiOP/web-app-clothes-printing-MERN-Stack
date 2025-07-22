@@ -4,16 +4,14 @@ import Product from './components/Product';
 import ProductListing from './components/shop';
 import TShirtCustomizer from './components/customize';
 import PaymentPage from './components/payment';
-import CartPage, { CartProvider } from './components/cart';  // ✅ Import both CartPage and CartProvider
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import CartPage, { CartProvider } from './components/cart';
+import { createHashRouter, RouterProvider } from 'react-router-dom';
 import './App.css';
 import Signup from './components/Signup';
 import Signin from './components/Signin';
 
-
-
-
-const router = createBrowserRouter([
+// Hash router for testing - no basename needed
+const router = createHashRouter([
   {
     path: '/',
     element: <Front />,
@@ -60,19 +58,18 @@ const router = createBrowserRouter([
       <h2>Page Not Found</h2>
       <p>The page you're looking for doesn't exist.</p>
       <p>Current path: {window.location.pathname}</p>
-      <a href="/">Go to Home</a>
+      <p>Current hash: {window.location.hash}</p>
+      <a href="#/">Go to Home</a>
     </div>
   }
-], {
-  basename: import.meta.env.PROD ? '/web-app-clothes-printing-MERN-Stack' : ''
-});
+]);
 
-function App() {
+function TestApp() {
   return (
-    <CartProvider> {/* ✅ Wrap RouterProvider inside CartProvider */}
+    <CartProvider>
       <RouterProvider router={router} />
     </CartProvider>
   );
 }
 
-export default App;
+export default TestApp;
