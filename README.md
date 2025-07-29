@@ -1,4 +1,4 @@
-# printteeq Project Structure
+# prinTeeQ Project Structure
 
 This project is organized into **backend** and **my-project** (frontend) directories, each containing relevant source files and folders.
 
@@ -137,7 +137,7 @@ PrinTeeQ is a modern e-commerce platform designed for custom clothes printing bu
 This project is organized into **backend** and **frontend** directories, each containing relevant source files and folders.
 
 ```
-printteeq/
+prinTeeQ/
 ├── backend/
 │   ├── controllers/
 │   ├── models/
