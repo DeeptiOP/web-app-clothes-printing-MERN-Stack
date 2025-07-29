@@ -1,4 +1,81 @@
-# PrinTeeQ - Dynamic Web App for Custom Clothes Printing
+# printteeq Project Structure
+
+This project is organized into **backend** and **my-project** (frontend) directories, each containing relevant source files and folders.
+
+```
+PrinTeeQ/
+├── backend/
+│   ├── config/
+│   │   └── database.js
+│   ├── middleware/
+│   │   ├── auth.js
+│   │   └── errorHandler.js
+│   ├── models/
+│   │   ├── User.js
+│   │   ├── Product.js
+│   │   ├── Cart.js
+│   │   └── Order.js
+│   ├── routes/
+│   │   ├── auth.js
+│   │   ├── products.js
+│   │   ├── cart.js
+│   │   ├── orders.js
+│   │   └── users.js
+│   ├── scripts/
+│   │   └── seedData.js
+│   ├── .env
+│   ├── BACKEND_SETUP_GUIDE.md
+│   ├── package.json
+│   ├── README.md
+│   ├── server.js
+│   └── TESTING_GUIDE.md
+├── my-project/
+│   ├── public/
+│   ├── src/
+│   │   ├── assets/
+│   │   ├── components/
+│   │   ├── pages/
+│   │   ├── context/
+│   │   ├── api/
+│   │   ├── App.jsx
+│   │   └── main.jsx
+│   ├── .gitignore
+│   ├── db.json
+│   ├── eslint.config.js
+│   ├── index.html
+│   ├── package.json
+│   ├── playground-1.mongodb.js
+│   ├── README.md
+│   ├── tailwind.config.js
+│   └── vite.config.js
+├── README.md
+```
+
+## Backend
+
+- **config/**: Database connection configuration.
+- **middleware/**: Express middleware (auth, error handling).
+- **models/**: Mongoose schemas for User, Product, Cart, Order.
+- **routes/**: API route definitions.
+- **scripts/**: Utility scripts (e.g., seed data).
+- **server.js**: Entry point for the backend server.
+
+## Frontend (`my-project/`)
+
+- **public/**: Static files.
+- **src/**: Main source directory.
+  - **assets/**: Images and static assets.
+  - **components/**: Reusable React components.
+  - **pages/**: Page-level React components.
+  - **context/**: React context providers.
+  - **api/**: API service and config files.
+  - **App.jsx**: Main app component.
+  - **main.jsx**: React entry point.
+- **tailwind.config.js**: Tailwind CSS configuration.
+- **vite.config.js**: Vite build configuration.
+
+---
+*Update this structure as your project grows to help contributors and maintainers understand the layout and organization!*# PrinTeeQ - Dynamic Web App for Custom Clothes Printing
 
 PrinTeeQ is a modern e-commerce platform designed for custom clothes printing businesses. It empowers users to select apparel, upload personal designs, preview mockups, and place orders with ease. The admin dashboard streamlines inventory management, order oversight, and status updates.
 

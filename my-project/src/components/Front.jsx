@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "./Front.css";
 import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { FaShoppingCart } from "react-icons/fa";
@@ -29,9 +30,32 @@ import image_6 from "../assets/banner.png";
 const Front = () => {
   const [showPopup, setShowPopup] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const totalDesigns = Design.length;
-  const visibleDesigns = Design.slice(0, 4);
-  const remainingCount = totalDesigns - visibleDesigns.length;
+
+  // Animated counters
+  const [brands, setBrands] = useState(0);
+  const [products, setProducts] = useState(0);
+  const [customers, setCustomers] = useState(0);
+
+  useEffect(() => {
+    // Helper for animation
+    const animateValue = (setter, end, duration) => {
+      let start = 0;
+      const increment = end / (duration / 16);
+      function step() {
+        start += increment;
+        if (start < end) {
+          setter(Math.floor(start));
+          requestAnimationFrame(step);
+        } else {
+          setter(end);
+        }
+      }
+      step();
+    };
+    animateValue(setBrands, 200, 3000);      // slower: 3s
+    animateValue(setProducts, 2000, 3000);   // slower: 2.5s
+    animateValue(setCustomers, 30000, 3000); // slower: 3.2s
+  }, []);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -41,14 +65,14 @@ const Front = () => {
     return () => clearTimeout(timer);
   }, []);
   return (
-    <div className="w-fit lg:w-max-full h-screen relative">
-      <nav className="flex justify-between items-center shadow-md h-20 px-4 relative">
-        <div className="text-2xl font-bold text-gray-800">
-          <h2 className="text-orange-700 text-3xl">PrinTeeQ</h2>
+    <div className="w-fit lg:w-max-full">
+      <nav className="flex justify-between items-center shadow-md h-20 px-4 sticky top-0 text-black bg-blue-950 z-50">
+        <div className="text-2xl font-bold text-white">
+          <h2 className="text-orange-500 text-3xl">PrinTeeQ</h2>
         </div>
 
         {/* Desktop Menu */}
-        <ul className="hidden lg:flex space-x-8 text-gray-700 gap-3 font-bold text-lg">
+        <ul className="hidden lg:flex space-x-8 text-white gap-3 font-bold text-lg">
           <li className="hover:underline underline-offset-8">
             <Link to="/">Home</Link>
           </li>
@@ -58,22 +82,23 @@ const Front = () => {
           <li className="hover:underline underline-offset-8">
             <Link to="/customize">On Show</Link>
           </li>
-          <li className="hover:underline underline-offset-8">New Arrivals</li>
+          <li className="hover:underline underline-offset-8">
+            <Link to="/admin">New Arrivals</Link></li>
           <li className="hover:underline underline-offset-8">Brands</li>
         </ul>
 
         {/* Search Bar */}
-        <div className="hidden lg:flex w-auto h-10 border border-black rounded-3xl px-4 items-center gap-3">
+        <div className="hidden lg:flex w-auto h-10 bg-white border border-black rounded-3xl px-4 items-center gap-3">
           <IoSearchSharp size={30} />
           <input
             type="text"
             placeholder="Search the Products..."
-            className="outline-none"
+            className="outline-none bg-transparent placeholder:text-black"
           />
         </div>
 
         {/* Cart */}
-        <div className="hidden lg:block">
+        <div className="hidden lg:block text-white">
           <Link to="/cart">
           <FaShoppingCart size={30} />
           </Link>
@@ -83,12 +108,12 @@ const Front = () => {
         <div className="hidden lg:flex space-x-2">
           <div className="flex space-x-1">
             <Link to="/signin">
-              <button className="bg-white text-blue-950 border border-blue-950 hover:bg-blue-950 hover:text-white px-3 py-2 rounded-3xl font-semibold">
+              <button className="bg-white text-blue-950 border border-blue-950 hover:bg-gradient-to-r from-blue-900 to-blue-600 hover:text-white px-3 py-2 rounded-3xl font-semibold">
                 LOGIN
               </button>
             </Link>
             <Link to="/signup">
-              <button className="bg-white text-blue-950 border border-blue-950 hover:bg-blue-950 hover:text-white px-3 py-2 rounded-3xl font-semibold">
+              <button className="bg-white text-blue-950 border border-blue-950 hover:bg-gradient-to-r from-blue-900 to-blue-600 hover:text-white px-3 py-2 rounded-3xl font-semibold">
                 SIGN UP
               </button>
             </Link>
@@ -96,23 +121,23 @@ const Front = () => {
         </div>
         {/* Hamburger Icon */}
         <div
-          className="lg:hidden flex gap-5 text-center align-middle"
+          className="lg:hidden flex gap-5 text-center align-middle text-white"
           onClick={() => setMenuOpen(!menuOpen)}
         >
           {menuOpen ? <X size={32} /> : <Menu size={32} />}
-          <div className="lg:block">
+          <div className="lg:block text-white">
             <MdAccountCircle size={40} />
           </div>
         </div>
 
         {/* Profile Icon */}
-        <div className="hidden lg:block">
+        <div className="hidden lg:block text-white">
           <MdAccountCircle size={40} />
         </div>
 
         {/* Mobile Menu */}
         {menuOpen && (
-          <div className="absolute top-20 left-0 w-full bg-white shadow-md flex flex-col items-center space-y-4 p-5 z-50 lg:hidden">
+          <div className="absolute top-20 right-0 bg-white/10 backdrop-blur-none shadow-md flex flex-col items-center space-y-4 p-10 z-50 lg:hidden">
             <Link to="/" className="font-semibold text-lg">
               Home
             </Link>
@@ -124,11 +149,11 @@ const Front = () => {
             </Link>
             <span className="font-semibold text-lg">New Arrivals</span>
             <span className="font-semibold text-lg">Brands</span>
-            <div className="flex w-full justify-center gap-3">
-              <button className="bg-white text-blue-950 border border-blue-950 hover:bg-blue-950 hover:text-white px-4 py-2 rounded-3xl font-semibold">
+            <div className="flex flex-col items-start w-full justify-center gap-3">
+              <button className="bg-white text-blue-950 border border-blue-950 hover:bg-gradient-to-r from-blue-900 to-blue-600 hover:text-white px-4 py-2 rounded-3xl font-semibold">
                 LOGIN
               </button>
-              <button className="bg-white text-blue-950 border border-blue-950 hover:bg-blue-950 hover:text-white px-4 py-2 rounded-3xl font-semibold">
+              <button className="bg-white text-blue-950 border border-blue-950 hover:bg-gradient-to-r from-blue-900 to-blue-600 hover:text-white px-4 py-2 rounded-3xl font-semibold">
                 SIGN UP
               </button>
             </div>
@@ -136,54 +161,53 @@ const Front = () => {
         )}
       </nav>
 
-      <section className="w-full flex flex-col lg:flex-row justify-between px-5 items-center py-12 border border-zinc-700 gap-6">
-        <div className="flex flex-col gap-5 items-center mx-5 font-bold text-black border-zinc-400  text-center md:text-left">
-          <h3 className="text-5xl">FIND CLOTHES THAT MATCH YOUR STYLE</h3>
-          <p className="text-xl font-light">
-            Wear your art — bold, custom-printed dresses designed to express
-            your unique style.
+      <section className="w-full flex flex-col lg:flex-row justify-between px-20 items-center py-20 bg-gradient-to-br from-pink-100 via-white to-blue-100 border-b border-zinc-200 gap-10">
+        <div className="flex flex-col gap-8 items-center mx-5 font-bold text-gray-900 text-center md:text-left max-w-2xl">
+          <h3 className="text-5xl md:text-6xl font-extrabold tracking-tight leading-tight drop-shadow-lg">FIND CLOTHES THAT MATCH YOUR STYLE</h3>
+          <p className="text-2xl font-light text-gray-700 max-w-xl">
+            Wear your art — <span className="font-semibold text-blue-900">bold, custom-printed dresses</span> designed to express your unique style.
           </p>
-          <div className="flex gap-8 rounded-3xl ">
+          <div className="flex gap-6 mt-4">
             <Link to="/shop">
               <button
                 type="button"
-                className="bg-blue-950 text-white px-5 py-2 my-10 rounded-3xl hover:text-blue-950 hover:bg-white border border-blue-950 transition"
+                className="bg-gradient-to-r from-blue-900 to-blue-600 text-white px-5 py-2 rounded-full shadow-lg hover:from-white hover:to-white hover:text-blue-900 hover:border-blue-900 border-2 border-transparent hover:border transition font-bold text-lg"
               >
                 Shop Now
               </button>
             </Link>
-
             <Link to="/customize">
               <button
                 type="button"
-                className="bg-blue-950 text-white px-5 py-2 my-10 rounded-3xl hover:text-blue-950 hover:bg-white border border-blue-950 transition"
+                className="bg-gradient-to-r from-pink-500 to-purple-600 text-white px-5 py-2 rounded-full shadow-lg hover:from-white hover:to-white hover:text-purple-700 hover:border-purple-700 border-2 border-transparent hover:border transition font-bold text-lg"
               >
                 Customize Your Design
               </button>
             </Link>
           </div>
-
-          <div className="flex  gap-10 ">
-            <div className="flex flex-col align-middle items-center gap-2">
-              <h2 className="text-3xl">200+</h2>
-              <p className="text-gray-600">International Brands</p>
+          <div className="w-full flex justify-center my-6">
+            <div className="w-32 border-t-2 border-blue-200"></div>
+          </div>
+          <div className="flex flex-col sm:flex-row gap-6 w-full justify-center">
+            <div className="flex-1 bg-white/80 rounded-2xl shadow-lg p-6 flex flex-col items-center gap-2 animate-slide-in-left hover:scale-105 hover:shadow-2xl transition-all duration-300 cursor-pointer">
+              <h2 className="text-4xl font-bold text-blue-900">{brands.toLocaleString()}+</h2>
+              <p className="text-gray-700 font-medium">International Brands</p>
             </div>
-            <div className="flex flex-col align-middle items-center gap-2">
-              <h2 className="text-3xl">2,000+</h2>
-              <p className="text-gray-600">High-Quality Products</p>
+            <div className="flex-1 bg-white/80 rounded-2xl shadow-lg p-6 flex flex-col items-center gap-2 animate-slide-in-up hover:scale-105 hover:shadow-2xl transition-all duration-300 cursor-pointer">
+              <h2 className="text-4xl font-bold text-pink-700">{products.toLocaleString()}+</h2>
+              <p className="text-gray-700 font-medium">High-Quality Products</p>
             </div>
-            <div className="flex flex-col align-middle items-center gap-2">
-              <h2 className="text-3xl">30,000</h2>
-              <p className="text-gray-600">Happy Customers</p>
+            <div className="flex-1 bg-white/80 rounded-2xl shadow-lg p-6 flex flex-col items-center gap-2 animate-slide-in-right hover:scale-105 hover:shadow-2xl transition-all duration-300 cursor-pointer">
+              <h2 className="text-4xl font-bold text-green-700">{customers.toLocaleString()}</h2>
+              <p className="text-gray-700 font-medium">Happy Customers</p>
             </div>
           </div>
         </div>
-
-        <div>
+        <div className="flex justify-center items-center w-full lg:w-auto">
           <img
             src={cover_pic}
             alt="cover"
-            className="rounded-xl w-auto h-96 lg:h-[500px] mx-20 object-cover"
+            className="rounded-3xl w-full max-w-md h-96 lg:h-[500px] object-cover shadow-2xl border-4 border-white animate-fade-in"
           />
         </div>
       </section>
@@ -368,7 +392,7 @@ const Front = () => {
 
         <div className="flex flex-wrap gap-20 w-full justify-center px-5">
           <div>
-            <Link to="/Product">
+            <Link to="/shop">
               <img
                 src={st}
                 alt=""
@@ -377,7 +401,7 @@ const Front = () => {
             </Link>
           </div>
           <div>
-            <Link to="/Product">
+            <Link to="/shop">
               <img
                 src={st1}
                 alt=""
@@ -386,8 +410,7 @@ const Front = () => {
             </Link>
           </div>
           <div>
-            <Link to="/Product">
-              {" "}
+            <Link to="/shop">
               <img
                 src={st5}
                 alt=""
@@ -396,7 +419,7 @@ const Front = () => {
             </Link>
           </div>
           <div>
-            <Link to="/Product">
+            <Link to="/shop">
               <img
                 src={st3}
                 alt=""
