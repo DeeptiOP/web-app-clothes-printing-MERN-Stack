@@ -1,223 +1,223 @@
-# prinTeeQ Project Structure
+👕 PrinTeeQ - Custom Clothes Printing Web App
+---
+PrinTeeQ is a full-stack web application that allows users to customize, preview, and order printed clothing online. It offers a seamless experience for customers and administrators alike, with powerful backend support for managing products, users, and orders.
 
-This project is organized into **backend** and **my-project** (frontend) directories, each containing relevant source files and folders.
+🔗 Live Demo: 
+📦 GitHub Repo: web-app-clothes-printing-MERN-Stack
 
+📁 Project Structure
 ```
+Copy code
 PrinTeeQ/
-├── backend/
-│   ├── config/
-│   │   └── database.js
-│   ├── middleware/
-│   │   ├── auth.js
-│   │   └── errorHandler.js
-│   ├── models/
-│   │   ├── User.js
-│   │   ├── Product.js
-│   │   ├── Cart.js
-│   │   └── Order.js
-│   ├── routes/
-│   │   ├── auth.js
-│   │   ├── products.js
-│   │   ├── cart.js
-│   │   ├── orders.js
-│   │   └── users.js
-│   ├── scripts/
-│   │   └── seedData.js
-│   ├── .env
-│   ├── BACKEND_SETUP_GUIDE.md
+├── backend/              # Node.js + Express backend
+│   ├── config/           # MongoDB configuration
+│   ├── middleware/       # Auth & error handlers
+│   ├── models/           # Mongoose models (User, Product, Cart, Order)
+│   ├── routes/           # API routes
+│   ├── scripts/          # DB seeding scripts
+│   ├── .env              # Environment variables
 │   ├── package.json
+│   ├── server.js         # App entry point
 │   ├── README.md
-│   ├── server.js
+│   ├── BACKEND_SETUP_GUIDE.md
 │   └── TESTING_GUIDE.md
-├── my-project/
-│   ├── public/
+├── my-project/           # React frontend (Vite + Tailwind CSS)
+│   ├── public/           # Static files
 │   ├── src/
-│   │   ├── assets/
-│   │   ├── components/
-│   │   ├── pages/
-│   │   ├── context/
-│   │   ├── api/
+│   │   ├── assets/       # Images and icons
+│   │   ├── components/   # Reusable UI components
+│   │   ├── pages/        # Page views
+│   │   ├── context/      # React context (auth, cart)
+│   │   ├── api/          # Axios API utilities
 │   │   ├── App.jsx
 │   │   └── main.jsx
-│   ├── .gitignore
 │   ├── db.json
-│   ├── eslint.config.js
 │   ├── index.html
-│   ├── package.json
-│   ├── playground-1.mongodb.js
-│   ├── README.md
+│   ├── eslint.config.js
 │   ├── tailwind.config.js
-│   └── vite.config.js
-├── README.md
-```
+│   ├── vite.config.js
+│   ├── .gitignore
+│   └── README.md
+├── README.md             # Root README
 
-Project Title: PrinTeeQ - Custom Clothes Printing Web App
-1. Introduction
+```
+1. 📌 Introduction
+---
 1.1 Purpose
-PrinTeeQ is an interactive web application that allows users to customize, preview, and order printed clothing online. It provides a seamless experience for both customers and administrators, with a powerful backend for inventory, order, and user management.
+PrinTeeQ enables customers to personalize and order custom-printed clothing directly through an easy-to-use web interface. Admins can manage inventory, users, and orders via a secure dashboard.
 
 1.2 Scope
-This project consists of two main modules:
+User Module: Browse, upload designs, place orders, and track them.
 
-User Module: Browse products, upload designs, place orders, and track them.
+Admin Module: Full CRUD control for products, users, and orders.
 
-Admin Module: Manage products, users, and orders via a secure dashboard.
+Key integrations:
 
-PrinTeeQ offers a real-time preview of custom designs on clothing, integrates with Stripe for payments, and uses Cloudinary for image handling. It's deployed via Vercel (frontend) and Render (backend).
+🧾 Stripe for payments
+
+☁️ Cloudinary for image upload & rendering
+
+🌐 Vercel (frontend) + Render (backend) deployment
 
 1.3 Intended Audience
-Business stakeholders
+Business Stakeholders
 
-Developers and maintainers
+Developers & Maintainers
 
-QA and testing team
+QA & Testers
 
-End users (customers and admin)
+End Users (Customers & Admins)
 
-2. Overall Description
+2. 📦 Overall Description
+---
 2.1 Product Perspective
-PrinTeeQ is a web-based e-commerce system built using the MERN (MongoDB, Express.js, React.js, Node.js) stack. It includes integration with third-party APIs for design uploads and payments.
+Built with the MERN stack (MongoDB, Express.js, React.js, Node.js), PrinTeeQ leverages RESTful APIs and integrates with third-party services.
 
 2.2 Product Functions
-User registration & login with JWT auth
+🔐 JWT-based user authentication
 
-Product browsing with filters
+🛒 Product browsing with filters
 
-Design upload & preview on clothing
+🎨 Upload custom designs
 
-Cart management and checkout
+👕 Live preview on apparel
 
-Order tracking and history
+💳 Stripe-based checkout
 
-Admin dashboard with full CRUD
+📦 Order tracking & history
 
-Responsive UI for all devices
+🛠 Admin dashboard with analytics
 
-2.3 User Classes and Characteristics
-Customers: End-users who browse and order printed apparel.
+📱 Responsive UI for all devices
 
-Admins: Business managers with privileges to manage inventory, orders, and users.
+2.3 User Roles
+Role	Capabilities
+Customer	Browse, upload, purchase, track
+Admin	Manage users, orders, products
 
-2.4 Assumptions and Dependencies
-MongoDB Atlas is used for data storage
+2.4 Dependencies
+MongoDB Atlas
 
-Cloudinary is used for design uploads
+Stripe
 
-Stripe is used for secure payments
+Cloudinary
 
-Internet connection required
+Internet Access
 
-Browsers: Chrome, Edge, Firefox (modern versions)
+Modern browsers (Chrome, Edge, Firefox)
 
-3. System Features
+3. ✨ Features
+---
 3.1 User Features
 Feature	Description
-Registration/Login	JWT authentication with secure user sessions
-Product Catalog	Browse by categories, sizes, and types
-Design Upload	Upload personal artwork for printing
-Live Mockup Preview	Preview design on apparel using Cloudinary
-Shopping Cart	Add/edit/remove items with quantity controls
-Checkout & Payments	Stripe-powered secure payment gateway
-Order Tracking	See live status updates on placed orders
-Profile Management	Edit account details and view order history
+Registration/Login	JWT-based user sessions
+Product Catalog	Filtered browsing by category/size/type
+Design Upload	Upload personal designs
+Live Preview	Real-time design mockup using Cloudinary
+Cart Management	Add, remove, update items in cart
+Checkout	Secure payments via Stripe
+Order Tracking	Real-time order status
+Profile Management	Update user info and view past orders
 
 3.2 Admin Features
 Feature	Description
-Product Management	Add, edit, delete apparel and design templates
-Order Management	View, process, and update order statuses
-User Management	View customer list and account activity
-Dashboard Analytics	Overview of orders, revenue, and active users
+Product Management	Add/edit/remove apparel and templates
+Order Management	View, update, process customer orders
+User Management	View user base and activity
+Dashboard Analytics	Visual stats for revenue, orders, and users
 
-4. External Interface Requirements
+4. 🌐 External Interfaces
+---
 4.1 User Interfaces
-React + Tailwind CSS based responsive UI
+Frontend: React.js with Tailwind CSS
 
-Admin dashboard with charts and management panels
+Admin Panel: Charts + CRUD management views
 
 4.2 Hardware Interfaces
-Runs on standard web servers
-
-No specific hardware dependency
+Hosted on cloud platforms, no hardware dependencies
 
 4.3 Software Interfaces
 Service	Purpose
-MongoDB	Data storage for all modules
-Cloudinary	Image uploads and management
-Stripe	Secure payment processing
+MongoDB	Data storage
+Cloudinary	Image uploads & transformations
+Stripe	Secure online payments
 
-4.4 Communications Interfaces
-HTTPS for secure communication
+4.4 Communication
+Secure communication via HTTPS
 
-RESTful APIs for client-server communication
+Client-server via RESTful APIs
 
-5. System Architecture
-pgsql
-Copy code
+5. 🏗️ System Architecture
+---
+Copy 
+
 ```
 PrinTeeQ/
 ├── backend/
 │   ├── config/          → DB connection
 │   ├── middleware/      → Auth & error handling
-│   ├── models/          → Mongoose schemas (User, Product, Cart, Order)
+│   ├── models/          → Mongoose schemas
 │   ├── routes/          → API endpoints
-│   ├── scripts/         → Seeder
-│   └── server.js        → Entry point
-├── my-project/ (frontend)
+│   ├── scripts/         → Seeder script
+│   └── server.js        → Express app entry
+├── my-project/
 │   ├── public/          → Static files
 │   ├── src/
 │   │   ├── assets/      → Images and icons
-│   │   ├── components/  → Reusable UI
+│   │   ├── components/  → UI components
 │   │   ├── pages/       → Screens/pages
-│   │   ├── context/     → React context (auth, cart)
-│   │   └── api/         → API utilities
-```
-7. Non-Functional Requirements
-6.1 Performance Requirements
-React UI loads within 3 seconds
+│   │   ├── context/     → Context (auth, cart)
+│   │   └── api/         → API communication
 
-Backend API responses < 500ms under load
+```
+6. ✅ Non-Functional Requirements
+---
+6.1 Performance
+React UI loads in under 3 seconds
+
+Backend API responds within 500ms under load
 
 6.2 Security
-JWT-based authentication
+JWT authentication
 
-Passwords hashed using bcrypt
+Passwords hashed with bcrypt
 
-HTTPS enforced
+Enforced HTTPS & CORS
 
-CORS and input sanitization implemented
+Input sanitization for all forms
 
 6.3 Usability
-Clean, intuitive UI
+Clean, modern interface
 
-Fully responsive on mobile and desktop
+Fully responsive (mobile, tablet, desktop)
 
 6.4 Availability
-99.9% uptime expected (hosted on Vercel and Render)
+Target uptime: 99.9%
 
-7. Testing Requirements
-Unit tests for key backend services (users, orders, products)
+Hosted on Vercel (frontend) and Render (backend)
 
-Integration tests for API endpoints
+7. 🧪 Testing
+---
+✅ Unit tests for user, product, and order logic
 
-Manual UI testing across browsers
+✅ Integration tests for API endpoints
 
-Test accounts for users and admins
+✅ Manual UI tests (Chrome, Edge, Firefox)
 
-Separate testing and production .env files
+✅ Test .env environment setup
 
-8. Appendix
+✅ Admin & customer test accounts
+
+8. 📚 Appendix
+---
 8.1 Technologies
-Frontend: React.js, Tailwind CSS, Vite
+Layer	Tech Stack
+Frontend	React.js, Vite, Tailwind CSS
+Backend	Node.js, Express.js
+Database	MongoDB Atlas
+Payments	Stripe
+Image Host	Cloudinary
+Deployment	Vercel (Frontend), Render (Backend)
 
-Backend: Node.js, Express.js
-
-Database: MongoDB Atlas
-
-Payments: Stripe
-
-Image Hosting: Cloudinary
-
-Deployment: Vercel (frontend), Render (backend)
-
-8.2 GitHub Repo
-https://github.com/DeeptiOP/web-app-clothes-printing-MERN-Stack
+8.2 GitHub Repository
+🔗 https://github.com/DeeptiOP/web-app-clothes-printing-MERN-Stack
