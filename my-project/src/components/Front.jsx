@@ -30,6 +30,8 @@ import image_6 from "../assets/banner.png";
 const Front = () => {
   const [showPopup, setShowPopup] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isAccountOpen, setIsAccountOpen] = useState(false);
+
 
   // Animated counters
   const [brands, setBrands] = useState(0);
@@ -52,8 +54,8 @@ const Front = () => {
       }
       step();
     };
-    animateValue(setBrands, 200, 3000);      // slower: 3s
-    animateValue(setProducts, 2000, 3000);   // slower: 2.5s
+    animateValue(setBrands, 200, 3000); // slower: 3s
+    animateValue(setProducts, 2000, 3000); // slower: 2.5s
     animateValue(setCustomers, 30000, 3000); // slower: 3.2s
   }, []);
 
@@ -83,7 +85,8 @@ const Front = () => {
             <Link to="/customize">On Show</Link>
           </li>
           <li className="hover:underline underline-offset-8">
-            <Link to="/admin">New Arrivals</Link></li>
+            <Link to="/admin">New Arrivals</Link>
+          </li>
           <li className="hover:underline underline-offset-8">Brands</li>
         </ul>
 
@@ -100,7 +103,7 @@ const Front = () => {
         {/* Cart */}
         <div className="hidden lg:block text-white">
           <Link to="/cart">
-          <FaShoppingCart size={30} />
+            <FaShoppingCart size={30} />
           </Link>
         </div>
 
@@ -125,14 +128,71 @@ const Front = () => {
           onClick={() => setMenuOpen(!menuOpen)}
         >
           {menuOpen ? <X size={32} /> : <Menu size={32} />}
-          <div className="lg:block text-white">
-            <MdAccountCircle size={40} />
+          {/* Account Icon */}
+          <div>
+            <button onClick={() => {
+            setIsAccountOpen(!isAccountOpen);
+            setMenuOpen(false); // Close menu dropdown
+          }}>
+              <MdAccountCircle
+                size={40}
+                className="text-2xl text-white hover:text-purple-700"
+              />
+            </button>
+            {isAccountOpen && (
+              <div className="absolute right-0 mt-2 w-48 bg-white border shadow-md rounded z-50">
+                <Link
+                  to="/settings"
+                  className="block px-4 py-2 text-gray-700 hover:bg-purple-100"
+                  onClick={() => setIsAccountOpen(false)}
+                >
+                  Account Settings
+                </Link>
+                <button
+                  onClick={() => {
+                    localStorage.removeItem("token");
+                    window.location.href = "/";
+                  }}
+                  className="block w-full text-left px-4 py-2 text-red-600 hover:bg-purple-100"
+                >
+                  Logout
+                </button>
+              </div>
+            )}
           </div>
         </div>
 
         {/* Profile Icon */}
         <div className="hidden lg:block text-white">
-          <MdAccountCircle size={40} />
+          {/* Account Icon */}
+          <div>
+            <button onClick={() => setMenuOpen(!menuOpen)}>
+              <MdAccountCircle
+                size={40}
+                className="text-2xl text-white hover:text-purple-700"
+              />
+            </button>
+            {menuOpen && (
+              <div className="absolute right-0 mt-2 w-48 bg-white border shadow-md rounded z-50">
+                <Link
+                  to="/settings"
+                  className="block px-4 py-2 text-gray-700 hover:bg-purple-100"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  Account Settings
+                </Link>
+                <button
+                  onClick={() => {
+                    localStorage.removeItem("token");
+                    window.location.href = "/";
+                  }}
+                  className="block w-full text-left px-4 py-2 text-red-600 hover:bg-purple-100"
+                >
+                  Logout
+                </button>
+              </div>
+            )}
+          </div>
         </div>
 
         {/* Mobile Menu */}
@@ -163,9 +223,15 @@ const Front = () => {
 
       <section className="w-full flex flex-col lg:flex-row justify-between px-20 items-center py-20 bg-gradient-to-br from-pink-100 via-white to-blue-100 border-b border-zinc-200 gap-10">
         <div className="flex flex-col gap-8 items-center mx-5 font-bold text-gray-900 text-center md:text-left max-w-2xl">
-          <h3 className="text-5xl md:text-6xl font-extrabold tracking-tight leading-tight drop-shadow-lg">FIND CLOTHES THAT MATCH YOUR STYLE</h3>
+          <h3 className="text-5xl md:text-6xl font-extrabold tracking-tight leading-tight drop-shadow-lg">
+            FIND CLOTHES THAT MATCH YOUR STYLE
+          </h3>
           <p className="text-2xl font-light text-gray-700 max-w-xl">
-            Wear your art — <span className="font-semibold text-blue-900">bold, custom-printed dresses</span> designed to express your unique style.
+            Wear your art —{" "}
+            <span className="font-semibold text-blue-900">
+              bold, custom-printed dresses
+            </span>{" "}
+            designed to express your unique style.
           </p>
           <div className="flex gap-6 mt-4">
             <Link to="/shop">
@@ -190,15 +256,21 @@ const Front = () => {
           </div>
           <div className="flex flex-col sm:flex-row gap-6 w-full justify-center">
             <div className="flex-1 bg-white/80 rounded-2xl shadow-lg p-6 flex flex-col items-center gap-2 animate-slide-in-left hover:scale-105 hover:shadow-2xl transition-all duration-300 cursor-pointer">
-              <h2 className="text-4xl font-bold text-blue-900">{brands.toLocaleString()}+</h2>
+              <h2 className="text-4xl font-bold text-blue-900">
+                {brands.toLocaleString()}+
+              </h2>
               <p className="text-gray-700 font-medium">International Brands</p>
             </div>
             <div className="flex-1 bg-white/80 rounded-2xl shadow-lg p-6 flex flex-col items-center gap-2 animate-slide-in-up hover:scale-105 hover:shadow-2xl transition-all duration-300 cursor-pointer">
-              <h2 className="text-4xl font-bold text-pink-700">{products.toLocaleString()}+</h2>
+              <h2 className="text-4xl font-bold text-pink-700">
+                {products.toLocaleString()}+
+              </h2>
               <p className="text-gray-700 font-medium">High-Quality Products</p>
             </div>
             <div className="flex-1 bg-white/80 rounded-2xl shadow-lg p-6 flex flex-col items-center gap-2 animate-slide-in-right hover:scale-105 hover:shadow-2xl transition-all duration-300 cursor-pointer">
-              <h2 className="text-4xl font-bold text-green-700">{customers.toLocaleString()}</h2>
+              <h2 className="text-4xl font-bold text-green-700">
+                {customers.toLocaleString()}
+              </h2>
               <p className="text-gray-700 font-medium">Happy Customers</p>
             </div>
           </div>
@@ -262,7 +334,7 @@ const Front = () => {
               />
             </Link>
 
-            <p className="text-lg">Sweater</p>
+            <p className="text-lg">Oversized</p>
           </li>
           <li className="flex flex-col align-middle items-center gap-5">
             <Link to="/Product">
@@ -273,7 +345,7 @@ const Front = () => {
               />
             </Link>
 
-            <p className="text-lg">Hoodies</p>
+            <p className="text-lg">Crew Neck</p>
           </li>
           <li className="flex flex-col align-middle items-center gap-5">
             <Link to="/Product">
@@ -794,7 +866,7 @@ const Front = () => {
         </div>
       </section>
 
-      <section className="flex justify-evenly py-5 mx-5">
+      <section className="flex justify-evenly py-5 bg-gray-300 ">
         <div className="flex flex-col gap-4 px-3">
           <h3 className="text-2xl font-medium">PrinTeeQ</h3>
           <p className="text-md text-gray-600 font-medium">

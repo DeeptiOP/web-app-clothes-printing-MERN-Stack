@@ -1,9 +1,7 @@
 import React, { useState, useRef } from 'react';
-import blackShirt from '../assets/t_shirt1.jpg';
-import brownShirt from '../assets/t_shirt1brown.jpg';
-import greenShirt from '../assets/t_shirt1granitegreen.jpg';
-import darkgreenShirt from '../assets/t_shirt1green.jpg';
-import { Design } from '../components/Data';
+import { useWishlist } from './WishlistContext';
+import { Link, useNavigate } from 'react-router-dom';
+import { Design, customizedTshirts } from '../components/Data';
 
 
 const defaultEffects = {
@@ -25,12 +23,7 @@ const filters = [
 ];
 
 const TShirtCustomizer = () => {
-  const tshirts = [
-    { id: 1, color: 'Black', image: blackShirt },
-    { id: 2, color: 'Brown', image: brownShirt },
-    { id: 3, color: 'Light Green', image: greenShirt },
-    { id: 4, color: 'Dark Green', image: darkgreenShirt },
-  ];
+  const tshirts = customizedTshirts;
 
   // Center design by default (max-w-md = 384px, h-96 = 384px)
   const tshirtAreaWidth = 384;
@@ -50,7 +43,9 @@ const TShirtCustomizer = () => {
   const [finalImage, setFinalImage] = useState(null);
   const [loading, setLoading] = useState(false);
   const [showModel, setShowModel] = useState(false);
-  const [wishlist, setWishlist] = useState(false);
+  // Use global wishlist context
+  const { wishlist, addToWishlist, removeFromWishlist } = useWishlist();
+  const navigate = useNavigate();
   const [effects, setEffects] = useState(defaultEffects);
   const [activeFilter, setActiveFilter] = useState(null);
   const [showTextTool, setShowTextTool] = useState(false);
@@ -146,7 +141,6 @@ const TShirtCustomizer = () => {
     });
     setDesignSize(defaultDesignSize);
     setFinalImage(null);
-    setWishlist(false);
     setTextLines([]);
     setActiveTextIdx(null);
   };
@@ -247,6 +241,24 @@ const TShirtCustomizer = () => {
     setDragTextIdx(null);
   };
 
+  // Build a unique custom product object
+  const customProduct = {
+    id: `${selectedTShirt.color}-${selectedDesign?.id || uploadedImage || 'custom'}-${designSize}`,
+    tshirtColor: selectedTShirt.color,
+    tshirtImage: selectedTShirt.image,
+    designImage: uploadedImage || selectedDesign?.image,
+    designId: selectedDesign?.id || null,
+    designSize,
+    position,
+    effects,
+    filter: activeFilter,
+    textLines,
+    price: 100,
+  };
+
+  // Check if this custom product is already in wishlist
+  const isWishlisted = wishlist.some(item => item.id === customProduct.id);
+
   return (
     <div className="max-w-[1600px] mx-auto p-0 md:p-2 lg:p-4 font-sans select-none min-h-screen flex flex-col bg-[#f8f8f8]">
       {/* Header */}
@@ -256,8 +268,25 @@ const TShirtCustomizer = () => {
         </div>
         <div className="flex items-center gap-4">
           <button className="bg-orange-500 text-white px-4 py-2 rounded-lg font-bold hover:bg-orange-600">$100</button>
-          <button className="bg-orange-600 text-white px-4 py-2 rounded-lg font-bold hover:bg-orange-700">Add To cart</button>
-          <span className="relative"><svg className="w-7 h-7 text-gray-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.35 2.7A2 2 0 008.48 19h7.04a2 2 0 001.83-1.3L17 13M7 13V6h10v7" /></svg></span>
+          <Link to="/cart">
+            <button className="bg-orange-600 text-white px-4 py-2 rounded-lg font-bold hover:bg-orange-700">Add To cart</button>
+          </Link>
+          <button
+            className={`px-4 py-2 rounded-lg font-bold ${isWishlisted ? 'bg-pink-500 text-white' : 'bg-pink-100 text-pink-700 hover:bg-pink-200'}`}
+            onClick={() => {
+              if (isWishlisted) {
+                removeFromWishlist(customProduct.id);
+              } else {
+                addToWishlist(customProduct);
+                navigate('/wishlist');
+              }
+            }}
+          >
+            {isWishlisted ? '❤️ Wishlisted' : '🤍 Save to Wishlist'}
+          </button>
+          <Link to="/wishlist">
+            <span className="relative"><svg className="w-7 h-7 text-gray-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.35 2.7A2 2 0 008.48 19h7.04a2 2 0 001.83-1.3L17 13M7 13V6h10v7" /></svg></span>
+          </Link>
         </div>
       </div>
 
@@ -302,27 +331,33 @@ const TShirtCustomizer = () => {
           </div>
           {/* Clip Art/Designs */}
           <div className="mb-4">
-            <h3 className="font-bold text-gray-700 mb-2">Clip Art</h3>
-            <div className="flex flex-wrap gap-2">
-              {Design.slice(0, 4).map(design => (
-                <img key={design.id} src={design.image} alt={`Design ${design.id}`} className="w-12 h-12 object-cover rounded-lg border cursor-pointer hover:ring-2 hover:ring-purple-400" onClick={() => {
-                  setSelectedDesign(design);
-                  setUploadedImage(null);
-                  setTimeout(() => {
-                    const tshirtImg = document.querySelector('.tshirt-area img');
-                    if (tshirtImg) {
-                      const areaRect = document.querySelector('.tshirt-area').getBoundingClientRect();
-                      const imgRect = tshirtImg.getBoundingClientRect();
-                      const size = designSizeRef.current;
-                      const x = imgRect.left - areaRect.left + (imgRect.width - size) / 2;
-                      const y = imgRect.top - areaRect.top + (imgRect.height - size) / 2;
-                      setPosition({ x, y });
-                    }
-                  }, 0);
-                }} />
-              ))}
-            </div>
-          </div>
+  <h3 className="font-bold text-gray-700 mb-2">Clip Art</h3>
+  <div className="flex flex-wrap gap-2">
+    {Design.map(design => (
+      <img
+        key={design.id}
+        src={design.image}
+        alt={`Design ${design.id}`}
+        className="w-12 h-12 object-cover rounded-lg border cursor-pointer hover:ring-2 hover:ring-purple-400"
+        onClick={() => {
+          setSelectedDesign(design);
+          setUploadedImage(null);
+          setTimeout(() => {
+            const tshirtImg = document.querySelector('.tshirt-area img');
+            if (tshirtImg) {
+              const areaRect = document.querySelector('.tshirt-area').getBoundingClientRect();
+              const imgRect = tshirtImg.getBoundingClientRect();
+              const size = designSizeRef.current;
+              const x = imgRect.left - areaRect.left + (imgRect.width - size) / 2;
+              const y = imgRect.top - areaRect.top + (imgRect.height - size) / 2;
+              setPosition({ x, y });
+            }
+          }, 0);
+        }}
+      />
+    ))}
+  </div>
+</div>
           {/* Text Tool */}
           <div className="mb-4">
             <button className="w-full bg-blue-100 text-blue-700 font-bold py-2 rounded-lg hover:bg-blue-200" onClick={() => setShowTextTool(true)}>Add Text</button>

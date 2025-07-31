@@ -161,7 +161,7 @@ const ProductListing = () => {
                   ))}
                   <span className="text-xs text-gray-500 ml-1">({product.rating || 4})</span>
                 </div>
-                <button
+                {/* <button
                   onClick={() => {
                     addToCart(product);
                     navigate('/cart');
@@ -169,7 +169,7 @@ const ProductListing = () => {
                   className="bg-blue-900 text-white px-3 py-1 rounded-full font-semibold mt-2 hover:bg-blue-700 transition w-full"
                 >
                   Add to Cart
-                </button>
+                </button> */}
                 <button
                   className="text-blue-900 underline text-xs mt-1 hover:text-blue-600"
                   onClick={() => setQuickView(product)}

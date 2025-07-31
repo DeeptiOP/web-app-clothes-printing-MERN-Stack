@@ -1,3 +1,9 @@
+import blackShirt from "../assets/t_shirt1.jpg";
+import brownShirt from "../assets/t_shirt1brown.jpg";
+import greenShirt from "../assets/t_shirt1granitegreen.jpg";
+import darkgreenShirt from "../assets/t_shirt1green.jpg";
+import whiteshirt from "../assets/t_shirtwhite.jpg";
+import purpleshirt from "../assets/t_shirtpurple.jpg";
 import product1 from "../assets/product1.jpg";
 import product2 from "../assets/product2.jpg";
 import product3 from "../assets/product3.jpg";
@@ -637,3 +643,12 @@ export const tshirts = [
   { id: 12, image: shirt12 },
   { id: 13, image: shirt13 }
 ];
+
+export const customizedTshirts = [
+    { id: 1, color: 'Black', image: blackShirt },
+    { id: 2, color: 'Brown', image: brownShirt },
+    { id: 3, color: 'Light Green', image: greenShirt },
+    { id: 4, color: 'Dark Green', image: darkgreenShirt },
+    { id: 5, color: 'White', image: whiteshirt },
+    { id: 6, color: 'Purple', image: purpleshirt },
+  ];

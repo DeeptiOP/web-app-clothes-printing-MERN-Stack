@@ -173,7 +173,7 @@
       "name": "Black Graphic Tee",
       "category": "Men",
       "price": 799,
-      "image": "/assets/fs1.jpg",
+      "image": "https://res.cloudinary.com/your-cloud-name/image/upload/v1722334999/dev_uploads/product3.jpg",
       "description": "Trendy black tee with vibrant anime graphic print."  
     },
     {

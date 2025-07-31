@@ -5,11 +5,13 @@ import { IoSearchSharp } from "react-icons/io5";
 import { FaShoppingCart } from "react-icons/fa";
 import { X, Menu } from "react-feather";
 import { useCart } from "./cart";
+import { useWishlist } from './WishlistContext.jsx';
 import { products } from "./Data";
 
 const Product = () => {
   const { id } = useParams();
   const { addToCart } = useCart();
+  const { wishlist: globalWishlist, addToWishlist, removeFromWishlist } = useWishlist();
   const product = products.find((item) => item.id === parseInt(id));
   const [showPopup, setShowPopup] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -66,6 +68,8 @@ const Product = () => {
   const checkPincode = () => {
     setPincodeStatus(pincode.length === 6 ? "Available" : "Invalid");
   };
+
+  const isWishlisted = globalWishlist.some((item) => item.id === product.id);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-pink-50 via-white to-blue-50">
@@ -398,15 +402,18 @@ const Product = () => {
 
           {/* Wishlist & Compare */}
           <div className="flex gap-4 text-gray-600 mt-2">
-            <button
-              className={`flex items-center gap-1 transition ${
-                wishlist ? "text-blue-600" : "hover:text-blue-600"
-              }`}
-              onClick={() => setWishlist((w) => !w)}
-            >
-              <span>{wishlist ? "★" : "☆"}</span>{" "}
-              {wishlist ? "Wishlisted" : "Add to wishlist"}
-            </button>
+            {isWishlisted ? (
+              <Link to="/wishlist" className="flex items-center gap-1 text-blue-600 font-semibold">
+                <span>★</span> Wishlisted (View Wishlist)
+              </Link>
+            ) : (
+              <button
+                className="flex items-center gap-1 hover:text-blue-600 transition"
+                onClick={() => addToWishlist(product)}
+              >
+                <span>☆</span> Add to wishlist
+              </button>
+            )}
             <button className="flex items-center gap-1 hover:text-blue-600 transition">
               <span>⇄</span> Compare
             </button>

@@ -4,6 +4,9 @@ import Product from './components/Product';
 import ProductListing from './components/shop';
 import TShirtCustomizer from './components/customize';
 import PaymentPage from './components/payment';
+import Wishlist from './components/Wishlist';
+import { WishlistProvider } from './components/WishlistContext.jsx';
+import AccountSettings from './components/AccountSettings'; // ✅ Import AccountSettings
 import CartPage, { CartProvider } from './components/cart';  // ✅ Import both CartPage and CartProvider
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './App.css';
@@ -51,14 +54,24 @@ const router = createBrowserRouter([
     path:'/admin',
     element:<AdminDashboard/>
   },
+  {
+    path:'/settings',
+    element:<AccountSettings/>
+  },
+  {
+    path:'/wishlist',
+    element:<Wishlist/>
+  }
 
 ]);
 
 function App() {
   return (
-    <CartProvider> {/* ✅ Wrap RouterProvider inside CartProvider */}
-      <RouterProvider router={router} />
-    </CartProvider>
+    <WishlistProvider>
+      <CartProvider>
+        <RouterProvider router={router} />
+      </CartProvider>
+    </WishlistProvider>
   );
 }
 
