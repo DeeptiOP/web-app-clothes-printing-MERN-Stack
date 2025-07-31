@@ -365,22 +365,23 @@ const TShirtCustomizer = () => {
         </aside>
 
         {/* Main Preview & Controls */}
-        <main className="flex-1 flex flex-col items-center justify-start p-2 md:p-6 lg:p-10 min-h-0">
+        <main className="flex-1 flex flex-row justify-between p-2 md:p-6 lg:p-10 min-h-0">
           {/* Preview Area */}
+   <div className='flex flex-col '>
           <div
-            className="relative tshirt-area w-full max-w-md h-96 bg-white rounded-xl shadow-xl overflow-hidden border flex items-center justify-center mx-auto"
+            className="relative tshirt-area w-full max-w-md h-96 bg-white rounded-xl shadow-xl overflow-hidden border "
             style={{ touchAction: 'none' }}
-          >
+            >
             <img src={selectedTShirt.image} alt={selectedTShirt.color + ' T-shirt'} className="w-full h-full object-contain" />
             {(uploadedImage || selectedDesign) && (
               <img
-                src={uploadedImage || selectedDesign.image}
-                alt="Design"
-                onMouseDown={e => { e.preventDefault(); setDragging(true); }}
-                onTouchStart={e => { e.preventDefault(); setDragging(true); }}
-                className="absolute cursor-move transition-all duration-200 outline-none"
-                style={{
-                  top: `${position.y}px`,
+              src={uploadedImage || selectedDesign.image}
+              alt="Design"
+              onMouseDown={e => { e.preventDefault(); setDragging(true); }}
+              onTouchStart={e => { e.preventDefault(); setDragging(true); }}
+              className="absolute cursor-move transition-all duration-200 outline-none"
+              style={{
+                top: `${position.y}px`,
                   left: `${position.x}px`,
                   width: `${designSize}px`,
                   height: `${designSize}px`,
@@ -390,50 +391,54 @@ const TShirtCustomizer = () => {
                 tabIndex={0}
                 aria-label="Move design"
                 draggable={false}
-              />
-            )}
+                />
+              )}
             {/* Render text lines */}
             {textLines.map((line, idx) => (
               <div
-                key={idx}
-                className={`absolute cursor-move select-text ${activeTextIdx === idx ? 'ring-2 ring-blue-400' : ''}`}
-                style={{
-                  top: line.y,
-                  left: line.x,
-                  fontSize: line.size,
-                  color: line.color,
-                  fontWeight: 'bold',
-                  zIndex: 20,
-                  userSelect: 'none',
-                  padding: '2px 6px',
-                  background: activeTextIdx === idx ? 'rgba(255,255,255,0.7)' : 'transparent',
-                  borderRadius: 6,
-                  minWidth: 30,
-                  minHeight: 20,
-                  maxWidth: 220,
-                  textShadow: '0 1px 2px #fff, 0 0 2px #0002',
-                  cursor: 'move',
-                }}
-                onMouseDown={e => { e.preventDefault(); handleTextMouseDown(idx, e); }}
-                onTouchStart={e => { e.preventDefault(); handleTextMouseDown(idx, e.touches[0]); }}
-                tabIndex={0}
-                onClick={e => { e.stopPropagation(); setActiveTextIdx(idx); }}
-                draggable={false}
+              key={idx}
+              className={`absolute cursor-move select-text ${activeTextIdx === idx ? 'ring-2 ring-blue-400' : ''}`}
+              style={{
+                top: line.y,
+                left: line.x,
+                fontSize: line.size,
+                color: line.color,
+                fontWeight: 'bold',
+                zIndex: 20,
+                userSelect: 'none',
+                padding: '2px 6px',
+                background: activeTextIdx === idx ? 'rgba(255,255,255,0.7)' : 'transparent',
+                borderRadius: 6,
+                minWidth: 30,
+                minHeight: 20,
+                maxWidth: 220,
+                textShadow: '0 1px 2px #fff, 0 0 2px #0002',
+                cursor: 'move',
+              }}
+              onMouseDown={e => { e.preventDefault(); handleTextMouseDown(idx, e); }}
+              onTouchStart={e => { e.preventDefault(); handleTextMouseDown(idx, e.touches[0]); }}
+              tabIndex={0}
+              onClick={e => { e.stopPropagation(); setActiveTextIdx(idx); }}
+              draggable={false}
               >
                 {activeTextIdx === idx ? (
                   <input
-                    value={line.text}
-                    onChange={e => handleTextChange(idx, 'text', e.target.value)}
-                    className="bg-transparent border-b border-blue-400 outline-none font-bold w-full"
-                    style={{ fontSize: line.size, color: line.color, minWidth: 30, background: 'transparent' }}
-                    autoFocus
-                    onBlur={e => setActiveTextIdx(null)}
-                    onClick={e => e.stopPropagation()}
+                  value={line.text}
+                  onChange={e => handleTextChange(idx, 'text', e.target.value)}
+                  className="bg-transparent border-b border-blue-400 outline-none font-bold w-full"
+                  style={{ fontSize: line.size, color: line.color, minWidth: 30, background: 'transparent' }}
+                  autoFocus
+                  onBlur={e => setActiveTextIdx(null)}
+                  onClick={e => e.stopPropagation()}
                   />
                 ) : (
                   <span>{line.text}</span>
                 )}
                 {activeTextIdx === idx && (
+                  
+                  
+                     
+                  
                   <div className="flex gap-1 mt-1">
                     <input
                       type="color"
@@ -473,8 +478,12 @@ const TShirtCustomizer = () => {
               </button>
             ))}
           </div>
-
+</div>
           {/* Image Effects Controls */}
+       
+       <div className=''>
+
+       
           <div className="w-full max-w-lg bg-white rounded-xl shadow p-4 mt-2 mb-4 flex flex-col gap-4">
             <div className="flex flex-wrap gap-4 items-center justify-between">
               <span className="font-bold text-gray-700">Image Effects</span>
@@ -527,7 +536,7 @@ const TShirtCustomizer = () => {
             <button onClick={() => setWishlist(w => !w)} className={`px-3 py-2 rounded-lg text-sm font-semibold ${wishlist ? 'bg-pink-500 text-white' : 'bg-pink-100 text-pink-700 hover:bg-pink-200'}`}>{wishlist ? '❤️ Wishlisted' : '🤍 Save to Wishlist'}</button>
             <button onClick={downloadImage} className="px-3 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 text-sm" disabled={!finalImage}>⬇️ Download</button>
           </div>
-
+</div>
           {/* Loading indicator */}
           {loading && (
             <div className="flex items-center gap-2 mt-2 text-purple-700 font-semibold"><span className="animate-spin">⏳</span> Generating image...</div>
@@ -549,6 +558,7 @@ const TShirtCustomizer = () => {
                   ))}
                 </ul>
               </div>
+              
             </div>
           )}
 
