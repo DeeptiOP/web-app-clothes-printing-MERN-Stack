@@ -120,7 +120,7 @@ const CartPage = () => {
             <div className="flex flex-col items-center py-10">
               <img src="https://cdn-icons-png.flaticon.com/512/2038/2038854.png" alt="Empty Cart" className="w-24 h-24 mb-4 opacity-60" />
               <p className="text-xl text-gray-500">Your cart is empty.</p>
-              <Link to="/" className="mt-4 bg-pink-500 text-white px-6 py-2 rounded-full font-semibold shadow hover:bg-pink-600 transition">Shop Now</Link>
+              <Link to="/shop" className="mt-4 bg-pink-500 text-white px-6 py-2 rounded-full font-semibold shadow hover:bg-pink-600 transition">Shop Now</Link>
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -192,7 +192,7 @@ const CartPage = () => {
             Donate and Make a Difference
           </h2>
           <div className="flex gap-2 flex-wrap">
-            {[10, 20, 50, 100].map((amount) => (
+            {[0,10, 20, 50, 100].map((amount) => (
               <button
                 key={amount}
                 onClick={() => setDonation(amount)}
