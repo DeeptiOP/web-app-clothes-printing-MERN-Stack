@@ -1,0 +1,64 @@
+{
+  "faq": [
+    {
+      "question": "How do I place an order?",
+      "answer": "Browse products, add items to your cart, and proceed to checkout by following the on-screen instructions."
+    },
+    {
+      "question": "Can I change or cancel my order after placing it?",
+      "answer": "Orders can be changed or canceled within 2 hours of placing them. Please contact our support team as soon as possible."
+    },
+    {
+      "question": "Do you have a mobile app?",
+      "answer": "Currently, we do not have a mobile app, but our website is fully mobile-friendly."
+    },
+    {
+      "question": "What payment methods do you accept?",
+      "answer": "We accept credit/debit cards, UPI, PayPal, and other popular payment options."
+    },
+    {
+      "question": "How can I contact customer support?",
+      "answer": "You can reach us via the chatbox, email at support@example.com, or call us at +91-XXXXXXXXXX."
+    },
+    {
+      "question": "What are the delivery charges?",
+      "answer": "Delivery charges vary depending on the location. Free shipping is available for orders above ₹999."
+    },
+    {
+      "question": "Do you offer international shipping?",
+      "answer": "Yes, we ship to selected countries. International shipping charges will apply."
+    },
+    {
+      "question": "How long does delivery take?",
+      "answer": "Delivery usually takes 3–7 business days depending on your location."
+    },
+    {
+      "question": "Can I track my order?",
+      "answer": "Yes, you can track your order using the tracking link sent to your email after dispatch."
+    },
+    {
+      "question": "What is your return policy?",
+      "answer": "We offer a 7-day easy return policy for unused and undamaged items."
+    },
+    {
+      "question": "How do I initiate a return or exchange?",
+      "answer": "Go to your orders section, select the product, and click on the return/exchange option."
+    },
+    {
+      "question": "How long does it take to get a refund?",
+      "answer": "Refunds are processed within 5–7 business days after receiving the returned item."
+    },
+    {
+      "question": "Do I need an account to place an order?",
+      "answer": "No, you can checkout as a guest, but creating an account helps track your orders easily."
+    },
+    {
+      "question": "Do you offer custom printing?",
+      "answer": "Yes! We specialize in custom printing. You can upload your design on the product page."
+    },
+    {
+      "question": "Do you offer bulk discounts?",
+      "answer": "Yes, we offer special discounts for bulk orders. Contact our support team for details."
+    }
+  ]
+}
