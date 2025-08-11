@@ -36,10 +36,33 @@ const productSchema = new mongoose.Schema({
       type: String,
       required: true
     },
+    publicId: {
+      type: String,
+      required: true
+    },
     alt: {
       type: String,
       default: ''
-    }
+    },
+    width: Number,
+    height: Number,
+    format: String
+  }],
+  models: [{
+    url: {
+      type: String,
+      required: true
+    },
+    publicId: {
+      type: String,
+      required: true
+    },
+    name: {
+      type: String,
+      default: '3D Model'
+    },
+    format: String,
+    size: Number // File size in bytes
   }],
   colors: [{
     name: String,

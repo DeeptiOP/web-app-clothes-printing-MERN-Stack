@@ -1,6 +1,8 @@
 import express from 'express';
 import Product from '../models/Product.js';
 import { protect, restrictTo, optionalAuth } from '../middleware/auth.js';
+import { uploadProductAssets, handleMulterError } from '../middleware/upload.js';
+import { uploadBufferToCloudinary, deleteFromCloudinary } from '../config/cloudinary.js';
 
 const router = express.Router();
 
@@ -143,7 +145,84 @@ router.get('/:id', optionalAuth, async (req, res, next) => {
   }
 });
 
-// @desc    Create new product
+// @desc    Create new product with files
+// @route   POST /api/products/with-files
+// @access  Private/Admin
+router.post('/with-files', protect, restrictTo('admin'), uploadProductAssets, handleMulterError, async (req, res, next) => {
+  try {
+    const productData = JSON.parse(req.body.productData || '{}');
+    
+    // Upload images if provided
+    if (req.files.images) {
+      const imagePromises = req.files.images.map(async (file, index) => {
+        const filename = `product_image_${Date.now()}_${index}`;
+        const result = await uploadBufferToCloudinary(file.buffer, 'products/images', filename);
+        return {
+          url: result.url,
+          publicId: result.publicId,
+          alt: `Product image ${index + 1}`,
+          width: result.width,
+          height: result.height,
+          format: result.format
+        };
+      });
+      productData.images = await Promise.all(imagePromises);
+    }
+
+    // Upload 3D models if provided
+    if (req.files.models) {
+      const modelPromises = req.files.models.map(async (file, index) => {
+        const filename = `model_${Date.now()}_${index}`;
+        const result = await uploadBufferToCloudinary(file.buffer, 'products/models', filename);
+        return {
+          url: result.url,
+          publicId: result.publicId,
+          name: file.originalname,
+          format: result.format,
+          size: file.size
+        };
+      });
+      productData.models = await Promise.all(modelPromises);
+    }
+
+    // Upload color images if provided
+    if (req.files.colorImages) {
+      const colorImagePromises = req.files.colorImages.map(async (file, index) => {
+        const filename = `color_image_${Date.now()}_${index}`;
+        const result = await uploadBufferToCloudinary(file.buffer, 'products/colors', filename);
+        return {
+          url: result.url,
+          publicId: result.publicId,
+          alt: `Color variant ${index + 1}`,
+          width: result.width,
+          height: result.height,
+          format: result.format
+        };
+      });
+      
+      // Update colors array with uploaded images
+      if (productData.colors && productData.colors.length > 0) {
+        productData.colors.forEach((color, index) => {
+          if (colorImagePromises[index]) {
+            color.image = colorImagePromises[index].url;
+          }
+        });
+      }
+    }
+
+    const product = await Product.create(productData);
+
+    res.status(201).json({
+      success: true,
+      message: 'Product created successfully with files',
+      data: product
+    });
+  } catch (error) {
+    next(error);
+  }
+});
+
+// @desc    Create new product (without files)
 // @route   POST /api/products
 // @access  Private/Admin
 router.post('/', protect, restrictTo('admin'), async (req, res, next) => {
