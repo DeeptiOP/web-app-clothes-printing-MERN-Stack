@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './App.css';
 import Front from './components/Front';
@@ -16,6 +16,8 @@ import AdminDashboard from './components/AdminDashboard';
 // import Layout from './Layout.jsx';// New layout with Navbar
 import Layout from './Layout.jsx';
 import ThreeDCustomizer from './components/ThreeDCustomizer.jsx';
+
+const ChatBox = React.lazy(() => import('./components/Chatbox'));
 
 const router = createBrowserRouter([
   {
@@ -42,6 +44,9 @@ function App() {
     <WishlistProvider>
       <CartProvider>
         <RouterProvider router={router} />
+        <Suspense fallback={<div>Loading...</div>}>
+          <ChatBox />
+        </Suspense>
       </CartProvider>
     </WishlistProvider>
   );

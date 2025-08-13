@@ -10,7 +10,7 @@ import {
   FaRobot,
   FaMousePointer,
 } from "react-icons/fa";
-import ChatBox from "./Chatbox"; // Add this import
+const ChatBox = React.lazy(() => import("./Chatbox"));
 import { useNavigate } from "react-router-dom"; // Add this import
 
 const SHIRT_MODEL_PATH =
@@ -1399,7 +1399,9 @@ function ThreeDCustomizer() {
 
       {/* Add ChatBox at the bottom right */}
       <div style={{ position: "fixed", bottom: 24, right: 24, zIndex: 100 }}>
-        <ChatBox />
+        <React.Suspense fallback={null}>
+          <ChatBox />
+        </React.Suspense>
       </div>
     </div>
   );
