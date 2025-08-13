@@ -13,7 +13,9 @@ import CartPage, { CartProvider } from './components/cart';
 import Signup from './components/Signup';
 import Signin from './components/Signin';
 import AdminDashboard from './components/AdminDashboard';
-import Layout from './Layout..jsx';// New layout with Navbar
+// import Layout from './Layout.jsx';// New layout with Navbar
+import Layout from './Layout.jsx';
+import ThreeDCustomizer from './components/ThreeDCustomizer.jsx';
 
 const router = createBrowserRouter([
   {
@@ -27,6 +29,7 @@ const router = createBrowserRouter([
       { path: '/wishlist', element: <Wishlist /> },
       { path: '/settings', element: <AccountSettings /> },
       { path: '/admin', element: <AdminDashboard /> },
+      { path: '/3dCustomizer', element: <ThreeDCustomizer /> },
     ],
   },
   { path: '/signin', element: <Signin /> },
