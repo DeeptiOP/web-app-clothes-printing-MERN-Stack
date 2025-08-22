@@ -1,5 +1,5 @@
 import React, { Suspense } from 'react';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createHashRouter, RouterProvider } from 'react-router-dom';
 import './App.css';
 import Front from './components/Front';
 import Product from './components/Product';
@@ -63,7 +63,8 @@ class ErrorBoundary extends React.Component {
   }
 }
 
-const router = createBrowserRouter([
+// Use createHashRouter instead of createBrowserRouter for GitHub Pages compatibility
+const router = createHashRouter([
   {
     element: <Layout />,
     children: [
