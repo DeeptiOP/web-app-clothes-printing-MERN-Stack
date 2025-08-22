@@ -313,7 +313,14 @@ const Product = () => {
             ) : (
               <button
                 className="flex items-center gap-1 hover:text-blue-600 transition"
-                onClick={() => addToWishlist(product)}
+                onClick={() => addToWishlist({
+                  id: product.id,
+                  type: "product",
+                  name: product.name,
+                  price: product.price,
+                  image: product.image,
+                  color: selectedColor,
+                })}
               >
                 <span>☆</span> Add to wishlist
               </button>

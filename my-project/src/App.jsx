@@ -8,12 +8,13 @@ import TShirtCustomizer from './components/customize';
 import PaymentPage from './components/payment';
 import Wishlist from './components/Wishlist';
 import { WishlistProvider } from './components/WishlistContext.jsx';
+import { AuthProvider } from './context/AuthContext';
 import AccountSettings from './components/AccountSettings';
 import CartPage, { CartProvider } from './components/cart';
 import Signup from './components/Signup';
 import Signin from './components/Signin';
 import AdminDashboard from './components/AdminDashboard';
-// import Layout from './Layout.jsx';// New layout with Navbar
+import ProtectedRoute from './components/ProtectedRoute';
 import Layout from './Layout.jsx';
 import ThreeDCustomizer from './components/ThreeDCustomizer.jsx';
 
@@ -27,28 +28,79 @@ const router = createBrowserRouter([
       { path: '/product/:id', element: <Product /> },
       { path: '/shop', element: <ProductListing /> },
       { path: '/customize', element: <TShirtCustomizer /> },
-      { path: '/cart', element: <CartPage /> },
-      { path: '/wishlist', element: <Wishlist /> },
-      { path: '/settings', element: <AccountSettings /> },
-      { path: '/admin', element: <AdminDashboard /> },
+      { 
+        path: '/cart', 
+        element: (
+          <ProtectedRoute>
+            <CartPage />
+          </ProtectedRoute>
+        ) 
+      },
+      { 
+        path: '/wishlist', 
+        element: (
+          <ProtectedRoute>
+            <Wishlist />
+          </ProtectedRoute>
+        ) 
+      },
+      { 
+        path: '/settings', 
+        element: (
+          <ProtectedRoute>
+            <AccountSettings />
+          </ProtectedRoute>
+        ) 
+      },
+      { 
+        path: '/admin', 
+        element: (
+          <ProtectedRoute>
+            <AdminDashboard />
+          </ProtectedRoute>
+        ) 
+      },
       { path: '/3dCustomizer', element: <ThreeDCustomizer /> },
+      { 
+        path: '/signin', 
+        element: (
+          <ProtectedRoute requireAuth={false}>
+            <Signin />
+          </ProtectedRoute>
+        ) 
+      },
+      { 
+        path: '/signup', 
+        element: (
+          <ProtectedRoute requireAuth={false}>
+            <Signup />
+          </ProtectedRoute>
+        ) 
+      },
+      { 
+        path: '/payment', 
+        element: (
+          <ProtectedRoute>
+            <PaymentPage />
+          </ProtectedRoute>
+        ) 
+      },
     ],
   },
-  { path: '/signin', element: <Signin /> },
-  { path: '/signup', element: <Signup /> },
-  { path: '/payment', element: <PaymentPage /> },
 ]);
 
 function App() {
   return (
-    <WishlistProvider>
-      <CartProvider>
-        <RouterProvider router={router} />
-        <Suspense fallback={<div>Loading...</div>}>
-          <ChatBox />
-        </Suspense>
-      </CartProvider>
-    </WishlistProvider>
+    <AuthProvider>
+      <WishlistProvider>
+        <CartProvider>
+          <RouterProvider router={router} />
+          <Suspense fallback={<div>Loading...</div>}>
+            <ChatBox />
+          </Suspense>
+        </CartProvider>
+      </WishlistProvider>
+    </AuthProvider>
   );
 }
 

@@ -3,6 +3,10 @@ import { ChromePicker } from "react-color";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, useGLTF } from "@react-three/drei";
 import * as THREE from "three";
+import { useNavigate } from "react-router-dom";
+import { useWishlist } from './WishlistContext.jsx';
+
+// Import icons at the top of your file
 import {
   FaRegImage,
   FaPalette,
@@ -10,8 +14,9 @@ import {
   FaRobot,
   FaMousePointer,
 } from "react-icons/fa";
+
+// Import ChatBox using React.lazy
 const ChatBox = React.lazy(() => import("./Chatbox"));
-import { useNavigate } from "react-router-dom"; // Add this import
 
 const SHIRT_MODEL_PATH =
   "https://res.cloudinary.com/dwryce3zm/image/upload/v1754601840/Tshirt_lmx8ca.glb";
@@ -393,6 +398,40 @@ function ThreeDCustomizer() {
   const previewBoxSize = 500;
   const shirtCenterOffset = previewBoxSize / 2;
 
+  const navigate = useNavigate();
+  const { addToWishlist } = useWishlist();
+
+  const handleAddToWishlist = () => {
+    const wishlistItem = {
+      id: Date.now(),
+      type: "custom",
+      color,
+      uploadedImage,
+      customText,
+      textColor,
+      price: 499,
+    };
+    addToWishlist(wishlistItem);
+    navigate("/wishlist");
+  };
+
+  // Add to Cart handler
+  const handleAddToCart = () => {
+    const designData = {
+      color,
+      uploadedImage,
+      customText,
+      textColor,
+      printSide,
+      designSize,
+      designPos,
+      textBoxSize,
+      textBoxPos,
+    };
+    localStorage.setItem("cartDesign", JSON.stringify(designData));
+    navigate("/cart");
+  };
+
   return (
     <div style={{ position: "relative", minHeight: "100vh" }}>
       <div
@@ -476,7 +515,7 @@ function ThreeDCustomizer() {
                 gap: "0.5rem",
               }}
               aria-label="Add to Wishlist"
-              onClick={() => navigate("/wishlist")} // Go to wishlist page
+              onClick={handleAddToWishlist}
             >
               <span role="img" aria-label="wishlist">💖</span>
               Wishlist
@@ -499,7 +538,7 @@ function ThreeDCustomizer() {
                 gap: "0.5rem",
               }}
               aria-label="Add to Cart"
-              onClick={() => navigate("/cart")} // Go to cart page
+              onClick={handleAddToCart}
             >
               <span role="img" aria-label="cart">🛒</span>
               Add to Cart
@@ -632,6 +671,7 @@ function ThreeDCustomizer() {
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
+                position: "relative", // Keep position relative for drag box overlay
               }}
             >
               <FaRegImage size={28} color="#a5b4fc" />
@@ -660,35 +700,7 @@ function ThreeDCustomizer() {
                 onChange={handleImageUpload}
                 aria-label="Upload your own image"
               />
-              {uploadedImage[printSide] && (
-                <button
-                  style={{
-                    marginTop: "0.5rem",
-                    background: "#232a36",
-                    border: "none",
-                    borderRadius: "50%",
-                    width: 32,
-                    height: 32,
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    cursor: "pointer",
-                    color: "#f87171",
-                    fontSize: "1.3rem",
-                    position: "absolute",
-                    top: 8,
-                    right: 8,
-                    zIndex: 2,
-                    boxShadow: "0 2px 8px #0002",
-                    transition: "background 0.2s",
-                  }}
-                  onClick={handleClearImage}
-                  aria-label="Remove design"
-                  title="Remove design"
-                >
-                  ×
-                </button>
-              )}
+              {/* REMOVE the cross button here */}
             </div>
             {/* Text Input */}
             <div
@@ -778,12 +790,18 @@ function ThreeDCustomizer() {
               <div
                 style={{
                   position: "absolute",
-                  // Add +30 (or your preferred value) to move the box lower
-                  top: `calc(${
+                  left: `${
+                    shirtCenterOffset +
+                    (designPos[printSide].x - 0.5) * previewBoxSize -
+                    (designSize[printSide].w * previewBoxSize) / 2 +
+                    100 // <-- add 20px to move right
+                  }px`,
+                  top: `${
                     shirtCenterOffset +
                     (designPos[printSide].y - 0.5) * previewBoxSize -
-                    (designSize[printSide].h * previewBoxSize) / 2
-                  }px + 160px)`,
+                    (designSize[printSide].h * previewBoxSize) / 2 +
+                    20
+                  }px`,
                   width: `${designSize[printSide].w * previewBoxSize}px`,
                   height: `${designSize[printSide].h * previewBoxSize}px`,
                   border: "2px dashed #6366f1",
