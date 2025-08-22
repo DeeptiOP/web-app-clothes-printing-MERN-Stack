@@ -10,7 +10,7 @@ import { IoSearchSharp } from "react-icons/io5";
 import { Design } from "../components/Data"; // adjust the path as per your file structure
 import { tshirts } from "../components/Data"; // adjust the path as per your file structure
 import { TextureLoader } from 'three';
-import { getStoredUser } from "../api/auth"; // Add this import
+import { useAuth } from "../context/AuthContext"; // Use useAuth instead of direct import
 
 // Images
 import T_shirt from "../assets/pic4.png";
@@ -78,7 +78,7 @@ const Front = () => {
   const [showPopup, setShowPopup] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [isAccountOpen, setIsAccountOpen] = useState(false);
-  const [user, setUser] = useState(null);
+  const { user, isAuthenticated } = useAuth(); // Use useAuth hook instead
 
   // Animated counters
   const [brands, setBrands] = useState(0);
@@ -86,7 +86,6 @@ const Front = () => {
   const [customers, setCustomers] = useState(0);
 
   useEffect(() => {
-    setUser(getStoredUser());
     // Helper for animation
     const animateValue = (setter, end, duration) => {
       let start = 0;
@@ -102,9 +101,11 @@ const Front = () => {
       }
       step();
     };
-    animateValue(setBrands, 200, 3000); // slower: 3s
-    animateValue(setProducts, 2000, 3000); // slower: 2.5s
-    animateValue(setCustomers, 30000, 3000); // slower: 3.2s
+
+    // Animate counters
+    animateValue(setBrands, 50, 2000);
+    animateValue(setProducts, 1000, 2500);
+    animateValue(setCustomers, 10000, 3000);
   }, []);
 
   useEffect(() => {

@@ -20,6 +20,49 @@ import ThreeDCustomizer from './components/ThreeDCustomizer.jsx';
 
 const ChatBox = React.lazy(() => import('./components/Chatbox'));
 
+// Error Boundary Component
+class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false, error: null };
+  }
+
+  static getDerivedStateFromError(error) {
+    return { hasError: true, error };
+  }
+
+  componentDidCatch(error, errorInfo) {
+    console.error('🔴 Error Boundary caught an error:', error, errorInfo);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
+          <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md text-center">
+            <h2 className="text-2xl font-bold text-red-600 mb-4">Something went wrong</h2>
+            <p className="text-gray-600 mb-4">We're sorry, but something unexpected happened.</p>
+            <button
+              onClick={() => window.location.reload()}
+              className="bg-orange-600 text-white px-4 py-2 rounded hover:bg-orange-700 transition-colors"
+            >
+              Reload Page
+            </button>
+            <details className="mt-4 text-left">
+              <summary className="cursor-pointer text-sm text-gray-500">Error Details</summary>
+              <pre className="mt-2 text-xs text-red-600 bg-red-50 p-2 rounded overflow-auto">
+                {this.state.error?.toString()}
+              </pre>
+            </details>
+          </div>
+        </div>
+      );
+    }
+
+    return this.props.children;
+  }
+}
+
 const router = createBrowserRouter([
   {
     element: <Layout />,
@@ -91,16 +134,15 @@ const router = createBrowserRouter([
 
 function App() {
   return (
-    <AuthProvider>
-      <WishlistProvider>
-        <CartProvider>
-          <RouterProvider router={router} />
-          <Suspense fallback={<div>Loading...</div>}>
-            <ChatBox />
-          </Suspense>
-        </CartProvider>
-      </WishlistProvider>
-    </AuthProvider>
+    <ErrorBoundary>
+      <AuthProvider>
+        <WishlistProvider>
+          <CartProvider>
+            <RouterProvider router={router} />
+          </CartProvider>
+        </WishlistProvider>
+      </AuthProvider>
+    </ErrorBoundary>
   );
 }
 

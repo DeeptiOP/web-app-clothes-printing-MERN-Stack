@@ -14,10 +14,10 @@ const Signup = () => {
   const { register, error: authError, clearError, isAuthenticated } = useAuth();
   const navigate = useNavigate();
 
-  // Redirect if already authenticated
+  // Redirect if already authenticated (no alert)
   useEffect(() => {
     if (isAuthenticated) {
-      navigate('/');
+      navigate('/', { replace: true });
     }
   }, [isAuthenticated, navigate]);
 
@@ -25,6 +25,18 @@ const Signup = () => {
   useEffect(() => {
     clearError();
   }, [clearError]);
+
+  // Don't render the form if user is already authenticated
+  if (isAuthenticated) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
+        <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md text-center">
+          <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-orange-700 mx-auto mb-4"></div>
+          <p className="text-gray-600">Redirecting to home page...</p>
+        </div>
+      </div>
+    );
+  }
 
   const validateForm = () => {
     const newErrors = {};
@@ -81,7 +93,7 @@ const Signup = () => {
       // Remove confirmPassword before sending to API
       const { confirmPassword, ...userData } = form;
       await register(userData);
-      navigate('/');
+      navigate('/', { replace: true });
     } catch (error) {
       // Error is handled by the auth context
       console.error('Registration failed:', error);
@@ -112,7 +124,7 @@ const Signup = () => {
               id="name"
               name="name"
               placeholder="Enter your full name"
-              className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-colors ${
+              className={`w-full p-3 border rounded-lg transition-colors focus:outline-none ${
                 errors.name ? 'border-red-500' : 'border-gray-300'
               }`}
               value={form.name}
@@ -133,8 +145,8 @@ const Signup = () => {
               id="email"
               name="email"
               placeholder="Enter your email"
-              className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-colors ${
-                errors.email ? 'border-red-500' : 'border-gray-300'
+              className={`w-full p-3 border rounded-lg transition-colors focus:outline-none ${
+                errors.email ? 'border-red-500' : 'border-gray-500'
               }`}
               value={form.email}
               onChange={handleChange}
@@ -154,7 +166,7 @@ const Signup = () => {
               id="password"
               name="password"
               placeholder="Create a password"
-              className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-colors ${
+              className={`w-full p-3 border rounded-lg transition-colors focus:outline-none ${
                 errors.password ? 'border-red-500' : 'border-gray-300'
               }`}
               value={form.password}
@@ -176,7 +188,7 @@ const Signup = () => {
               id="confirmPassword"
               name="confirmPassword"
               placeholder="Confirm your password"
-              className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-colors ${
+              className={`w-full p-3 border rounded-lg transition-colors focus:outline-none ${
                 errors.confirmPassword ? 'border-red-500' : 'border-gray-300'
               }`}
               value={form.confirmPassword}
@@ -191,10 +203,10 @@ const Signup = () => {
           <button
             type="submit"
             disabled={isSubmitting}
-            className={`w-full py-3 px-4 rounded-lg font-semibold text-white transition-colors ${
+            className={`w-full py-3 px-4 rounded-lg font-semibold text-white transition-colors focus:outline-none ${
               isSubmitting
                 ? 'bg-gray-400 cursor-not-allowed'
-                : 'bg-orange-700 hover:bg-orange-800 focus:ring-2 focus:ring-orange-500 focus:ring-offset-2'
+                : 'bg-orange-700 hover:bg-orange-800'
             }`}
           >
             {isSubmitting ? (

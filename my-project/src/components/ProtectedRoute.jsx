@@ -18,11 +18,11 @@ const ProtectedRoute = ({ children, requireAuth = true, redirectTo = '/signin' }
 
   // If authentication is required and user is not authenticated
   if (requireAuth && !isAuthenticated) {
-    // Redirect to login page with the intended destination
+    // Redirect to login page with the intended destination (no alert)
     return <Navigate to={redirectTo} state={{ from: location }} replace />;
   }
 
-  // If authentication is not required and user is authenticated, redirect to home
+  // If authentication is not required and user is authenticated, redirect to home (no alert)
   if (!requireAuth && isAuthenticated) {
     return <Navigate to="/" replace />;
   }

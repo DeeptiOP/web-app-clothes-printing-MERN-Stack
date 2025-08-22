@@ -11,11 +11,11 @@ const Signin = () => {
 
   console.log('🔐 Signin Component:', { authError, isAuthenticated });
 
-  // Redirect if already authenticated
+  // Redirect if already authenticated (no alert)
   useEffect(() => {
     if (isAuthenticated) {
       console.log('🔐 Signin: User already authenticated, redirecting to home');
-      navigate('/');
+      navigate('/', { replace: true });
     }
   }, [isAuthenticated, navigate]);
 
@@ -24,6 +24,18 @@ const Signin = () => {
     console.log('🔐 Signin: Component mounted, clearing errors');
     clearError();
   }, [clearError]);
+
+  // Don't render the form if user is already authenticated
+  if (isAuthenticated) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
+        <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md text-center">
+          <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-orange-700 mx-auto mb-4"></div>
+          <p className="text-gray-600">Redirecting to home page...</p>
+        </div>
+      </div>
+    );
+  }
 
   const validateForm = () => {
     const newErrors = {};
@@ -68,7 +80,7 @@ const Signin = () => {
       console.log('🔐 Signin: Attempting login...');
       await login(form);
       console.log('🔐 Signin: Login successful, redirecting to home');
-      navigate('/');
+      navigate('/', { replace: true });
     } catch (error) {
       console.error('🔐 Signin: Login failed:', error);
       // Error is handled by the auth context
@@ -99,7 +111,7 @@ const Signin = () => {
               id="email"
               name="email"
               placeholder="Enter your email"
-              className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-colors ${
+              className={`w-full p-3 border rounded-lg transition-colors focus:outline-none ${
                 errors.email ? 'border-red-500' : 'border-gray-300'
               }`}
               value={form.email}
@@ -120,7 +132,7 @@ const Signin = () => {
               id="password"
               name="password"
               placeholder="Enter your password"
-              className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-colors ${
+              className={`w-full p-3 border rounded-lg transition-colors focus:outline-none ${
                 errors.password ? 'border-red-500' : 'border-gray-300'
               }`}
               value={form.password}
@@ -135,10 +147,10 @@ const Signin = () => {
           <button
             type="submit"
             disabled={isSubmitting}
-            className={`w-full py-3 px-4 rounded-lg font-semibold text-white transition-colors ${
+            className={`w-full py-3 px-4 rounded-lg font-semibold text-white transition-colors focus:outline-none ${
               isSubmitting
                 ? 'bg-gray-400 cursor-not-allowed'
-                : 'bg-orange-700 hover:bg-orange-800 focus:ring-2 focus:ring-orange-500 focus:ring-offset-2'
+                : 'bg-orange-700 hover:bg-orange-800'
             }`}
           >
             {isSubmitting ? (
