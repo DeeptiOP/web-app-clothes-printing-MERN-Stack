@@ -1,23 +1,36 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 // ✅ Context Setup
 const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
-  const [cartItems, setCartItems] = useState([]);
+  const [cartItems, setCartItems] = useState(() => {
+    try {
+      const saved = localStorage.getItem("cartItems");
+      return saved ? JSON.parse(saved) : [];
+    } catch {
+      return [];
+    }
+  });
+
+  useEffect(() => {
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+  }, [cartItems]);
 
   const addToCart = (product) => {
+    const variantKey = (p) => `${p.id || p._id || p.productId}-${p.size || ''}-${typeof p.color === 'object' ? (p.color.code || p.color.name || '') : (p.color || '')}`;
     setCartItems((prev) => {
-      const existing = prev.find((item) => item.id === product.id);
+      const existing = prev.find((item) => variantKey(item) === variantKey(product));
       if (existing) {
-        return prev.map((item) =>
-          item.id === product.id
-            ? { ...item, quantity: item.quantity + 1 }
-            : item
-        );
+        return prev.map((item) => {
+          if (variantKey(item) !== variantKey(product)) return item;
+          const nextQty = Math.min(10, (item.quantity || 0) + (product.quantity || 1));
+          return { ...item, quantity: nextQty };
+        });
       } else {
-        return [...prev, { ...product, quantity: 1 }];
+        const qty = Math.min(10, product.quantity || 1);
+        return [...prev, { ...product, quantity: qty }];
       }
     });
   };
@@ -29,7 +42,7 @@ export const CartProvider = ({ children }) => {
   const increaseQuantity = (id) => {
     setCartItems((prev) =>
       prev.map((item) =>
-        item.id === id ? { ...item, quantity: item.quantity + 1 } : item
+        item.id === id ? { ...item, quantity: Math.min(10, item.quantity + 1) } : item
       )
     );
   };

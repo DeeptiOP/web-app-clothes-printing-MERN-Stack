@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense } from "react";
+import { Canvas, useFrame } from "@react-three/fiber";
+import { OrbitControls, useGLTF } from "@react-three/drei";
 import "./Front.css";
 import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
@@ -7,9 +9,10 @@ import { MdAccountCircle } from "react-icons/md";
 import { IoSearchSharp } from "react-icons/io5";
 import { Design } from "../components/Data"; // adjust the path as per your file structure
 import { tshirts } from "../components/Data"; // adjust the path as per your file structure
+import { TextureLoader } from 'three';
+import { useAuth } from "../context/AuthContext"; // Replace getStoredUser with useAuth
 
 // Images
-import cover_pic from "../assets/product6.jpg";
 import T_shirt from "../assets/pic4.png";
 import long from "../assets/pic2.png";
 import sweater from "../assets/pic3.png";
@@ -27,11 +30,55 @@ import tshirt from "../assets/banner.png";
 import image_5 from "../assets/banner.png";
 import image_6 from "../assets/banner.png";
 
+// 3D Model Component
+function TShirtModel(props) {
+  const { scene } = useGLTF("https://res.cloudinary.com/dwryce3zm/image/upload/v1754601840/Tshirt_lmx8ca.glb");
+  const ref = React.useRef();
+  const [color, setColor] = React.useState("#ffffff");
+  const colors = ["#ffffff", "#e63946", "#457b9d", "#f1faee", "#a8dadc", "#ffbe0b", "#43aa8b", "#3a86ff"];
+
+  // Animate color change every second
+  React.useEffect(() => {
+    let idx = 0;
+    const interval = setInterval(() => {
+      idx = (idx + 1) % colors.length;
+      setColor(colors[idx]);
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
+  // Apply color to the model
+  React.useEffect(() => {
+    if (ref.current) {
+      ref.current.traverse((child) => {
+        if (child.isMesh) {
+          child.material.color.set(color);
+        }
+      });
+    }
+  }, [color]);
+
+  useFrame(() => {
+    if (ref.current) {
+      ref.current.rotation.y += 0.01;
+    }
+  });
+  return (
+    <primitive
+      ref={ref}
+      object={scene}
+      scale={[5.0, 4.5, 5.0]}
+      {...props}
+      style={{ cursor: "pointer" }}
+    />
+  );
+}
+
 const Front = () => {
   const [showPopup, setShowPopup] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [isAccountOpen, setIsAccountOpen] = useState(false);
-
+  const { user, isAuthenticated } = useAuth(); // Use authentication context
 
   // Animated counters
   const [brands, setBrands] = useState(0);
@@ -60,175 +107,30 @@ const Front = () => {
   }, []);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowPopup(true);
-    }, 30000); // 1 minute
+    // Only show popup if user is not authenticated
+    if (!isAuthenticated) {
+      const timer = setTimeout(() => {
+        setShowPopup(true);
+      }, 30000); // 30 seconds
 
-    return () => clearTimeout(timer);
-  }, []);
+      return () => clearTimeout(timer);
+    } else {
+      // Hide popup immediately when user logs in
+      setShowPopup(false);
+    }
+  }, [isAuthenticated]); // Add isAuthenticated as dependency
   return (
-    <div className="w-fit lg:w-max-full">
-      <nav className="flex justify-between items-center shadow-md h-20 px-4 sticky top-0 text-black bg-blue-950 z-50">
-        <div className="text-2xl font-bold text-white">
-          <h2 className="text-orange-500 text-3xl">PrinTeeQ</h2>
-        </div>
+    <div className="w-fit lg:w-max-full bg-[#090138] min-h-screen text-[#c9d1d9] shadow-blue-700">
+      {/* User info banner removed - no green line shown */}
 
-        {/* Desktop Menu */}
-        <ul className="hidden lg:flex space-x-8 text-white gap-3 font-bold text-lg">
-          <li className="hover:underline underline-offset-8">
-            <Link to="/">Home</Link>
-          </li>
-          <li className="hover:underline underline-offset-8">
-            <Link to="/shop">Shop</Link>
-          </li>
-          <li className="hover:underline underline-offset-8">
-            <Link to="/customize">On Show</Link>
-          </li>
-          <li className="hover:underline underline-offset-8">
-            <Link to="/admin">New Arrivals</Link>
-          </li>
-          <li className="hover:underline underline-offset-8">Brands</li>
-        </ul>
-
-        {/* Search Bar */}
-        <div className="hidden lg:flex w-auto h-10 bg-white border border-black rounded-3xl px-4 items-center gap-3">
-          <IoSearchSharp size={30} />
-          <input
-            type="text"
-            placeholder="Search the Products..."
-            className="outline-none bg-transparent placeholder:text-black"
-          />
-        </div>
-
-        {/* Cart */}
-        <div className="hidden lg:block text-white">
-          <Link to="/cart">
-            <FaShoppingCart size={30} />
-          </Link>
-        </div>
-
-        {/* Buttons */}
-        <div className="hidden lg:flex space-x-2">
-          <div className="flex space-x-1">
-            <Link to="/signin">
-              <button className="bg-white text-blue-950 border border-blue-950 hover:bg-gradient-to-r from-blue-900 to-blue-600 hover:text-white px-3 py-2 rounded-3xl font-semibold">
-                LOGIN
-              </button>
-            </Link>
-            <Link to="/signup">
-              <button className="bg-white text-blue-950 border border-blue-950 hover:bg-gradient-to-r from-blue-900 to-blue-600 hover:text-white px-3 py-2 rounded-3xl font-semibold">
-                SIGN UP
-              </button>
-            </Link>
-          </div>
-        </div>
-        {/* Hamburger Icon */}
-        <div
-          className="lg:hidden flex gap-5 text-center align-middle text-white"
-          onClick={() => setMenuOpen(!menuOpen)}
-        >
-          {menuOpen ? <X size={32} /> : <Menu size={32} />}
-          {/* Account Icon */}
-          <div>
-            <button onClick={() => {
-            setIsAccountOpen(!isAccountOpen);
-            setMenuOpen(false); // Close menu dropdown
-          }}>
-              <MdAccountCircle
-                size={40}
-                className="text-2xl text-white hover:text-purple-700"
-              />
-            </button>
-            {isAccountOpen && (
-              <div className="absolute right-0 mt-2 w-48 bg-white border shadow-md rounded z-50">
-                <Link
-                  to="/settings"
-                  className="block px-4 py-2 text-gray-700 hover:bg-purple-100"
-                  onClick={() => setIsAccountOpen(false)}
-                >
-                  Account Settings
-                </Link>
-                <button
-                  onClick={() => {
-                    localStorage.removeItem("token");
-                    window.location.href = "/";
-                  }}
-                  className="block w-full text-left px-4 py-2 text-red-600 hover:bg-purple-100"
-                >
-                  Logout
-                </button>
-              </div>
-            )}
-          </div>
-        </div>
-
-        {/* Profile Icon */}
-        <div className="hidden lg:block text-white">
-          {/* Account Icon */}
-          <div>
-            <button onClick={() => setMenuOpen(!menuOpen)}>
-              <MdAccountCircle
-                size={40}
-                className="text-2xl text-white hover:text-purple-700"
-              />
-            </button>
-            {menuOpen && (
-              <div className="absolute right-0 mt-2 w-48 bg-white border shadow-md rounded z-50">
-                <Link
-                  to="/settings"
-                  className="block px-4 py-2 text-gray-700 hover:bg-purple-100"
-                  onClick={() => setMenuOpen(false)}
-                >
-                  Account Settings
-                </Link>
-                <button
-                  onClick={() => {
-                    localStorage.removeItem("token");
-                    window.location.href = "/";
-                  }}
-                  className="block w-full text-left px-4 py-2 text-red-600 hover:bg-purple-100"
-                >
-                  Logout
-                </button>
-              </div>
-            )}
-          </div>
-        </div>
-
-        {/* Mobile Menu */}
-        {menuOpen && (
-          <div className="absolute top-20 right-0 bg-white/10 backdrop-blur-none shadow-md flex flex-col items-center space-y-4 p-10 z-50 lg:hidden">
-            <Link to="/" className="font-semibold text-lg">
-              Home
-            </Link>
-            <Link to="/shop" className="font-semibold text-lg">
-              Shop
-            </Link>
-            <Link to="/customize" className="font-semibold text-lg">
-              On Show
-            </Link>
-            <span className="font-semibold text-lg">New Arrivals</span>
-            <span className="font-semibold text-lg">Brands</span>
-            <div className="flex flex-col items-start w-full justify-center gap-3">
-              <button className="bg-white text-blue-950 border border-blue-950 hover:bg-gradient-to-r from-blue-900 to-blue-600 hover:text-white px-4 py-2 rounded-3xl font-semibold">
-                LOGIN
-              </button>
-              <button className="bg-white text-blue-950 border border-blue-950 hover:bg-gradient-to-r from-blue-900 to-blue-600 hover:text-white px-4 py-2 rounded-3xl font-semibold">
-                SIGN UP
-              </button>
-            </div>
-          </div>
-        )}
-      </nav>
-
-      <section className="w-full flex flex-col lg:flex-row justify-between px-20 items-center py-20 bg-gradient-to-br from-pink-100 via-white to-blue-100 border-b border-zinc-200 gap-10">
-        <div className="flex flex-col gap-8 items-center mx-5 font-bold text-gray-900 text-center md:text-left max-w-2xl">
+      <section className="w-full flex flex-col lg:flex-row justify-between px-20 items-center py-10 bg-[#06012f] border-b border-[#00353c] gap-10">
+        <div className="flex flex-col gap-8 items-center mx-5 font-bold text-[#c9d1d9] text-center md:text-left max-w-2xl">
           <h3 className="text-5xl md:text-6xl font-extrabold tracking-tight leading-tight drop-shadow-lg">
             FIND CLOTHES THAT MATCH YOUR STYLE
           </h3>
-          <p className="text-2xl font-light text-gray-700 max-w-xl">
+          <p className="text-2xl font-light text-[#8b949e] max-w-xl">
             Wear your art —{" "}
-            <span className="font-semibold text-blue-900">
+            <span className="font-semibold text-[#58a6ff]">
               bold, custom-printed dresses
             </span>{" "}
             designed to express your unique style.
@@ -250,41 +152,60 @@ const Front = () => {
                 Customize Your Design
               </button>
             </Link>
+            {/* Admin Panel Button - Only show for admin users */}
+            {isAuthenticated && user?.role === 'admin' && (
+              <Link to="/admin">
+                <button
+                  type="button"
+                  className="bg-gradient-to-r from-red-600 to-red-800 text-white px-5 py-2 rounded-full shadow-lg hover:from-white hover:to-white hover:text-red-800 hover:border-red-800 border-2 border-transparent hover:border transition font-bold text-lg"
+                >
+                  🛠️ Admin Panel
+                </button>
+              </Link>
+            )}
           </div>
           <div className="w-full flex justify-center my-6">
-            <div className="w-32 border-t-2 border-blue-200"></div>
+            <div className="w-32 border-t-2 border-[#00a1b3]"></div>
           </div>
           <div className="flex flex-col sm:flex-row gap-6 w-full justify-center">
-            <div className="flex-1 bg-white/80 rounded-2xl shadow-lg p-6 flex flex-col items-center gap-2 animate-slide-in-left hover:scale-105 hover:shadow-2xl transition-all duration-300 cursor-pointer">
-              <h2 className="text-4xl font-bold text-blue-900">
+            <div className="flex-1 bg-[#161b22] rounded-2xl shadow-lg p-6 flex flex-col items-center gap-2 animate-slide-in-left hover:scale-105 hover:shadow-2xl transition-all duration-300 cursor-pointer">
+              <h2 className="text-4xl font-bold text-[#58a6ff]">
                 {brands.toLocaleString()}+
               </h2>
-              <p className="text-gray-700 font-medium">International Brands</p>
+              <p className="text-[#8b949e] font-medium">International Brands</p>
             </div>
-            <div className="flex-1 bg-white/80 rounded-2xl shadow-lg p-6 flex flex-col items-center gap-2 animate-slide-in-up hover:scale-105 hover:shadow-2xl transition-all duration-300 cursor-pointer">
-              <h2 className="text-4xl font-bold text-pink-700">
+            <div className="flex-1 bg-[#161b22] rounded-2xl shadow-lg p-6 flex flex-col items-center gap-2 animate-slide-in-up hover:scale-105 hover:shadow-2xl transition-all duration-300 cursor-pointer">
+              <h2 className="text-4xl font-bold text-pink-400">
                 {products.toLocaleString()}+
               </h2>
-              <p className="text-gray-700 font-medium">High-Quality Products</p>
+              <p className="text-[#8b949e] font-medium">High-Quality Products</p>
             </div>
-            <div className="flex-1 bg-white/80 rounded-2xl shadow-lg p-6 flex flex-col items-center gap-2 animate-slide-in-right hover:scale-105 hover:shadow-2xl transition-all duration-300 cursor-pointer">
-              <h2 className="text-4xl font-bold text-green-700">
+            <div className="flex-1 bg-[#161b22] rounded-2xl shadow-lg p-6 flex flex-col items-center gap-2 animate-slide-in-right hover:scale-105 hover:shadow-2xl transition-all duration-300 cursor-pointer">
+              <h2 className="text-4xl font-bold text-green-400">
                 {customers.toLocaleString()}
               </h2>
-              <p className="text-gray-700 font-medium">Happy Customers</p>
+              <p className="text-[#8b949e] font-medium">Happy Customers</p>
             </div>
           </div>
         </div>
-        <div className="flex justify-center items-center w-full lg:w-auto">
-          <img
-            src={cover_pic}
-            alt="cover"
-            className="rounded-3xl w-full max-w-md h-96 lg:h-[500px] object-cover shadow-2xl border-4 border-white animate-fade-in"
-          />
+        <div className="flex items-center w-full lg:w-auto">
+          <Canvas 
+            camera={{ position: [4, -0.5, 15], fov: 30 }} 
+            style={{ width: '100%', maxWidth: '700px', height: '700px', aspectRatio: '4/5', display: 'block', background: 'transparent' }}
+          >
+            <ambientLight intensity={0.9} />
+            <directionalLight position={[2, 2, 5]} intensity={1.2} />
+            <Suspense fallback={null}>
+              <group position={[-0.4, -1.5, 0]} scale={[2, 2, 2]}>
+                <TShirtModel position={[0, -0.58, -0.7]} />
+              </group>
+            </Suspense>
+            <OrbitControls enablePan={true} enableZoom={false} />
+          </Canvas>
         </div>
       </section>
 
-      <div className="overflow-x-auto whitespace-nowrap bg-black text-white py-4">
+      <div className="overflow-x-auto whitespace-nowrap bg-[#100176]/25 text-[#c9d1d9] py-4">
         <ul className="flex justify-evenly gap-10 px-5 min-w-max text-xl lg:text-4xl">
           <li className="font-cinzel tracking-tighter uppercase font-semibold">
             VERSACE
@@ -298,8 +219,8 @@ const Front = () => {
         </ul>
       </div>
 
-      <section className="flex flex-col gap-5 my-5 ">
-        <h2 className="mx-10 my-5 text-2xl font-bold">
+      <section className="flex flex-col gap-5 my-5 bg-[#161b22] rounded-xl">
+        <h2 className="mx-10 my-5 text-2xl font-bold text-[#c9d1d9]">
           Shopping by Categories
         </h2>
         <ul className="flex justify-evenly mb-10">
@@ -361,15 +282,15 @@ const Front = () => {
         </ul>
       </section>
 
-      <section className="mx-5 md:mx-20 my-10 py-10 flex flex-row gap-10">
+      <section className="mx-5 md:mx-20 my-10 py-10 flex flex-row gap-10 bg-[#161b22] rounded-xl">
         {/* Section 1 */}
 
         <div className="flex flex-wrap lg:flex-nowrap justify-around items-center rounded-2xl border-2 px-6 py-10 gap-8">
           <div className="flex flex-col gap-6 justify-center items-center text-center mx-5 lg:items-start lg:text-left max-w-md">
-            <h1 className="text-3xl md:text-4xl font-bold">
+            <h1 className="text-3xl md:text-4xl font-bold text-[#c9d1d9]">
               Thousands of Free Templates
             </h1>
-            <p className="text-gray-600 text-lg md:text-xl">
+            <p className="text-[#8b949e] text-lg md:text-xl">
               Free and Easy way to bring your ideas to life
             </p>
             <Link to="/customize">
@@ -409,10 +330,10 @@ const Front = () => {
         {/* Section 2 */}
         <div className="flex flex-wrap lg:flex-nowrap justify-around items-center  rounded-2xl border-2 px-3 py-10 gap-8">
           <div className="flex flex-col gap-6 justify-center items-center text-center mx-5 lg:items-start lg:text-left max-w-md">
-            <h1 className="text-3xl md:text-4xl font-bold">
+            <h1 className="text-3xl md:text-4xl font-bold text-[#c9d1d9]">
               Create Your Unique Style
             </h1>
-            <p className="text-gray-600 text-lg md:text-xl">
+            <p className="text-[#8b949e] text-lg md:text-xl">
               Free and Easy way to create your ideas to life
             </p>
             <Link to="/customize">
@@ -449,7 +370,7 @@ const Front = () => {
         </div>
       </section>
 
-      <section className="flex flex-col  gap-10 mx-10 rounded-lg py-5">
+      <section className="flex flex-col gap-10 mx-10 rounded-lg py-5 bg-[#161b22]">
         <ul className="flex flex-wrap gap-7 mx-5 md:mx-28 text-xl md:text-3xl py-5 ">
           <li className="font-semibold hover:underline underline-offset-8">
             New Arrivals
@@ -502,7 +423,7 @@ const Front = () => {
         </div>
       </section>
 
-      <section className="flex flex-col  gap-10 mx-10 rounded-lg py-5">
+      <section className="flex flex-col gap-10 mx-10 rounded-lg py-5 bg-[#161b22]">
         <ul className="flex flex-wrap justify-between gap-5 mx-5 md:mx-20 text-xl md:text-2xl py-5">
           <li className="font-bold text-3xl ">Hot Under $39</li>
           <li>
@@ -574,7 +495,7 @@ const Front = () => {
         </div>
       </section>
 
-      <section className="rounded-lg mx-20 my-12 bg-purple-100 py-20 px-10 md:px-40">
+      <section className="rounded-lg mx-20 my-12 bg-[#161b22] py-20 px-10 md:px-40 text-[#c9d1d9]">
         <h2 className="text-2xl md:text-3xl font-semibold text-center mb-10">
           How to design and order custom T-shirts
         </h2>
@@ -632,7 +553,7 @@ const Front = () => {
         </div>
       </section>
 
-      <section className="flex flex-col lg:flex-row justify-between items-start gap-10 px-5 md:px-16 py-16 bg-gray-50">
+      <section className="flex flex-col lg:flex-row justify-between items-start gap-10 px-5 md:px-16 py-16 bg-[#161b22] text-[#c9d1d9]">
         {/* Left Side */}
         <div className="max-w-lg">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
@@ -650,7 +571,7 @@ const Front = () => {
         {/* Right Side - Features Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {/* Card 1 */}
-          <div className="bg-white p-6 rounded-xl shadow-sm">
+          <div className="bg-gray-950 p-6 rounded-xl shadow-sm">
             <img
               src="/icons/no-fee.svg"
               alt=""
@@ -664,7 +585,7 @@ const Front = () => {
           </div>
 
           {/* Card 2 */}
-          <div className="bg-white p-6 rounded-xl shadow-sm">
+          <div className="bg-gray-950 p-6 rounded-xl shadow-sm">
             <img
               src="/icons/printing.svg"
               alt=""
@@ -680,7 +601,7 @@ const Front = () => {
           </div>
 
           {/* Card 3 */}
-          <div className="bg-white p-6 rounded-xl shadow-sm">
+          <div className="bg-gray-950 p-6 rounded-xl shadow-sm">
             <img
               src="/icons/payment.svg"
               alt=""
@@ -694,7 +615,7 @@ const Front = () => {
           </div>
 
           {/* Card 4 */}
-          <div className="bg-white p-6 rounded-xl shadow-sm">
+          <div className="bg-gray-950 p-6 rounded-xl shadow-sm">
             <img
               src="/icons/customize.svg"
               alt=""
@@ -708,7 +629,7 @@ const Front = () => {
           </div>
 
           {/* Card 5 */}
-          <div className="bg-white p-6 rounded-xl shadow-sm">
+          <div className="bg-gray-950 p-6 rounded-xl shadow-sm">
             <img
               src="/icons/delivery.svg"
               alt=""
@@ -722,7 +643,7 @@ const Front = () => {
           </div>
 
           {/* Card 6 */}
-          <div className="bg-white p-6 rounded-xl shadow-sm">
+          <div className="bg-gray-950 p-6 rounded-xl shadow-sm">
             <img
               src="/icons/min-order.svg"
               alt=""
@@ -739,11 +660,11 @@ const Front = () => {
         </div>
       </section>
 
-      <section className="px-5 md:px-20 py-20 bg-white">
+      <section className="px-5 md:px-20 py-20 bg-[#161b22] text-[#c9d1d9]">
         <h2 className="text-4xl md:text-5xl font-semibold text-center mb-4">
           More resources
         </h2>
-        <p className="text-center text-xl text-gray-500 mb-12 max-w-xl mx-auto">
+        <p className="text-center text-xl text-[#8b949e] mb-12 max-w-xl mx-auto">
           Lorem ipsum det, cowec tetuec tetur duis necgi duis necgi det, consec
           eturlagix adipiscing eliet, cowec tetopak
         </p>
@@ -759,7 +680,7 @@ const Front = () => {
               <h2 className="text-xl font-bold">
                 Make yourself happy with our T-shirt customer...
               </h2>
-              <div className="flex flex-col items-center text-md text-gray-500 gap-1">
+              <div className="flex flex-col items-center text-md text-[#8b949e] gap-1">
                 <p className="mr-2">by admin</p>
                 <p>August 20, 2022</p>
               </div>
@@ -780,7 +701,7 @@ const Front = () => {
               <h2 className="text-xl font-bold">
                 Are you ready to make it awesome with us
               </h2>
-              <div className="flex flex-col items-center text-md gap-1 text-gray-500">
+              <div className="flex flex-col items-center text-md gap-1 text-[#8b949e]">
                 <p className="mr-2">by admin</p>
                 <p>August 20, 2022</p>
               </div>
@@ -789,17 +710,17 @@ const Front = () => {
         </div>
       </section>
 
-      <section className="px-5 md:px-20 py-20 bg-white relative">
+      <section className="px-5 md:px-20 py-20 bg-[#161b22] text-[#c9d1d9] relative">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-3">
           What People Are Saying
         </h2>
-        <p className="text-center text-gray-500 mb-12">
+        <p className="text-center text-[#8b949e] mb-12">
           We provide support for more than 15K+ Businesses.
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Testimonial 1 */}
-          <div className="bg-white p-6 rounded-xl shadow border">
+          <div className="bg-gray-950 p-6 rounded-xl shadow border border-gray-800">
             <div className="flex items-center mb-4 gap-3">
               <img
                 src="/avatar1.jpg"
@@ -808,10 +729,10 @@ const Front = () => {
               />
               <div>
                 <h4 className="font-semibold">Dean D.</h4>
-                <span className="text-sm text-gray-500">Director</span>
+                <span className="text-sm text-[#8b949e]">Director</span>
               </div>
             </div>
-            <p className="text-gray-600">
+            <p className="text-[#8b949e]">
               “ Great quality products – Flags, programs for exceptional
               capacities, birthday, and occasion welcome are largely still
               mainstream on paper. ”
@@ -819,7 +740,7 @@ const Front = () => {
           </div>
 
           {/* Testimonial 2 */}
-          <div className="bg-white p-6 rounded-xl shadow border">
+          <div className="bg-gray-950 p-6 rounded-xl shadow border border-gray-800">
             <div className="flex items-center mb-4 gap-3">
               <img
                 src="/avatar2.jpg"
@@ -828,10 +749,10 @@ const Front = () => {
               />
               <div>
                 <h4 className="font-semibold">Cristian L.</h4>
-                <span className="text-sm text-gray-500">Manager</span>
+                <span className="text-sm text-[#8b949e]">Manager</span>
               </div>
             </div>
-            <p className="text-gray-600">
+            <p className="text-[#8b949e]">
               “ Best services ever – Flags, programs for exceptional capacities,
               birthday, and are largely still mainstream on paper occasion
               welcome. ”
@@ -839,7 +760,7 @@ const Front = () => {
           </div>
 
           {/* Testimonial 3 */}
-          <div className="bg-white p-6 rounded-xl shadow border">
+          <div className="bg-gray-950 p-6 rounded-xl shadow border border-gray-800">
             <div className="flex items-center mb-4 gap-3">
               <img
                 src="/avatar3.jpg"
@@ -848,10 +769,10 @@ const Front = () => {
               />
               <div>
                 <h4 className="font-semibold">Leonel R.</h4>
-                <span className="text-sm text-gray-500">Designer</span>
+                <span className="text-sm text-[#8b949e]">Designer</span>
               </div>
             </div>
-            <p className="text-gray-600">
+            <p className="text-[#8b949e]">
               “ Top notch support – Flags, programs for birthday, and occasion
               welcome are largely still mainstream on paper exceptional
               capacities. ”
@@ -866,59 +787,90 @@ const Front = () => {
         </div>
       </section>
 
-      <section className="flex justify-evenly py-5 bg-gray-300 ">
+      {/* Admin Quick Access Section - Only show for admin users */}
+      {isAuthenticated && user?.role === 'admin' && (
+        <section className="mx-5 md:mx-20 my-10 py-8 bg-gradient-to-r from-red-900/20 to-red-800/20 rounded-xl border border-red-700/30">
+          <div className="text-center mb-6">
+            <h2 className="text-3xl font-bold text-red-400 mb-2">🛠️ Admin Dashboard</h2>
+            <p className="text-[#8b949e]">Quick access to administrative functions</p>
+          </div>
+          <div className="flex flex-wrap justify-center gap-4">
+            <Link to="/admin">
+              <button className="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors">
+                📊 Full Admin Panel
+              </button>
+            </Link>
+            <Link to="/admin">
+              <button className="bg-gray-700 hover:bg-gray-600 text-white px-6 py-3 rounded-lg font-semibold transition-colors">
+                👥 Manage Users
+              </button>
+            </Link>
+            <Link to="/admin">
+              <button className="bg-gray-700 hover:bg-gray-600 text-white px-6 py-3 rounded-lg font-semibold transition-colors">
+                📦 Manage Products
+              </button>
+            </Link>
+            <Link to="/admin">
+              <button className="bg-gray-700 hover:bg-gray-600 text-white px-6 py-3 rounded-lg font-semibold transition-colors">
+                📋 View Orders
+              </button>
+            </Link>
+          </div>
+        </section>
+      )}
+
+      <section className="flex justify-evenly py-5 bg-[#0d1117] border-t border-[#21262d] text-[#8b949e]">
         <div className="flex flex-col gap-4 px-3">
           <h3 className="text-2xl font-medium">PrinTeeQ</h3>
-          <p className="text-md text-gray-600 font-medium">
+          <p className="text-md text-[#8b949e] font-medium">
             printeeq@support.com
           </p>
-          <p className="text-md text-gray-600 font-medium">7992662726</p>
-          <p className="text-md text-gray-600 font-medium">
+          <p className="text-md text-[#8b949e] font-medium">7992662726</p>
+          <p className="text-md text-[#8b949e] font-medium">
             BENGALURU,KARNATAKA
           </p>
         </div>
         <div className="flex flex-col gap-4 px-3">
           <h3 className="text-2xl font-medium">Information</h3>
-          <p className="text-md text-gray-600 font-medium">About us</p>
-          <p className="text-md text-gray-600 font-medium">Our Blog</p>
-          <p className="text-md text-gray-600 font-medium">Start a Return</p>
-          <p className="text-md text-gray-600 font-medium">Contact Us</p>
-          <p className="text-md text-gray-600 font-medium">Shipping FAQ</p>
+          <p className="text-md text-[#8b949e] font-medium">About us</p>
+          <p className="text-md text-[#8b949e] font-medium">Our Blog</p>
+          <p className="text-md text-[#8b949e] font-medium">Start a Return</p>
+          <p className="text-md text-[#8b949e] font-medium">Contact Us</p>
+          <p className="text-md text-[#8b949e] font-medium">Shipping FAQ</p>
         </div>
         <div className="flex flex-col gap-4 px-3">
           <h3 className="text-2xl font-medium">Useful links</h3>
-          <p className="text-md text-gray-600 font-medium">My Account</p>
-          <p className="text-md text-gray-600 font-medium">Print Provider</p>
-          <p className="text-md text-gray-600 font-medium">Become a Partner</p>
-          <p className="text-md text-gray-600 font-medium">Custom Products</p>
-          <p className="text-md text-gray-600 font-medium">
+          <p className="text-md text-[#8b949e] font-medium">My Account</p>
+          <p className="text-md text-[#8b949e] font-medium">Print Provider</p>
+          <p className="text-md text-[#8b949e] font-medium">Become a Partner</p>
+          <p className="text-md text-[#8b949e] font-medium">Custom Products</p>
+          <p className="text-md text-[#8b949e] font-medium">
             Make your own shirt
           </p>
         </div>
         <div className="flex flex-col gap-4 px-3">
           <h3 className="text-2xl font-medium">Newsletter</h3>
-          <p className="text-md text-gray-600 font-medium">
+          <p className="text-md text-[#8b949e] font-medium">
             Get the latest news, events and more delivered to your inbox.
           </p>
           <input
-            className="h-10 px-5  rounded-lg bg-gray-400"
+            className="h-10 px-5 rounded-lg bg-[#161b22] text-[#c9d1d9] placeholder:text-[#8b949e]"
             type="text"
             placeholder="your e-mail address"
           />
         </div>
       </section>
 
-      {/* ✅ Popup Overlays After 1 Minute */}
-      {showPopup && (
-        <div className="fixed inset-0 bg-black bg-opacity-60 flex justify-center items-center z-50">
-          <div className="bg-white rounded-xl p-8 max-w-md w-[90%] text-center space-y-6 shadow-lg">
-            <h2 className="text-2xl font-bold text-black">
+      {/* Popup Overlay - Only show if user is not authenticated */}
+      {showPopup && !isAuthenticated && (
+        <div className="fixed inset-0 bg-black bg-opacity-80 flex justify-center items-center z-50">
+          <div className="bg-[#161b22] rounded-xl p-8 max-w-md w-[90%] text-center space-y-6 shadow-lg border border-[#30363d]">
+            <h2 className="text-2xl font-bold text-[#c9d1d9]">
               Welcome to PrinTeeQ
             </h2>
-            <p className="text-gray-600">
+            <p className="text-[#8b949e]">
               Sign up now and get exclusive discounts on your first order!
             </p>
-
             <div className="flex flex-col space-y-4">
               <Link to="/signup">
                 <button className="bg-green-600 text-white py-3 rounded-lg text-lg hover:bg-green-700 w-full">
@@ -927,7 +879,7 @@ const Front = () => {
               </Link>
               <button
                 onClick={() => setShowPopup(false)}
-                className="text-red-600 underline text-sm"
+                className="text-red-400 underline text-sm"
               >
                 Continue without Signup
               </button>

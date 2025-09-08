@@ -1,6 +1,11 @@
 import mongoose from 'mongoose';
 
 const productSchema = new mongoose.Schema({
+  productId: {
+    type: String,
+    unique: true,
+    sparse: true
+  },
   name: {
     type: String,
     required: [true, 'Please provide a product name'],
@@ -144,6 +149,12 @@ const productSchema = new mongoose.Schema({
 
 // Calculate total stock from sizes
 productSchema.pre('save', function(next) {
+  // Generate human-friendly productId if missing
+  if (!this.productId) {
+    const timestamp = Date.now().toString(36);
+    const random = Math.random().toString(36).substr(2, 5).toUpperCase();
+    this.productId = `PROD-${timestamp}-${random}`.toUpperCase();
+  }
   if (this.sizes && this.sizes.length > 0) {
     this.totalStock = this.sizes.reduce((total, size) => total + size.stock, 0);
   }

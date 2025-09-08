@@ -1,4 +1,5 @@
 import express from 'express';
+import mongoose from 'mongoose';
 import Cart from '../models/Cart.js';
 import Product from '../models/Product.js';
 import { protect } from '../middleware/auth.js';
@@ -52,8 +53,14 @@ router.post('/add', protect, async (req, res, next) => {
       });
     }
 
-    // Check if product exists and is active
-    const product = await Product.findById(productId);
+    // Check if product exists and is active (accept Mongo _id or custom productId)
+    let product = null;
+    if (mongoose.isValidObjectId(productId)) {
+      product = await Product.findById(productId);
+    }
+    if (!product) {
+      product = await Product.findOne({ productId: productId });
+    }
     if (!product || !product.isActive) {
       return res.status(404).json({
         success: false,
@@ -86,11 +93,21 @@ router.post('/add', protect, async (req, res, next) => {
       cart = new Cart({ user: req.user._id, items: [] });
     }
 
+    // Normalize color for comparison (supports string or object with code)
+    const normalizeColor = (c) => {
+      if (!c) return '';
+      if (typeof c === 'string') return c;
+      if (typeof c === 'object') return c.code || c.name || '';
+      return '';
+    };
+
+    const normalizedColor = normalizeColor(color);
+    
     // Check if item already exists in cart
     const existingItemIndex = cart.items.findIndex(item =>
-      item.product.toString() === productId &&
+      item.product.toString() === product._id.toString() &&
       item.size === size &&
-      item.color === color &&
+      normalizeColor(item.color) === normalizedColor &&
       JSON.stringify(item.customization) === JSON.stringify(customization)
     );
 
@@ -107,7 +124,7 @@ router.post('/add', protect, async (req, res, next) => {
     } else {
       // Add new item to cart
       cart.items.push({
-        product: productId,
+        product: product._id,
         quantity,
         price: product.price,
         size,

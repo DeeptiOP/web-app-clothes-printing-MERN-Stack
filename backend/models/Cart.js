@@ -92,7 +92,6 @@ cartSchema.pre('save', function(next) {
 
 // Remove empty carts after some time (cleanup)
 cartSchema.index({ lastModified: 1 }, { expireAfterSeconds: 30 * 24 * 60 * 60 }); // 30 days
-cartSchema.index({ user: 1 });
 
 // Method to add item to cart
 cartSchema.methods.addItem = function(itemData) {

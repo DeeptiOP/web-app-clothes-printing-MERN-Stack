@@ -1,10 +1,18 @@
 // src/pages/Login.jsx
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 
 const Login = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  useEffect(() => {
+    const token = localStorage.getItem("adminToken");
+    if (token) {
+      const redirectTo = location.state?.from?.pathname || "/admin/dashboard";
+      navigate(redirectTo, { replace: true });
+    }
+  }, [navigate, location]);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

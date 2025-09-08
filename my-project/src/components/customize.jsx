@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { useWishlist } from './WishlistContext';
 import { Link, useNavigate } from 'react-router-dom';
+import { useCart } from './cart';
 import { Design, customizedTshirts } from '../components/Data';
 
 
@@ -244,6 +245,13 @@ const TShirtCustomizer = () => {
   // Build a unique custom product object
   const customProduct = {
     id: `${selectedTShirt.color}-${selectedDesign?.id || uploadedImage || 'custom'}-${designSize}`,
+    name: 'Custom T-Shirt',
+    price: 999,
+    image: finalImage || uploadedImage || selectedDesign?.image || selectedTShirt.image,
+    size: 'Custom',
+    color: { name: selectedTShirt.color },
+    quantity: 1,
+    // Keep extra metadata; cart UI will ignore these
     tshirtColor: selectedTShirt.color,
     tshirtImage: selectedTShirt.image,
     designImage: uploadedImage || selectedDesign?.image,
@@ -253,11 +261,12 @@ const TShirtCustomizer = () => {
     effects,
     filter: activeFilter,
     textLines,
-    price: 100,
   };
 
   // Check if this custom product is already in wishlist
   const isWishlisted = wishlist.some(item => item.id === customProduct.id);
+
+  const { addToCart } = useCart();
 
   return (
     <div className="max-w-[1600px] mx-auto p-0 md:p-2 lg:p-4 font-sans select-none min-h-screen flex flex-col bg-[#f8f8f8]">
@@ -268,9 +277,15 @@ const TShirtCustomizer = () => {
         </div>
         <div className="flex items-center gap-4">
           <button className="bg-orange-500 text-white px-4 py-2 rounded-lg font-bold hover:bg-orange-600">$100</button>
-          <Link to="/cart">
-            <button className="bg-orange-600 text-white px-4 py-2 rounded-lg font-bold hover:bg-orange-700">Add To cart</button>
-          </Link>
+          <button
+            className="bg-orange-600 text-white px-4 py-2 rounded-lg font-bold hover:bg-orange-700"
+            onClick={() => {
+              addToCart(customProduct);
+              navigate('/cart');
+            }}
+          >
+            Add To cart
+          </button>
           <button
             className={`px-4 py-2 rounded-lg font-bold ${isWishlisted ? 'bg-pink-500 text-white' : 'bg-pink-100 text-pink-700 hover:bg-pink-200'}`}
             onClick={() => {

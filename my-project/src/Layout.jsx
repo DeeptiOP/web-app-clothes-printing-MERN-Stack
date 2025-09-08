@@ -1,13 +1,13 @@
 import React from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import ChatBox from './Chatbox';
+import ChatBox from './components/Chatbox';
 
 export default function Layout() {
   const location = useLocation();
 
-  // Hide Navbar on login/signup and payment  pages
-  const hideNavbarRoutes = ['/signin', '/signup', '/payment'];
+  // Hide Navbar and ChatBox on login/signup, payment, and 3D customization pages
+  const hideNavbarRoutes = ['/signin', '/signup', '/payment', '/3dCustomizer'];
 
   const shouldHideNavbar = hideNavbarRoutes.includes(location.pathname);
 
@@ -15,7 +15,7 @@ export default function Layout() {
     <>
       {!shouldHideNavbar && <Navbar />}
       <Outlet />
-      <ChatBox/>
+      {!shouldHideNavbar && <ChatBox />}
     </>
   );
 }

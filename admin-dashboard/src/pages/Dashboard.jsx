@@ -9,7 +9,7 @@ const Dashboard = () => {
     const fetchDashboardStats = async () => {
       try {
         const res = await API.get("/dashboard");
-        setStats(res.data);
+        setStats(res.data?.data || null);
       } catch (error) {
         console.error("Failed to load dashboard stats", error);
       } finally {

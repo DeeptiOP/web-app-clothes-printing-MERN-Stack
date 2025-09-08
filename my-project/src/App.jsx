@@ -12,8 +12,14 @@ import AccountSettings from './components/AccountSettings';
 import CartPage, { CartProvider } from './components/cart';
 import Signup from './components/Signup';
 import Signin from './components/Signin';
+import ForgotPassword from './components/ForgotPassword';
 import AdminDashboard from './components/AdminDashboard';
-import Layout from './Layout..jsx';// New layout with Navbar
+// import Layout from './Layout.jsx';// New layout with Navbar
+import Layout from './Layout.jsx';
+import ThreeDCustomizer from './components/ThreeDCustomizer.jsx';
+import { AuthProvider } from './context/AuthContext';
+import ProtectedRoute from './components/ProtectedRoute';
+import ApiTest from './components/ApiTest';
 
 const router = createBrowserRouter([
   {
@@ -25,22 +31,48 @@ const router = createBrowserRouter([
       { path: '/customize', element: <TShirtCustomizer /> },
       { path: '/cart', element: <CartPage /> },
       { path: '/wishlist', element: <Wishlist /> },
-      { path: '/settings', element: <AccountSettings /> },
-      { path: '/admin', element: <AdminDashboard /> },
+      { 
+        path: '/settings', 
+        element: (
+          <ProtectedRoute>
+            <AccountSettings />
+          </ProtectedRoute>
+        ) 
+      },
+      { 
+        path: '/admin', 
+        element: (
+          <ProtectedRoute requireAdmin={true}>
+            <AdminDashboard />
+          </ProtectedRoute>
+        ) 
+      },
+      { path: '/3dCustomizer', element: <ThreeDCustomizer /> },
     ],
   },
   { path: '/signin', element: <Signin /> },
   { path: '/signup', element: <Signup /> },
-  { path: '/payment', element: <PaymentPage /> },
+  { path: '/forgot-password', element: <ForgotPassword /> },
+  { path: '/api-test', element: <ApiTest /> },
+  { 
+    path: '/payment', 
+    element: (
+      <ProtectedRoute>
+        <PaymentPage />
+      </ProtectedRoute>
+    ) 
+  },
 ]);
 
 function App() {
   return (
-    <WishlistProvider>
-      <CartProvider>
-        <RouterProvider router={router} />
-      </CartProvider>
-    </WishlistProvider>
+    <AuthProvider>
+      <WishlistProvider>
+        <CartProvider>
+          <RouterProvider router={router} />
+        </CartProvider>
+      </WishlistProvider>
+    </AuthProvider>
   );
 }
 

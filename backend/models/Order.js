@@ -11,6 +11,11 @@ const orderSchema = new mongoose.Schema({
     unique: true,
     required: true
   },
+  orderId: {
+    type: String,
+    unique: true,
+    sparse: true
+  },
   items: [{
     product: {
       type: mongoose.Schema.Types.ObjectId,
@@ -189,6 +194,10 @@ orderSchema.pre('save', function(next) {
     const random = Math.random().toString(36).substr(2, 5);
     this.orderNumber = `ORD-${timestamp}-${random}`.toUpperCase();
   }
+  // Keep orderId in sync if missing
+  if (!this.orderId) {
+    this.orderId = this.orderNumber;
+  }
   next();
 });
 
@@ -234,7 +243,6 @@ orderSchema.pre('save', function(next) {
 
 // Index for efficient queries
 orderSchema.index({ user: 1, createdAt: -1 });
-orderSchema.index({ orderNumber: 1 });
 orderSchema.index({ status: 1 });
 orderSchema.index({ 'payment.status': 1 });
 orderSchema.index({ createdAt: -1 });
