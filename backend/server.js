@@ -1,6 +1,9 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
 import connectDB from './config/database.js';
 import errorHandler from './middleware/errorHandler.js';
 
@@ -13,7 +16,6 @@ import userRoutes from './routes/users.js';
 import adminRoutes from './routes/admin.js';
 import uploadRoutes from './routes/upload.js';
 
-
 // Load environment variables
 dotenv.config();
 
@@ -22,17 +24,24 @@ connectDB();
 
 const app = express();
 
-// CORS configuration (allow any localhost/127.0.0.1 port during development)
+// Determine __dirname for ES modules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// CORS configuration
 const corsOptions = {
   origin: (origin, callback) => {
-    if (!origin) return callback(null, true);
+    if (!origin) return callback(null, true); // allow Postman or server requests
     try {
       const url = new URL(origin);
-      const isLocalhost = url.hostname === 'localhost' || url.hostname === '127.0.0.1';
-      if (isLocalhost) return callback(null, true);
+      if (url.hostname === 'localhost' || url.hostname === '127.0.0.1') {
+        return callback(null, true);
+      }
     } catch (_) {}
-    // Allow specific production origins via env if needed
-    const allowed = (process.env.CORS_ORIGINS || '').split(',').map(s => s.trim()).filter(Boolean);
+    const allowed = (process.env.CORS_ORIGINS || '')
+      .split(',')
+      .map(s => s.trim())
+      .filter(Boolean);
     if (allowed.includes(origin)) return callback(null, true);
     callback(new Error('Not allowed by CORS'));
   },
@@ -47,6 +56,9 @@ app.options('*', cors(corsOptions));
 // Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// ✅ Serve static assets (images, SVGs, etc.)
+app.use('/assets', express.static(path.join(__dirname, 'assets')));
 
 // Routes
 app.use('/api/auth', authRoutes);
@@ -69,7 +81,7 @@ app.get('/api/health', (req, res) => {
 // Error handling middleware
 app.use(errorHandler);
 
-// Handle undefined routes
+// Catch-all for undefined routes
 app.use('*', (req, res) => {
   res.status(404).json({
     success: false,
@@ -77,8 +89,8 @@ app.use('*', (req, res) => {
   });
 });
 
+// Start server
 const PORT = process.env.PORT || 5000;
-
 app.listen(PORT, () => {
   console.log(`🚀 Server running on port ${PORT}`);
   console.log(`📍 Health check: http://localhost:${PORT}/api/health`);
@@ -87,4 +99,3 @@ app.listen(PORT, () => {
     : 'dynamic localhost/127.0.0.1 (dev)';
   console.log(`🌐 CORS enabled for: ${originDesc}`);
 });
-

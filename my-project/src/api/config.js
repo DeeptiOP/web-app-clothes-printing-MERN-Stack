@@ -5,7 +5,7 @@ const getApiBaseUrl = () => {
   if (import.meta.env.PROD) {
     // Production: use the deployed backend URL
     // You can set this in your environment variables or use the actual deployed URL
-    return import.meta.env.VITE_API_URL || 'https://your-backend-domain.com/api';
+    return import.meta.env.VITE_API_URL || 'https://web-app-clothes-printing-mern-stack.onrender.com/api';
   }
   // Development: use localhost
   return 'http://localhost:5000/api';
