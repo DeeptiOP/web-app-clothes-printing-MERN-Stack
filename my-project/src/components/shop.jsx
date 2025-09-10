@@ -18,12 +18,16 @@ const colorMap = {
 };
 
 // Cloudinary base
-const CLOUDINARY_BASE = "https://res.cloudinary.com/dwryce3zm/image/upload/";
+const CLOUD_NAME = "dwryce3zm";
+const CLOUD_BASE = `https://res.cloudinary.com/${CLOUD_NAME}/image/upload/v1/products`;
 
-// Get image URL (Cloudinary or fallback)
 export const getImage = (url) => {
-  if (!url) return "/placeholder.png";
-  return url.startsWith("http") ? url : CLOUDINARY_BASE + url;
+  if (!url) return `${CLOUD_BASE}/placeholder.png`; // fallback placeholder
+  // If already a full URL (http/https), return it
+  if (url.startsWith("http")) return url;
+  // Otherwise, prepend Cloudinary base
+  const fileName = url.split("/").pop(); // get file name from path
+  return `${CLOUD_BASE}/${fileName}`;
 };
 
 const ProductListing = () => {
