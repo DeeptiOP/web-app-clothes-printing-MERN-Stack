@@ -6,7 +6,11 @@ const orderSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
     required: true
+
     
+
+    // Removed index here to prevent duplicate index warning
+
   },
   orderNumber: {
     type: String,

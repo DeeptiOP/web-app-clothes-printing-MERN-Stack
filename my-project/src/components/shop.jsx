@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useCart } from "../context/CartContext";
-import { useAuth } from "../context/AuthContext"; // import auth context
+import { useAuth } from "../context/AuthContext";
 import { getProducts } from "../api/products";
 
 // Product filters
@@ -17,16 +17,10 @@ const colorMap = {
   white: "bg-white border",
 };
 
-// Helper to get image URL from public folder
-const BASE_URL = import.meta.env.BASE_URL || "/";
-
-const getImage = (filename) => {
-  if (!filename) return `${BASE_URL}assets/placeholder.jpg`;
-
-  // Remove leading slashes or 'assets/' prefix if present
-  const cleanName = filename.replace(/^\/?assets\/?/, "");
-
-  return `${BASE_URL}assets/${cleanName}`;
+// Helper to get image URL
+export const getImage = (url) => {
+  if (!url) return "/placeholder.png"; // fallback
+  return url.startsWith("http") ? url : `${import.meta.env.VITE_API_URL.replace("/api", "")}/assets/${url}`;
 };
 
 const ProductListing = () => {
@@ -40,16 +34,21 @@ const ProductListing = () => {
   const [error, setError] = useState(null);
 
   const { addToCart } = useCart();
-  const { user } = useAuth(); // get logged-in user
+  const { user } = useAuth();
   const navigate = useNavigate();
 
+  // Fetch products from deployed backend
   useEffect(() => {
     const fetchProducts = async () => {
       try {
         setLoading(true);
         setError(null);
         const response = await getProducts();
-        setProducts(response.data);
+        if (response.success) {
+          setProducts(response.data);
+        } else {
+          setError(response.message || "Failed to load products");
+        }
       } catch (err) {
         console.error("Error fetching products:", err);
         setError("Failed to load products");
@@ -60,7 +59,7 @@ const ProductListing = () => {
     fetchProducts();
   }, []);
 
-  // Filter products
+  // Apply filters
   const filteredProducts = products.filter((p) => {
     if (selectedCategory && p.subcategory !== selectedCategory) return false;
     if (p.price > price) return false;
@@ -69,10 +68,8 @@ const ProductListing = () => {
     return true;
   });
 
-  if (loading)
-    return <div className="min-h-screen flex justify-center items-center">Loading...</div>;
-  if (error)
-    return <div className="min-h-screen flex justify-center items-center text-red-500">{error}</div>;
+  if (loading) return <div className="min-h-screen flex justify-center items-center">Loading...</div>;
+  if (error) return <div className="min-h-screen flex justify-center items-center text-red-500">{error}</div>;
 
   return (
     <div className="flex flex-col lg:flex-row">

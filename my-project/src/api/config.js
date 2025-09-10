@@ -1,105 +1,120 @@
 import axios from 'axios';
 
-// Determine API base URL based on environment
+// 🌍 Determine API base URL based on environment
 const getApiBaseUrl = () => {
   if (import.meta.env.PROD) {
-    // Production: use the deployed backend URL
-    // You can set this in your environment variables or use the actual deployed URL
-    return import.meta.env.VITE_API_URL || 'https://web-app-clothes-printing-mern-stack.onrender.com/api';
+    return (
+      import.meta.env.VITE_API_URL ||
+      'https://web-app-clothes-printing-mern-stack-rmmc.onrender.com/api'
+    );
   }
-  // Development: use localhost
   return 'http://localhost:5000/api';
 };
 
 const API_BASE_URL = getApiBaseUrl();
 
-console.log('🌐 API Configuration:', {
+// 🛠️ Safe logger (only logs in dev mode)
+const devLog = (...args) => {
+  if (!import.meta.env.PROD) {
+    console.log(...args);
+  }
+};
+
+devLog('🌐 API Configuration:', {
   environment: import.meta.env.PROD ? 'production' : 'development',
   baseURL: API_BASE_URL,
   envVars: {
     VITE_API_URL: import.meta.env.VITE_API_URL,
-    PROD: import.meta.env.PROD
-  }
+    PROD: import.meta.env.PROD,
+  },
 });
 
 const api = axios.create({
   baseURL: API_BASE_URL,
-  timeout: 15000, // Increased timeout for production
+  timeout: 15000, // Longer timeout for production
   headers: {
     'Content-Type': 'application/json',
   },
 });
 
-// Add request interceptor for auth token
+// 🔑 Request interceptor (attach token if available)
 api.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem('token');
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
-      console.log('🌐 API Request:', { url: config.url, method: config.method, hasToken: !!token });
-    } else {
-      console.log('🌐 API Request:', { url: config.url, method: config.method, hasToken: false });
     }
+    devLog('🌐 API Request:', {
+      url: config.url,
+      method: config.method,
+      hasToken: !!token,
+    });
     return config;
   },
   (error) => {
-    console.error('🌐 API Request Error:', error);
+    devLog('🌐 API Request Error:', error);
     return Promise.reject(error);
   }
 );
 
-// Add response interceptor for error handling
+// 📦 Response interceptor (log + error handling)
 api.interceptors.response.use(
   (response) => {
-    console.log('🌐 API Response:', { url: response.config.url, status: response.status, data: response.data });
+    devLog('🌐 API Response:', {
+      url: response.config.url,
+      status: response.status,
+      data: response.data,
+    });
     return response;
   },
   (error) => {
-    console.error('🌐 API Response Error:', {
+    devLog('🌐 API Response Error:', {
       url: error.config?.url,
       status: error.response?.status,
       message: error.message,
-      response: error.response?.data
+      response: error.response?.data,
     });
 
     // Handle network errors
     if (!error.response) {
-      console.error('🌐 Network error:', error);
       return Promise.reject({
-        message: 'Network error. Please check your internet connection and try again.'
+        message: 'Network error. Please check your internet connection.',
       });
     }
 
-    // Handle specific HTTP status codes
-    switch (error.response.status) {
+    const { status, data } = error.response;
+
+    // Handle specific HTTP codes
+    switch (status) {
       case 401:
-        // Token expired or invalid
-        console.log('🌐 Token expired or invalid, clearing auth data');
         localStorage.removeItem('token');
         localStorage.removeItem('user');
-        // Optionally redirect to login
-        if (window.location.pathname !== '/signin') {
-          window.location.href = '/#/signin';
+        if (!window.location.pathname.includes('/signin')) {
+          window.location.href = '/signin';
         }
         break;
       case 403:
-        console.error('🌐 Access forbidden:', error.response.data);
+        devLog('🌐 Access forbidden:', data);
         break;
       case 404:
-        console.error('🌐 Resource not found:', error.response.data);
+        devLog('🌐 Resource not found:', data);
         break;
       case 500:
-        console.error('🌐 Server error:', error.response.data);
+        devLog('🌐 Server error:', data);
         break;
       default:
-        console.error('🌐 API error:', error.response.data);
+        devLog('🌐 API error:', data);
     }
 
-    // Return a standardized error object
+    // Standardized error response
     return Promise.reject({
-      message: error.response.data?.message || 'An unexpected error occurred. Please try again.',
-      status: error.response.status,
-      data: error.response.data
+      message:
+        data?.message ||
+        data?.error ||
+        data?.errors?.[0] ||
+        'An unexpected error occurred. Please try again.',
+      status,
+      data,
     });
   }
 );
