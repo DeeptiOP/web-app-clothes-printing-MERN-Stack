@@ -5,48 +5,24 @@ const orderSchema = new mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
+    required: true
     
   },
   orderNumber: {
     type: String,
-    required: true
+    required: true,
+    unique: true // ensures uniqueness at the DB level
   },
   items: [{
-    product: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Product',
-      required: true
-    },
-    name: {
-      type: String,
-      required: true
-    },
-    image: {
-      type: String,
-      required: true
-    },
-    price: {
-      type: Number,
-      required: true
-    },
-    quantity: {
-      type: Number,
-      required: true,
-      min: [1, 'Quantity must be at least 1']
-    },
-    size: {
-      type: String,
-      required: true
-    },
-    color: {
-      name: String,
-      code: String
-    },
+    product: { type: mongoose.Schema.Types.ObjectId, ref: 'Product', required: true },
+    name: { type: String, required: true },
+    image: { type: String, required: true },
+    price: { type: Number, required: true },
+    quantity: { type: Number, required: true, min: [1, 'Quantity must be at least 1'] },
+    size: { type: String, required: true },
+    color: { name: String, code: String },
     customization: {
-      hasCustomization: {
-        type: Boolean,
-        default: false
-      },
+      hasCustomization: { type: Boolean, default: false },
       text: String,
       textColor: String,
       textFont: String,
@@ -57,75 +33,26 @@ const orderSchema = new mongoose.Schema({
     }
   }],
   shippingAddress: {
-    name: {
-      type: String,
-      required: true
-    },
-    email: {
-      type: String,
-      required: true
-    },
-    phone: {
-      type: String,
-      required: true
-    },
-    street: {
-      type: String,
-      required: true
-    },
-    city: {
-      type: String,
-      required: true
-    },
-    state: {
-      type: String,
-      required: true
-    },
-    zipCode: {
-      type: String,
-      required: true
-    },
-    country: {
-      type: String,
-      required: true,
-      default: 'India'
-    }
+    name: { type: String, required: true },
+    email: { type: String, required: true },
+    phone: { type: String, required: true },
+    street: { type: String, required: true },
+    city: { type: String, required: true },
+    state: { type: String, required: true },
+    zipCode: { type: String, required: true },
+    country: { type: String, required: true, default: 'India' }
   },
   billingAddress: {
-    name: String,
-    email: String,
-    phone: String,
-    street: String,
-    city: String,
-    state: String,
-    zipCode: String,
-    country: String,
-    sameAsShipping: {
-      type: Boolean,
-      default: true
-    }
+    name: String, email: String, phone: String, street: String,
+    city: String, state: String, zipCode: String, country: String,
+    sameAsShipping: { type: Boolean, default: true }
   },
   pricing: {
-    subtotal: {
-      type: Number,
-      required: true
-    },
-    shipping: {
-      type: Number,
-      default: 0
-    },
-    tax: {
-      type: Number,
-      default: 0
-    },
-    discount: {
-      type: Number,
-      default: 0
-    },
-    total: {
-      type: Number,
-      required: true
-    }
+    subtotal: { type: Number, required: true },
+    shipping: { type: Number, default: 0 },
+    tax: { type: Number, default: 0 },
+    discount: { type: Number, default: 0 },
+    total: { type: Number, required: true }
   },
   payment: {
     method: {
@@ -133,11 +60,7 @@ const orderSchema = new mongoose.Schema({
       enum: ['credit_card', 'debit_card', 'paypal', 'stripe', 'razorpay', 'cod'],
       required: true
     },
-    status: {
-      type: String,
-      enum: ['pending', 'completed', 'failed', 'refunded'],
-      default: 'pending'
-    },
+    status: { type: String, enum: ['pending', 'completed', 'failed', 'refunded'], default: 'pending' },
     transactionId: String,
     paymentDate: Date,
     failureReason: String
@@ -156,37 +79,25 @@ const orderSchema = new mongoose.Schema({
   timeline: [{
     status: String,
     message: String,
-    timestamp: {
-      type: Date,
-      default: Date.now
-    }
+    timestamp: { type: Date, default: Date.now }
   }],
-  notes: {
-    customer: String,
-    admin: String
-  },
-  isGift: {
-    type: Boolean,
-    default: false
-  },
+  notes: { customer: String, admin: String },
+  isGift: { type: Boolean, default: false },
   giftMessage: String,
   expectedDelivery: Date,
   deliveredAt: Date,
   cancelledAt: Date,
-  refundAmount: {
-    type: Number,
-    default: 0
-  },
+  refundAmount: { type: Number, default: 0 },
   refundReason: String
-}, {
-  timestamps: true
-});
+}, { timestamps: true });
 
-// Generate order number before saving
+// =====================
+// Hooks for order logic
+// =====================
+
+// Generate order number, transaction ID, tracking number
 orderSchema.pre('save', function(next) {
-  if (!this.orderNumber) {
-    this.orderNumber = generateOrderId();
-  }
+  if (!this.orderNumber) this.orderNumber = generateOrderId();
   if (!this.payment.transactionId && this.payment.status === 'completed') {
     this.payment.transactionId = generateTransactionId();
   }
@@ -220,27 +131,27 @@ orderSchema.pre('save', function(next) {
       cancelled: 'Order has been cancelled',
       returned: 'Order has been returned'
     };
-    
     this.timeline.push({
       status: this.status,
       message: statusMessages[this.status] || `Order status updated to ${this.status}`,
       timestamp: new Date()
     });
-    
-    if (this.status === 'delivered') {
-      this.deliveredAt = new Date();
-    } else if (this.status === 'cancelled') {
-      this.cancelledAt = new Date();
-    }
+
+    if (this.status === 'delivered') this.deliveredAt = new Date();
+    if (this.status === 'cancelled') this.cancelledAt = new Date();
   }
   next();
 });
 
-// Index for efficient queries
-orderSchema.index({ user: 1 }); 
+// =====================
+// Indexes
+// =====================
+
 orderSchema.index({ orderNumber: 1 }, { unique: true });
 orderSchema.index({ status: 1 });
 orderSchema.index({ 'payment.status': 1 });
 orderSchema.index({ createdAt: -1 });
+
+// Note: Removed duplicate user index to fix warning
 
 export default mongoose.model('Order', orderSchema);
