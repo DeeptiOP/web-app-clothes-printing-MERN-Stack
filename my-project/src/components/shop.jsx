@@ -17,8 +17,14 @@ const colorMap = {
   white: "bg-white border",
 };
 
+// Cloudinary base
+const CLOUDINARY_BASE = "https://res.cloudinary.com/dwryce3zm/image/upload/";
+
 // Get image URL (Cloudinary or fallback)
-export const getImage = (url) => (!url ? "/placeholder.png" : url.startsWith("http") ? url : url);
+export const getImage = (url) => {
+  if (!url) return "/placeholder.png";
+  return url.startsWith("http") ? url : CLOUDINARY_BASE + url;
+};
 
 const ProductListing = () => {
   const [showFilters, setShowFilters] = useState(false);
@@ -34,7 +40,7 @@ const ProductListing = () => {
   const { user } = useAuth();
   const navigate = useNavigate();
 
-  // Fetch products from backend
+  // Fetch products
   useEffect(() => {
     const fetchProducts = async () => {
       try {
@@ -67,7 +73,11 @@ const ProductListing = () => {
   return (
     <div className="flex flex-col lg:flex-row">
       {/* Sidebar Filters */}
-      <aside className={`fixed top-0 left-0 h-full w-3/4 max-w-xs bg-white p-6 border-r shadow-md transform transition-transform duration-300 z-50 ${showFilters ? "translate-x-0" : "-translate-x-full"} lg:translate-x-0 lg:w-1/5`}>
+      <aside
+        className={`fixed top-0 left-0 h-full w-3/4 max-w-xs bg-white p-6 border-r shadow-md transform transition-transform duration-300 z-50 ${
+          showFilters ? "translate-x-0" : "-translate-x-full"
+        } lg:translate-x-0 lg:w-1/5`}
+      >
         <div className="flex justify-between items-center mb-4 lg:hidden">
           <h2 className="text-xl font-bold">Filters</h2>
           <button onClick={() => setShowFilters(false)} className="text-red-600 font-bold">✖</button>
@@ -78,7 +88,9 @@ const ProductListing = () => {
           {categories.map((cat) => (
             <li key={cat}>
               <button
-                className={`w-full text-left px-2 py-1 rounded ${selectedCategory === cat ? "bg-black text-white" : "hover:bg-gray-200"}`}
+                className={`w-full text-left px-2 py-1 rounded ${
+                  selectedCategory === cat ? "bg-black text-white" : "hover:bg-gray-200"
+                }`}
                 onClick={() => setSelectedCategory(selectedCategory === cat ? "" : cat)}
               >
                 {cat}
@@ -103,7 +115,9 @@ const ProductListing = () => {
           {colors.map((color) => (
             <button
               key={color}
-              className={`w-5 h-5 rounded-full ${colorMap[color]} ${selectedColor === color ? "ring-2 ring-black" : ""}`}
+              className={`w-5 h-5 rounded-full ${colorMap[color]} ${
+                selectedColor === color ? "ring-2 ring-black" : ""
+              }`}
               onClick={() => setSelectedColor(selectedColor === color ? "" : color)}
             />
           ))}
@@ -130,7 +144,10 @@ const ProductListing = () => {
             <div className="col-span-4 text-center text-gray-500 py-10">No products found.</div>
           )}
           {filteredProducts.map((product) => (
-            <div key={product._id} className="border rounded-lg overflow-hidden shadow-md hover:shadow-lg transition relative group">
+            <div
+              key={product._id}
+              className="border rounded-lg overflow-hidden shadow-md hover:shadow-lg transition relative group"
+            >
               <Link to={`/product/${product._id}`}>
                 <img
                   src={getImage(product.images?.[0]?.url)}
@@ -146,9 +163,20 @@ const ProductListing = () => {
                 {/* Rating */}
                 <div className="flex items-center gap-1 text-yellow-400 text-sm">
                   {Array.from({ length: 5 }).map((_, i) => (
-                    <span key={i} className={i < Math.floor(product.rating?.average || 0) ? "text-yellow-400" : "text-gray-300"}>★</span>
+                    <span
+                      key={i}
+                      className={
+                        i < Math.floor(product.rating?.average || 0)
+                          ? "text-yellow-400"
+                          : "text-gray-300"
+                      }
+                    >
+                      ★
+                    </span>
                   ))}
-                  <span className="text-xs text-gray-500 ml-1">({product.rating?.average?.toFixed(1) || 0})</span>
+                  <span className="text-xs text-gray-500 ml-1">
+                    ({product.rating?.average?.toFixed(1) || 0})
+                  </span>
                 </div>
 
                 {/* Add to Cart */}

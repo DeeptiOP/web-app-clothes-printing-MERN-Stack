@@ -4,6 +4,8 @@ import { useCart } from "../context/CartContext";
 import { useWishlist } from "./WishlistContext.jsx";
 import { getProduct, getProducts } from "../api/products";
 
+const CLOUDINARY_BASE = "https://res.cloudinary.com/dwryce3zm/image/upload/";
+
 const Product = () => {
   const { id } = useParams();
   const { addToCart } = useCart();
@@ -21,6 +23,12 @@ const Product = () => {
   const [pincode, setPincode] = useState("");
   const [pincodeStatus, setPincodeStatus] = useState(null);
 
+  const getImageUrl = (img) => {
+    if (!img) return "/placeholder.png";
+    if (img.url?.startsWith("http")) return img.url;
+    return CLOUDINARY_BASE + img.url;
+  };
+
   // Fetch product and related products
   useEffect(() => {
     const fetchProduct = async () => {
@@ -28,13 +36,16 @@ const Product = () => {
         setLoading(true);
         const productRes = await getProduct(id);
         const data = productRes.data;
+
         setProduct(data);
-        setMainImage(data.images?.[0]?.url || "/placeholder.png");
+        setMainImage(getImageUrl(data.images?.[0]));
         setSelectedColor(data.colors?.[0]?.name || "blue");
         setSelectedSize(data.sizes?.[0]?.name || "M");
 
         const relatedRes = await getProducts({ category: data.category, limit: 4 });
-        setRelatedProducts(relatedRes.data.filter((p) => p._id !== id));
+        setRelatedProducts(
+          relatedRes.data.filter((p) => p._id !== id)
+        );
       } catch (err) {
         console.error(err);
         setError("Failed to load product.");
@@ -64,12 +75,11 @@ const Product = () => {
     );
 
   const inStock = product.stock !== 0;
+  const isWishlisted = wishlist.some((item) => item.id === product._id);
 
   const checkPincode = () => {
     setPincodeStatus(pincode.length === 6 ? "Available" : "Invalid");
   };
-
-  const isWishlisted = wishlist.some((item) => item.id === product._id);
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -85,17 +95,17 @@ const Product = () => {
         {/* Images */}
         <div className="w-full lg:w-1/2 flex flex-col gap-4">
           <div className="relative rounded-2xl border p-4 bg-white shadow">
-            <img src={mainImage} alt={product.name} className="w-full h-96 object-contain" />
+            <img src={getImageUrl({ url: mainImage })} alt={product.name} className="w-full h-96 object-contain" />
             <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
               {product.images?.map((img, idx) => (
                 <img
                   key={idx}
-                  src={img.url}
+                  src={getImageUrl(img)}
                   alt={`thumb-${idx}`}
                   className={`w-12 h-12 object-cover rounded cursor-pointer border-2 ${
-                    mainImage === img.url ? "border-blue-600" : "border-gray-200"
+                    mainImage === getImageUrl(img) ? "border-blue-600" : "border-gray-200"
                   }`}
-                  onClick={() => setMainImage(img.url)}
+                  onClick={() => setMainImage(getImageUrl(img))}
                 />
               ))}
             </div>
@@ -168,7 +178,7 @@ const Product = () => {
                   productId: product._id,
                   name: product.name,
                   price: product.price,
-                  image: product.images?.[0]?.url,
+                  image: mainImage,
                   color: { name: selectedColor, code: selectedColor },
                   size: selectedSize,
                   quantity,
@@ -211,7 +221,7 @@ const Product = () => {
                     id: product._id,
                     name: product.name,
                     price: product.price,
-                    image: product.images?.[0]?.url,
+                    image: mainImage,
                     color: selectedColor,
                   })
                 }
@@ -230,7 +240,7 @@ const Product = () => {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {relatedProducts.map((rel) => (
             <Link key={rel._id} to={`/product/${rel._id}`} className="block border rounded p-2 bg-white shadow hover:shadow-lg">
-              <img src={rel.images?.[0]?.url || "/placeholder.png"} alt={rel.name} className="w-full h-40 object-cover rounded mb-2" />
+              <img src={getImageUrl(rel.images?.[0])} alt={rel.name} className="w-full h-40 object-cover rounded mb-2" />
               <h3 className="text-blue-700 font-semibold">{rel.name}</h3>
               <p className="text-gray-600">₹{rel.price}</p>
             </Link>
