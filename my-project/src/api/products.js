@@ -1,8 +1,8 @@
 import api from './config';
 
 /**
- * Get all products with optional filters.
- * @param {Object} params - Optional query parameters (category, featured, page, limit, etc.)
+ * Get all products with optional filters (pagination, sorting)
+ * @param {Object} params
  */
 export const getProducts = async (params = {}) => {
   try {
@@ -16,7 +16,7 @@ export const getProducts = async (params = {}) => {
 
 /**
  * Get a single product by ID
- * @param {string} id - Product ID
+ * @param {string} id
  */
 export const getProduct = async (id) => {
   if (!id) throw new Error('Product ID is required');
@@ -30,8 +30,8 @@ export const getProduct = async (id) => {
 };
 
 /**
- * Search products by query
- * @param {string} query - Search term
+ * Search products
+ * @param {string} query
  */
 export const searchProducts = async (query) => {
   if (!query) throw new Error('Search query is required');
@@ -46,12 +46,13 @@ export const searchProducts = async (query) => {
 
 /**
  * Get products by category
- * @param {string} category - Category name
+ * @param {string} category
+ * @param {Object} params
  */
-export const getProductsByCategory = async (category) => {
+export const getProductsByCategory = async (category, params = {}) => {
   if (!category) throw new Error('Category is required');
   try {
-    const response = await api.get('/products', { params: { category } });
+    const response = await api.get(`/products/by-category/${category}`, { params });
     return response.data;
   } catch (error) {
     console.error(`Error fetching products in category "${category}":`, error);
@@ -64,7 +65,7 @@ export const getProductsByCategory = async (category) => {
  */
 export const getFeaturedProducts = async () => {
   try {
-    const response = await api.get('/products', { params: { featured: true } });
+    const response = await api.get('/products/featured/list');
     return response.data;
   } catch (error) {
     console.error('Error fetching featured products:', error);

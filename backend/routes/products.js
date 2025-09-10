@@ -53,6 +53,39 @@ router.get('/search', optionalAuth, async (req, res, next) => {
   }
 });
 
+router.get('/', optionalAuth, async (req, res, next) => {
+  try {
+    const { page = 1, limit = 12, sort } = req.query;
+    const skip = (Number(page) - 1) * Number(limit);
+    const sortOptions = getSortOptions(sort);
+
+    const query = { isActive: true };
+    const products = await Product.find(query)
+      .sort(sortOptions)
+      .skip(skip)
+      .limit(Number(limit))
+      .select('-__v');
+
+    const total = await Product.countDocuments(query);
+    const totalPages = Math.ceil(total / Number(limit));
+
+    res.status(200).json({
+      success: true,
+      count: products.length,
+      total,
+      pagination: {
+        currentPage: Number(page),
+        totalPages,
+        hasNextPage: Number(page) < totalPages,
+        hasPrevPage: Number(page) > 1,
+        limit: Number(limit)
+      },
+      data: products
+    });
+  } catch (error) {
+    next(error);
+  }
+});
 // @desc    Get product categories & subcategories
 // @route   GET /api/products/categories/list
 // @access  Public
