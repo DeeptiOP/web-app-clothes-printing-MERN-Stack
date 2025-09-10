@@ -5,7 +5,7 @@
       "name": "Classic White T-Shirt",
       "category": "Men",
       "price": 599,
-      "image": "/assets/product1.jpg",
+      "image": "https://res.cloudinary.com/dwryce3zm/image/upload/v123456/product1.jpg",
       "description": "Soft cotton fabric, perfect for everyday wear."
     },
     {
@@ -13,7 +13,7 @@
       "name": "Black Graphic Tee",
       "category": "Men",
       "price": 799,
-      "image": "/assets/product1.jpg",
+      "image": "https://res.cloudinary.com/dwryce3zm/image/upload/v123456/product1.jpg",
       "description": "Trendy black tee with vibrant anime graphic print."
     },
     {
@@ -21,466 +21,121 @@
       "name": "Black Graphic Tee",
       "category": "Men",
       "price": 799,
-      "image": "/assets/product3.jpg",
-      "description": "Trendy black tee with vibrant anime graphic print."  
+      "image": "https://res.cloudinary.com/dwryce3zm/image/upload/v123456/product3.jpg",
+      "description": "Trendy black tee with vibrant anime graphic print."
     },
     {
       "id": 4,
       "name": "Black Graphic Tee",
       "category": "Men",
       "price": 799,
-      "image": "/assets/product4.jpg",
-      "description": "Trendy black tee with vibrant anime graphic print."  
+      "image": "https://res.cloudinary.com/dwryce3zm/image/upload/v123456/product4.jpg",
+      "description": "Trendy black tee with vibrant anime graphic print."
     },
     {
       "id": 5,
       "name": "Black Graphic Tee",
       "category": "Men",
       "price": 799,
-      "image": "/assets/product5.jpg",
-      "description": "Trendy black tee with vibrant anime graphic print."  
+      "image": "https://res.cloudinary.com/dwryce3zm/image/upload/v123456/product5.jpg",
+      "description": "Trendy black tee with vibrant anime graphic print."
     },
     {
       "id": 6,
       "name": "Black Graphic Tee",
       "category": "Men",
       "price": 799,
-      "image": "/assets/product6.jpg",
-      "description": "Trendy black tee with vibrant anime graphic print."  
+      "image": "https://res.cloudinary.com/dwryce3zm/image/upload/v123456/product6.jpg",
+      "description": "Trendy black tee with vibrant anime graphic print."
     },
     {
       "id": 7,
       "name": "Black Graphic Tee",
       "category": "Men",
       "price": 799,
-      "image": "/assets/product7.jpg",
-      "description": "Trendy black tee with vibrant anime graphic print."  
+      "image": "https://res.cloudinary.com/dwryce3zm/image/upload/v123456/product7.jpg",
+      "description": "Trendy black tee with vibrant anime graphic print."
     },
     {
       "id": 8,
       "name": "Black Graphic Tee",
       "category": "Men",
       "price": 799,
-      "image": "/assets/product8.jpg",
-      "description": "Trendy black tee with vibrant anime graphic print."  
+      "image": "https://res.cloudinary.com/dwryce3zm/image/upload/v123456/product8.jpg",
+      "description": "Trendy black tee with vibrant anime graphic print."
     },
     {
       "id": 9,
       "name": "Black Graphic Tee",
       "category": "Men",
       "price": 799,
-      "image": "/assets/product9.jpg",
-      "description": "Trendy black tee with vibrant anime graphic print."  
+      "image": "https://res.cloudinary.com/dwryce3zm/image/upload/v123456/product9.jpg",
+      "description": "Trendy black tee with vibrant anime graphic print."
     },
     {
       "id": 10,
       "name": "Black Graphic Tee",
       "category": "Men",
       "price": 799,
-      "image": "/assets/product10.jpg",
-      "description": "Trendy black tee with vibrant anime graphic print."  
+      "image": "https://res.cloudinary.com/dwryce3zm/image/upload/v123456/product10.jpg",
+      "description": "Trendy black tee with vibrant anime graphic print."
     },
     {
       "id": 11,
       "name": "Black Graphic Tee",
       "category": "Men",
       "price": 799,
-      "image": "/assets/product11.jpg",
-      "description": "Trendy black tee with vibrant anime graphic print."  
+      "image": "https://res.cloudinary.com/dwryce3zm/image/upload/v123456/product11.jpg",
+      "description": "Trendy black tee with vibrant anime graphic print."
     },
     {
       "id": 12,
       "name": "Black Graphic Tee",
       "category": "Men",
       "price": 799,
-      "image": "/assets/product12.jpg",
-      "description": "Trendy black tee with vibrant anime graphic print."  
+      "image": "https://res.cloudinary.com/dwryce3zm/image/upload/v123456/product12.jpg",
+      "description": "Trendy black tee with vibrant anime graphic print."
     },
     {
       "id": 13,
       "name": "Black Graphic Tee",
       "category": "Men",
       "price": 799,
-      "image": "/assets/product13.jpg",
-      "description": "Trendy black tee with vibrant anime graphic print."  
+      "image": "https://res.cloudinary.com/dwryce3zm/image/upload/v123456/product13.jpg",
+      "description": "Trendy black tee with vibrant anime graphic print."
     },
     {
       "id": 14,
       "name": "Black Graphic Tee",
       "category": "Men",
       "price": 799,
-      "image": "/assets/product14.jpg",
-      "description": "Trendy black tee with vibrant anime graphic print."  
+      "image": "https://res.cloudinary.com/dwryce3zm/image/upload/v123456/product14.jpg",
+      "description": "Trendy black tee with vibrant anime graphic print."
     },
     {
       "id": 15,
       "name": "Black Graphic Tee",
       "category": "Men",
       "price": 799,
-      "image": "/assets/product15.jpg",
-      "description": "Trendy black tee with vibrant anime graphic print."  
+      "image": "https://res.cloudinary.com/dwryce3zm/image/upload/v123456/product15.jpg",
+      "description": "Trendy black tee with vibrant anime graphic print."
     },
     {
       "id": 16,
       "name": "Black Graphic Tee",
       "category": "Men",
       "price": 799,
-      "image": "/assets/product16.jpg",
-      "description": "Trendy black tee with vibrant anime graphic print."  
+      "image": "https://res.cloudinary.com/dwryce3zm/image/upload/v123456/product16.jpg",
+      "description": "Trendy black tee with vibrant anime graphic print."
     },
-    {
-      "id": 17,
-      "name": "Black Graphic Tee",
-      "category": "Men",
-      "price": 799,
-      "image": "/assets/product17.jpg",
-      "description": "Trendy black tee with vibrant anime graphic print."  
-    },
-    {
-      "id": 18,
-      "name": "Black Graphic Tee",
-      "category": "Men",
-      "price": 799,
-      "image": "/assets/product18.jpg",
-      "description": "Trendy black tee with vibrant anime graphic print."  
-    },
-    {
-      "id": 19,
-      "name": "Black Graphic Tee",
-      "category": "Men",
-      "price": 799,
-      "image": "/assets/product19.jpg",
-      "description": "Trendy black tee with vibrant anime graphic print."  
-    },
-    {
-      "id": 20,
-      "name": "Black Graphic Tee",
-      "category": "Men",
-      "price": 799,
-      "image": "/assets/product20.jpg",
-      "description": "Trendy black tee with vibrant anime graphic print."  
-    },
-    {
-      "id": 21,
-      "name": "Black Graphic Tee",
-      "category": "Men",
-      "price": 799,
-      "image": "/assets/fs.jpg",
-      "description": "Trendy black tee with vibrant anime graphic print."  
-    },
-    {
-      "id": 22,
-      "name": "Black Graphic Tee",
-      "category": "Men",
-      "price": 799,
-      "image": "https://res.cloudinary.com/your-cloud-name/image/upload/v1722334999/dev_uploads/product3.jpg",
-      "description": "Trendy black tee with vibrant anime graphic print."  
-    },
-    {
-      "id": 23,
-      "name": "Black Graphic Tee",
-      "category": "Men",
-      "price": 799,
-      "image": "/assets/hoodie.jpg",
-      "description": "Trendy black tee with vibrant anime graphic print."  
-    },
-    {
-      "id": 24,
-      "name": "Black Graphic Tee",
-      "category": "Men",
-      "price": 799,
-      "image": "/assets/hoodie1.jpg",
-      "description": "Trendy black tee with vibrant anime graphic print."  
-    },
-    {
-      "id": 24,
-      "name": "Black Graphic Tee",
-      "category": "Men",
-      "price": 799,
-      "image": "/assets/hoodie2.jpg",
-      "description": "Trendy black tee with vibrant anime graphic print."  
-    },
-    {
-      "id": 25,
-      "name": "Black Graphic Tee",
-      "category": "Men",
-      "price": 799,
-      "image": "/assets/hoodie3.jpg",
-      "description": "Trendy black tee with vibrant anime graphic print."  
-    },
-    {
-      "id": 26,
-      "name": "Black Graphic Tee",
-      "category": "Men",
-      "price": 799,
-      "image": "/assets/hoodie4.jpg",
-      "description": "Trendy black tee with vibrant anime graphic print."  
-    },
-    {
-      "id": 27,
-      "name": "Black Graphic Tee",
-      "category": "Men",
-      "price": 799,
-      "image": "/assets/hoodie5.jpg",
-      "description": "Trendy black tee with vibrant anime graphic print."  
-    },
-    {
-      "id": 28,
-      "name": "Black Graphic Tee",
-      "category": "Men",
-      "price": 799,
-      "image": "/assets/hoodie6.jpg",
-      "description": "Trendy black tee with vibrant anime graphic print."  
-    },
-    {
-      "id": 29,
-      "name": "Black Graphic Tee",
-      "category": "Men",
-      "price": 799,
-      "image": "/assets/hoodie7.jpg",
-      "description": "Trendy black tee with vibrant anime graphic print."  
-    },
-    {
-      "id": 30,
-      "name": "Black Graphic Tee",
-      "category": "Men",
-      "price": 799,
-      "image": "/assets/hoodie8.jpg",
-      "description": "Trendy black tee with vibrant anime graphic print."  
-    },
-    {
-      "id": 31,
-      "name": "Black Graphic Tee",
-      "category": "Men",
-      "price": 799,
-      "image": "/assets/hoodie9.jpg",
-      "description": "Trendy black tee with vibrant anime graphic print."  
-    },
-    {
-      "id": 32,
-      "name": "Black Graphic Tee",
-      "category": "Men",
-      "price": 799,
-      "image": "/assets/hoodie10.jpg",
-      "description": "Trendy black tee with vibrant anime graphic print."  
-    },
-    {
-      "id": 33,
-      "name": "Black Graphic Tee",
-      "category": "Men",
-      "price": 799,
-      "image": "/assets/os.jpg",
-      "description": "Trendy black tee with vibrant anime graphic print."  
-    },
-    {
-      "id": 34,
-      "name": "Black Graphic Tee",
-      "category": "Men",
-      "price": 799,
-      "image": "/assets/os1.jpg",
-      "description": "Trendy black tee with vibrant anime graphic print."  
-    },
-    {
-      "id": 35,
-      "name": "Black Graphic Tee",
-      "category": "Men",
-      "price": 799,
-      "image": "/assets/os2.jpg",
-      "description": "Trendy black tee with vibrant anime graphic print."  
-    },
-    {
-      "id": 36,
-      "name": "Black Graphic Tee",
-      "category": "Men",
-      "price": 799,
-      "image": "/assets/os3.jpg",
-      "description": "Trendy black tee with vibrant anime graphic print."  
-    },
-    {
-      "id": 37,
-      "name": "Black Graphic Tee",
-      "category": "Men",
-      "price": 799,
-      "image": "/assets/os4.jpg",
-      "description": "Trendy black tee with vibrant anime graphic print."  
-    },
-    {
-      "id": 38,
-      "name": "Black Graphic Tee",
-      "category": "Men",
-      "price": 799,
-      "image": "/assets/os5.jpg",
-      "description": "Trendy black tee with vibrant anime graphic print."  
-    },
-    {
-      "id": 39,
-      "name": "Black Graphic Tee",
-      "category": "Men",
-      "price": 799,
-      "image": "/assets/os6.jpg",
-      "description": "Trendy black tee with vibrant anime graphic print."  
-    },
-    {
-      "id": 40,
-      "name": "Black Graphic Tee",
-      "category": "Men",
-      "price": 799,
-      "image": "/assets/os7.jpg",
-      "description": "Trendy black tee with vibrant anime graphic print."  
-    },
-    {
-      "id": 41,
-      "name": "Black Graphic Tee",
-      "category": "Men",
-      "price": 799,
-      "image": "/assets/os8.jpg",
-      "description": "Trendy black tee with vibrant anime graphic print."  
-    },
-    {
-      "id": 42,
-      "name": "Black Graphic Tee",
-      "category": "Men",
-      "price": 799,
-      "image": "/assets/os9.jpg",
-      "description": "Trendy black tee with vibrant anime graphic print."  
-    },
-    {
-      "id": 43,
-      "name": "Black Graphic Tee",
-      "category": "Men",
-      "price": 799,
-      "image": "/assets/os10.jpg",
-      "description": "Trendy black tee with vibrant anime graphic print."  
-    },
-    {
-      "id": 44,
-      "name": "Black Graphic Tee",
-      "category": "Men",
-      "price": 799,
-      "image": "/assets/pic2.jpg",
-      "description": "Trendy black tee with vibrant anime graphic print."  
-    },
-    {
-      "id": 45,
-      "name": "Black Graphic Tee",
-      "category": "Men",
-      "price": 799,
-      "image": "/assets/pic3.jpg",
-      "description": "Trendy black tee with vibrant anime graphic print."  
-    },
-    {
-      "id": 46,
-      "name": "Black Graphic Tee",
-      "category": "Men",
-      "price": 799,
-      "image": "/assets/pic4.jpg",
-      "description": "Trendy black tee with vibrant anime graphic print."  
-    },
-    {
-      "id": 47,
-      "name": "Black Graphic Tee",
-      "category": "Men",
-      "price": 799,
-      "image": "/assets/pic5.jpg",
-      "description": "Trendy black tee with vibrant anime graphic print."  
-    },
-    {
-      "id": 48,
-      "name": "Black Graphic Tee",
-      "category": "Men",
-      "price": 799,
-      "image": "/assets/pic6.jpg",
-      "description": "Trendy black tee with vibrant anime graphic print."  
-    },
-    {
-      "id": 49,
-      "name": "Black Graphic Tee",
-      "category": "Men",
-      "price": 799,
-      "image": "/assets/pic7.jpg",
-      "description": "Trendy black tee with vibrant anime graphic print."  
-    },
-    {
-      "id": 50,
-      "name": "Black Graphic Tee",
-      "category": "Men",
-      "price": 799,
-      "image": "/assets/print.jpg",
-      "description": "Trendy black tee with vibrant anime graphic print."  
-    },
-    {
-      "id": 51,
-      "name": "Black Graphic Tee",
-      "category": "Men",
-      "price": 799,
-      "image": "/assets/print1.jpg",
-      "description": "Trendy black tee with vibrant anime graphic print."  
-    },
-    {
-      "id": 52,
-      "name": "Black Graphic Tee",
-      "category": "Men",
-      "price": 799,
-      "image": "/assets/print2.jpg",
-      "description": "Trendy black tee with vibrant anime graphic print."  
-    },
-    {
-      "id": 53,
-      "name": "Black Graphic Tee",
-      "category": "Men",
-      "price": 799,
-      "image": "/assets/print3.jpg",
-      "description": "Trendy black tee with vibrant anime graphic print."  
-    },
-    {
-      "id": 54,
-      "name": "Black Graphic Tee",
-      "category": "Men",
-      "price": 799,
-      "image": "/assets/print4.jpg",
-      "description": "Trendy black tee with vibrant anime graphic print."  
-    },
-    {
-      "id": 55,
-      "name": "Black Graphic Tee",
-      "category": "Men",
-      "price": 799,
-      "image": "/assets/print5.jpg",
-      "description": "Trendy black tee with vibrant anime graphic print."  
-    },
-    {
-      "id": 56,
-      "name": "Black Graphic Tee",
-      "category": "Men",
-      "price": 799,
-      "image": "/assets/print6-i.jpg",
-      "description": "Trendy black tee with vibrant anime graphic print."  
-    },
-    {
-      "id": 57,
-      "name": "Black Graphic Tee",
-      "category": "Men",
-      "price": 799,
-      "image": "/assets/print6-ii.jpg",
-      "description": "Trendy black tee with vibrant anime graphic print."  
-    },
-    {
-      "id": 58,
-      "name": "Black Graphic Tee",
-      "category": "Men",
-      "price": 799,
-      "image": "/assets/print6.jpg",
-      "description": "Trendy black tee with vibrant anime graphic print."  
-    },
+
     {
       "id": 59,
       "name": "Black Graphic Tee",
       "category": "Men",
       "price": 799,
-      "image": "/assets/print11.jpg",
-      "description": "Trendy black tee with vibrant anime graphic print."  
+      "image": "https://res.cloudinary.com/dwryce3zm/image/upload/v123456/print11.jpg",
+      "description": "Trendy black tee with vibrant anime graphic print."
     }
-
   ]
-  
 }
