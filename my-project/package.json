@@ -1,0 +1,53 @@
+{
+  "homepage": "https://DeeptiOP.github.io/web-app-clothes-printing-MERN-Stack",
+  "name": "my-project",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist -f",
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@react-three/drei": "^9.88.13",
+    "@react-three/fiber": "^8.15.12",
+    "@stripe/react-stripe-js": "^2.4.0",
+    "@stripe/stripe-js": "^2.4.0",
+    "autoprefixer": "^10.4.21",
+    "axios": "^1.6.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "lucide-react": "^0.294.0",
+    "mongodb": "^6.3.0",
+    "postcss": "^8.5.6",
+    "react": "^18.2.0",
+    "react-color": "^2.19.3",
+    "react-dom": "^18.2.0",
+    "react-feather": "^2.0.10",
+    "react-icons": "^4.12.0",
+    "react-router-dom": "^6.20.1",
+    "stripe": "^14.7.0",
+    "three": "^0.159.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^8.55.0",
+    "@types/react": "^18.2.43",
+    "@types/react-dom": "^18.2.17",
+    "@vitejs/plugin-react": "^4.7.0",
+    "eslint": "^8.55.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.5",
+    "gh-pages": "^6.1.0",
+    "globals": "^13.24.0",
+    "tailwindcss": "^3.4.17",
+    "vite": "^5.0.8"
+  },
+  "overrides": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}

@@ -1,0 +1,814 @@
+[
+  {
+    "originalName": "product1.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506473/products/products/gejfp5m6w1bpnwgyfjpi.jpg",
+    "publicId": "products/products/gejfp5m6w1bpnwgyfjpi",
+    "category": "products",
+    "folder": "products/products"
+  },
+  {
+    "originalName": "product10.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506475/products/products/oj6r9fsrfwubzq5uzquu.jpg",
+    "publicId": "products/products/oj6r9fsrfwubzq5uzquu",
+    "category": "products",
+    "folder": "products/products"
+  },
+  {
+    "originalName": "product11.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506476/products/products/avihjdv4xlyrwansilrr.jpg",
+    "publicId": "products/products/avihjdv4xlyrwansilrr",
+    "category": "products",
+    "folder": "products/products"
+  },
+  {
+    "originalName": "product12.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506478/products/products/rw53em22zrbndwlpz0qu.jpg",
+    "publicId": "products/products/rw53em22zrbndwlpz0qu",
+    "category": "products",
+    "folder": "products/products"
+  },
+  {
+    "originalName": "product13.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506479/products/products/nrhvtiu4qklbjgdzsfz5.jpg",
+    "publicId": "products/products/nrhvtiu4qklbjgdzsfz5",
+    "category": "products",
+    "folder": "products/products"
+  },
+  {
+    "originalName": "product14.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506480/products/products/gsqgb7jtrdgtdrwzkl3b.jpg",
+    "publicId": "products/products/gsqgb7jtrdgtdrwzkl3b",
+    "category": "products",
+    "folder": "products/products"
+  },
+  {
+    "originalName": "product15.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506481/products/products/feluh7lifws23nten52p.jpg",
+    "publicId": "products/products/feluh7lifws23nten52p",
+    "category": "products",
+    "folder": "products/products"
+  },
+  {
+    "originalName": "product16.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506483/products/products/xhx9pntr9zlze4ues5ak.jpg",
+    "publicId": "products/products/xhx9pntr9zlze4ues5ak",
+    "category": "products",
+    "folder": "products/products"
+  },
+  {
+    "originalName": "product17.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506484/products/products/d8fq4dircclh3st3gkpy.jpg",
+    "publicId": "products/products/d8fq4dircclh3st3gkpy",
+    "category": "products",
+    "folder": "products/products"
+  },
+  {
+    "originalName": "product18.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506485/products/products/qe1slnbc9gqnvhrnufj7.jpg",
+    "publicId": "products/products/qe1slnbc9gqnvhrnufj7",
+    "category": "products",
+    "folder": "products/products"
+  },
+  {
+    "originalName": "product19.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506486/products/products/td5kx5em36u0q0v6llep.jpg",
+    "publicId": "products/products/td5kx5em36u0q0v6llep",
+    "category": "products",
+    "folder": "products/products"
+  },
+  {
+    "originalName": "product2.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506488/products/products/bjyrjbhx5qwkgokwgkyu.jpg",
+    "publicId": "products/products/bjyrjbhx5qwkgokwgkyu",
+    "category": "products",
+    "folder": "products/products"
+  },
+  {
+    "originalName": "product20.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506489/products/products/wvst2bpilzdzommt5fm7.jpg",
+    "publicId": "products/products/wvst2bpilzdzommt5fm7",
+    "category": "products",
+    "folder": "products/products"
+  },
+  {
+    "originalName": "product3.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506491/products/products/vsekkymjl1sexeluolz5.jpg",
+    "publicId": "products/products/vsekkymjl1sexeluolz5",
+    "category": "products",
+    "folder": "products/products"
+  },
+  {
+    "originalName": "product4.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506492/products/products/ay28ookgaqzegnbde2ie.jpg",
+    "publicId": "products/products/ay28ookgaqzegnbde2ie",
+    "category": "products",
+    "folder": "products/products"
+  },
+  {
+    "originalName": "product5.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506493/products/products/qlgiwnk35itxbvgbnozi.jpg",
+    "publicId": "products/products/qlgiwnk35itxbvgbnozi",
+    "category": "products",
+    "folder": "products/products"
+  },
+  {
+    "originalName": "product6.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506494/products/products/twvlpeqs422jkf1nvwaj.jpg",
+    "publicId": "products/products/twvlpeqs422jkf1nvwaj",
+    "category": "products",
+    "folder": "products/products"
+  },
+  {
+    "originalName": "product7.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506496/products/products/bit2wj07tntvpdtwzswv.jpg",
+    "publicId": "products/products/bit2wj07tntvpdtwzswv",
+    "category": "products",
+    "folder": "products/products"
+  },
+  {
+    "originalName": "product8.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506497/products/products/kerhsxwhmn1hwrlxjdxn.jpg",
+    "publicId": "products/products/kerhsxwhmn1hwrlxjdxn",
+    "category": "products",
+    "folder": "products/products"
+  },
+  {
+    "originalName": "product9.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506499/products/products/nhs44mjnbn6pfvhqi84f.jpg",
+    "publicId": "products/products/nhs44mjnbn6pfvhqi84f",
+    "category": "products",
+    "folder": "products/products"
+  },
+  {
+    "originalName": "t_shirt1.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506500/products/products/wkpgal8azjlnayfam1kd.jpg",
+    "publicId": "products/products/wkpgal8azjlnayfam1kd",
+    "category": "products",
+    "folder": "products/products"
+  },
+  {
+    "originalName": "t_shirt1brown.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506501/products/products/iplhtmwmycsw1p556yyb.jpg",
+    "publicId": "products/products/iplhtmwmycsw1p556yyb",
+    "category": "products",
+    "folder": "products/products"
+  },
+  {
+    "originalName": "t_shirt1granitegreen.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506503/products/products/frhszaldes5qnlyvkdhd.jpg",
+    "publicId": "products/products/frhszaldes5qnlyvkdhd",
+    "category": "products",
+    "folder": "products/products"
+  },
+  {
+    "originalName": "t_shirt1green.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506504/products/products/osndniedzplr6hrwz70l.jpg",
+    "publicId": "products/products/osndniedzplr6hrwz70l",
+    "category": "products",
+    "folder": "products/products"
+  },
+  {
+    "originalName": "t_shirtpurple.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506506/products/products/jb92nvgbbnkxluw0mwel.jpg",
+    "publicId": "products/products/jb92nvgbbnkxluw0mwel",
+    "category": "products",
+    "folder": "products/products"
+  },
+  {
+    "originalName": "t_shirtwhite.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506507/products/products/mbiozza1tpsutbfs4dbp.jpg",
+    "publicId": "products/products/mbiozza1tpsutbfs4dbp",
+    "category": "products",
+    "folder": "products/products"
+  },
+  {
+    "originalName": "design1.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506509/assets/designs/ft44fbvydaxtobuwcnzd.jpg",
+    "publicId": "assets/designs/ft44fbvydaxtobuwcnzd",
+    "category": "designs",
+    "folder": "assets/designs"
+  },
+  {
+    "originalName": "design10.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506511/assets/designs/k6fprizmmf4kmhxvremg.jpg",
+    "publicId": "assets/designs/k6fprizmmf4kmhxvremg",
+    "category": "designs",
+    "folder": "assets/designs"
+  },
+  {
+    "originalName": "design11.png",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506513/assets/designs/mufr53yc86uydopojk32.png",
+    "publicId": "assets/designs/mufr53yc86uydopojk32",
+    "category": "designs",
+    "folder": "assets/designs"
+  },
+  {
+    "originalName": "design12.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506517/assets/designs/jjv85kejjtzsqdyd7y9r.jpg",
+    "publicId": "assets/designs/jjv85kejjtzsqdyd7y9r",
+    "category": "designs",
+    "folder": "assets/designs"
+  },
+  {
+    "originalName": "design13.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506520/assets/designs/adojj2pbubzlgu7ournq.jpg",
+    "publicId": "assets/designs/adojj2pbubzlgu7ournq",
+    "category": "designs",
+    "folder": "assets/designs"
+  },
+  {
+    "originalName": "design14.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506521/assets/designs/bympnknecdfhwiszw7jm.jpg",
+    "publicId": "assets/designs/bympnknecdfhwiszw7jm",
+    "category": "designs",
+    "folder": "assets/designs"
+  },
+  {
+    "originalName": "design15.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506523/assets/designs/b2laog9iomo2wfw05k69.jpg",
+    "publicId": "assets/designs/b2laog9iomo2wfw05k69",
+    "category": "designs",
+    "folder": "assets/designs"
+  },
+  {
+    "originalName": "design16.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506524/assets/designs/pebhoypoenpwtmlqkjxg.jpg",
+    "publicId": "assets/designs/pebhoypoenpwtmlqkjxg",
+    "category": "designs",
+    "folder": "assets/designs"
+  },
+  {
+    "originalName": "design17.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506525/assets/designs/cd1trxna7kqgd5skkb5b.jpg",
+    "publicId": "assets/designs/cd1trxna7kqgd5skkb5b",
+    "category": "designs",
+    "folder": "assets/designs"
+  },
+  {
+    "originalName": "design18.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506526/assets/designs/rhs2czsqtb8gmwwfxhaf.jpg",
+    "publicId": "assets/designs/rhs2czsqtb8gmwwfxhaf",
+    "category": "designs",
+    "folder": "assets/designs"
+  },
+  {
+    "originalName": "design19.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506527/assets/designs/oos1lfzvubbgrvslb6xb.jpg",
+    "publicId": "assets/designs/oos1lfzvubbgrvslb6xb",
+    "category": "designs",
+    "folder": "assets/designs"
+  },
+  {
+    "originalName": "design2.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506529/assets/designs/potcxjpqvvlkh7hq0nlp.jpg",
+    "publicId": "assets/designs/potcxjpqvvlkh7hq0nlp",
+    "category": "designs",
+    "folder": "assets/designs"
+  },
+  {
+    "originalName": "design20.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506530/assets/designs/s4wq9fj0wzkumqut9dcc.jpg",
+    "publicId": "assets/designs/s4wq9fj0wzkumqut9dcc",
+    "category": "designs",
+    "folder": "assets/designs"
+  },
+  {
+    "originalName": "design21.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506531/assets/designs/zvnytpii0vzc8lzfnky9.jpg",
+    "publicId": "assets/designs/zvnytpii0vzc8lzfnky9",
+    "category": "designs",
+    "folder": "assets/designs"
+  },
+  {
+    "originalName": "design22.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506533/assets/designs/mzmod5nwcxzyrlkt0fyb.jpg",
+    "publicId": "assets/designs/mzmod5nwcxzyrlkt0fyb",
+    "category": "designs",
+    "folder": "assets/designs"
+  },
+  {
+    "originalName": "design3.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506534/assets/designs/us67qytvtdxv5wima0op.jpg",
+    "publicId": "assets/designs/us67qytvtdxv5wima0op",
+    "category": "designs",
+    "folder": "assets/designs"
+  },
+  {
+    "originalName": "design4.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506535/assets/designs/xzpbnhwsuseqdupmiyh7.jpg",
+    "publicId": "assets/designs/xzpbnhwsuseqdupmiyh7",
+    "category": "designs",
+    "folder": "assets/designs"
+  },
+  {
+    "originalName": "design5.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506537/assets/designs/cfjlon07fzjtzhrjwdmi.jpg",
+    "publicId": "assets/designs/cfjlon07fzjtzhrjwdmi",
+    "category": "designs",
+    "folder": "assets/designs"
+  },
+  {
+    "originalName": "design6.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506538/assets/designs/kwguxl4x4gatui6sbraq.jpg",
+    "publicId": "assets/designs/kwguxl4x4gatui6sbraq",
+    "category": "designs",
+    "folder": "assets/designs"
+  },
+  {
+    "originalName": "design7.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506539/assets/designs/pkn3veytxoaohynlyupf.jpg",
+    "publicId": "assets/designs/pkn3veytxoaohynlyupf",
+    "category": "designs",
+    "folder": "assets/designs"
+  },
+  {
+    "originalName": "design8.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506540/assets/designs/dbqexpacyhcakcmrr6at.jpg",
+    "publicId": "assets/designs/dbqexpacyhcakcmrr6at",
+    "category": "designs",
+    "folder": "assets/designs"
+  },
+  {
+    "originalName": "design9.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506542/assets/designs/juyx4qxr5jr89qcqacx3.jpg",
+    "publicId": "assets/designs/juyx4qxr5jr89qcqacx3",
+    "category": "designs",
+    "folder": "assets/designs"
+  },
+  {
+    "originalName": "hoodie.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506546/products/hoodies/xudygsngzvjdf8gbcaqw.jpg",
+    "publicId": "products/hoodies/xudygsngzvjdf8gbcaqw",
+    "category": "hoodies",
+    "folder": "products/hoodies"
+  },
+  {
+    "originalName": "hoodie1.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506547/products/hoodies/edhpnwwitrrrsi6ed4tg.jpg",
+    "publicId": "products/hoodies/edhpnwwitrrrsi6ed4tg",
+    "category": "hoodies",
+    "folder": "products/hoodies"
+  },
+  {
+    "originalName": "hoodie10.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506549/products/hoodies/hes3dfwemkjdxrqqfoxn.jpg",
+    "publicId": "products/hoodies/hes3dfwemkjdxrqqfoxn",
+    "category": "hoodies",
+    "folder": "products/hoodies"
+  },
+  {
+    "originalName": "hoodie2.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506550/products/hoodies/xld1iqdi0t0yvdg8xxu3.jpg",
+    "publicId": "products/hoodies/xld1iqdi0t0yvdg8xxu3",
+    "category": "hoodies",
+    "folder": "products/hoodies"
+  },
+  {
+    "originalName": "hoodie3.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506551/products/hoodies/jyexpirdbnltmnlwrhbh.jpg",
+    "publicId": "products/hoodies/jyexpirdbnltmnlwrhbh",
+    "category": "hoodies",
+    "folder": "products/hoodies"
+  },
+  {
+    "originalName": "hoodie4.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506552/products/hoodies/zkqw0xzwqummsmyc6cto.jpg",
+    "publicId": "products/hoodies/zkqw0xzwqummsmyc6cto",
+    "category": "hoodies",
+    "folder": "products/hoodies"
+  },
+  {
+    "originalName": "hoodie5.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506554/products/hoodies/wmueb241t4hcnmcftwkg.jpg",
+    "publicId": "products/hoodies/wmueb241t4hcnmcftwkg",
+    "category": "hoodies",
+    "folder": "products/hoodies"
+  },
+  {
+    "originalName": "hoodie6.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506555/products/hoodies/kvg6w6qny9hxwrtgrake.jpg",
+    "publicId": "products/hoodies/kvg6w6qny9hxwrtgrake",
+    "category": "hoodies",
+    "folder": "products/hoodies"
+  },
+  {
+    "originalName": "hoodie7.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506556/products/hoodies/vgtox2qoyzxihdcoxzsc.jpg",
+    "publicId": "products/hoodies/vgtox2qoyzxihdcoxzsc",
+    "category": "hoodies",
+    "folder": "products/hoodies"
+  },
+  {
+    "originalName": "hoodie8.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506558/products/hoodies/e4dczaxirisbcor2oz3m.jpg",
+    "publicId": "products/hoodies/e4dczaxirisbcor2oz3m",
+    "category": "hoodies",
+    "folder": "products/hoodies"
+  },
+  {
+    "originalName": "hoodie9.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506559/products/hoodies/dk3mpoihidqulk0zczl6.jpg",
+    "publicId": "products/hoodies/dk3mpoihidqulk0zczl6",
+    "category": "hoodies",
+    "folder": "products/hoodies"
+  },
+  {
+    "originalName": "shirt.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506560/products/shirts/acl7zv96mprhhqbbluce.jpg",
+    "publicId": "products/shirts/acl7zv96mprhhqbbluce",
+    "category": "shirts",
+    "folder": "products/shirts"
+  },
+  {
+    "originalName": "shirt10.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506562/products/shirts/zqdto8d53u8eqzgq2lby.jpg",
+    "publicId": "products/shirts/zqdto8d53u8eqzgq2lby",
+    "category": "shirts",
+    "folder": "products/shirts"
+  },
+  {
+    "originalName": "shirt11.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506563/products/shirts/bkjytxpza54hz8qstvwt.jpg",
+    "publicId": "products/shirts/bkjytxpza54hz8qstvwt",
+    "category": "shirts",
+    "folder": "products/shirts"
+  },
+  {
+    "originalName": "shirt12.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506564/products/shirts/nxtlyl5uhjhxlnasbh54.jpg",
+    "publicId": "products/shirts/nxtlyl5uhjhxlnasbh54",
+    "category": "shirts",
+    "folder": "products/shirts"
+  },
+  {
+    "originalName": "shirt13.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506566/products/shirts/xtzdn14bcqqvxxheegrk.jpg",
+    "publicId": "products/shirts/xtzdn14bcqqvxxheegrk",
+    "category": "shirts",
+    "folder": "products/shirts"
+  },
+  {
+    "originalName": "shirt2.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506568/products/shirts/wlgt2fn1q9javla3cnhq.jpg",
+    "publicId": "products/shirts/wlgt2fn1q9javla3cnhq",
+    "category": "shirts",
+    "folder": "products/shirts"
+  },
+  {
+    "originalName": "shirt3.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506569/products/shirts/m0ojuv3f4pm1j36mnj5k.jpg",
+    "publicId": "products/shirts/m0ojuv3f4pm1j36mnj5k",
+    "category": "shirts",
+    "folder": "products/shirts"
+  },
+  {
+    "originalName": "shirt4.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506570/products/shirts/wobhenb7widqf4joehbq.jpg",
+    "publicId": "products/shirts/wobhenb7widqf4joehbq",
+    "category": "shirts",
+    "folder": "products/shirts"
+  },
+  {
+    "originalName": "shirt5.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506572/products/shirts/wboncuj9i9kl0zy22s5y.jpg",
+    "publicId": "products/shirts/wboncuj9i9kl0zy22s5y",
+    "category": "shirts",
+    "folder": "products/shirts"
+  },
+  {
+    "originalName": "shirt6.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506573/products/shirts/oenwddwm1xb1nfcs5hkn.jpg",
+    "publicId": "products/shirts/oenwddwm1xb1nfcs5hkn",
+    "category": "shirts",
+    "folder": "products/shirts"
+  },
+  {
+    "originalName": "shirt7.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506574/products/shirts/mzayxoekdfm7wz5v5q5p.jpg",
+    "publicId": "products/shirts/mzayxoekdfm7wz5v5q5p",
+    "category": "shirts",
+    "folder": "products/shirts"
+  },
+  {
+    "originalName": "shirt8.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506575/products/shirts/kldqf3grcjb0ctok4gde.jpg",
+    "publicId": "products/shirts/kldqf3grcjb0ctok4gde",
+    "category": "shirts",
+    "folder": "products/shirts"
+  },
+  {
+    "originalName": "shirt9.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506577/products/shirts/blc7wdlezda6dhpncl4i.jpg",
+    "publicId": "products/shirts/blc7wdlezda6dhpncl4i",
+    "category": "shirts",
+    "folder": "products/shirts"
+  },
+  {
+    "originalName": "os.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506578/products/oversized/oq9mzsqcishdmreck1tc.jpg",
+    "publicId": "products/oversized/oq9mzsqcishdmreck1tc",
+    "category": "oversized",
+    "folder": "products/oversized"
+  },
+  {
+    "originalName": "os1.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506579/products/oversized/lrr9p90jy1g75agmlqz0.jpg",
+    "publicId": "products/oversized/lrr9p90jy1g75agmlqz0",
+    "category": "oversized",
+    "folder": "products/oversized"
+  },
+  {
+    "originalName": "os10.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506581/products/oversized/jw7q8i1wmeifb2hvyma7.jpg",
+    "publicId": "products/oversized/jw7q8i1wmeifb2hvyma7",
+    "category": "oversized",
+    "folder": "products/oversized"
+  },
+  {
+    "originalName": "os2.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506582/products/oversized/poqwvicninssd9ar0zsh.jpg",
+    "publicId": "products/oversized/poqwvicninssd9ar0zsh",
+    "category": "oversized",
+    "folder": "products/oversized"
+  },
+  {
+    "originalName": "os3.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506583/products/oversized/fbighxktzxvxixu4sofs.jpg",
+    "publicId": "products/oversized/fbighxktzxvxixu4sofs",
+    "category": "oversized",
+    "folder": "products/oversized"
+  },
+  {
+    "originalName": "os4.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506584/products/oversized/tw5yummskewjgvpsggkv.jpg",
+    "publicId": "products/oversized/tw5yummskewjgvpsggkv",
+    "category": "oversized",
+    "folder": "products/oversized"
+  },
+  {
+    "originalName": "os5.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506586/products/oversized/bmwqevb5omej9ybd5sha.jpg",
+    "publicId": "products/oversized/bmwqevb5omej9ybd5sha",
+    "category": "oversized",
+    "folder": "products/oversized"
+  },
+  {
+    "originalName": "os6.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506587/products/oversized/v3biiqhacqosbsxnimci.jpg",
+    "publicId": "products/oversized/v3biiqhacqosbsxnimci",
+    "category": "oversized",
+    "folder": "products/oversized"
+  },
+  {
+    "originalName": "os7.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506588/products/oversized/kgqtshlsvfmtsyad5jro.jpg",
+    "publicId": "products/oversized/kgqtshlsvfmtsyad5jro",
+    "category": "oversized",
+    "folder": "products/oversized"
+  },
+  {
+    "originalName": "os8.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506589/products/oversized/u0an4saitcsobyfnr5kq.jpg",
+    "publicId": "products/oversized/u0an4saitcsobyfnr5kq",
+    "category": "oversized",
+    "folder": "products/oversized"
+  },
+  {
+    "originalName": "os9.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506591/products/oversized/g847jjyh5vw8rxvzgkhc.jpg",
+    "publicId": "products/oversized/g847jjyh5vw8rxvzgkhc",
+    "category": "oversized",
+    "folder": "products/oversized"
+  },
+  {
+    "originalName": "fs.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506592/products/fullsleeve/csfrobmrjmqitysvxsw6.jpg",
+    "publicId": "products/fullsleeve/csfrobmrjmqitysvxsw6",
+    "category": "fullsleeve",
+    "folder": "products/fullsleeve"
+  },
+  {
+    "originalName": "fs1.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506593/products/fullsleeve/mykeudz1kzbdpfboo0vk.jpg",
+    "publicId": "products/fullsleeve/mykeudz1kzbdpfboo0vk",
+    "category": "fullsleeve",
+    "folder": "products/fullsleeve"
+  },
+  {
+    "originalName": "st.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506594/products/tank/y1tai3cs5civwjyt6c1c.jpg",
+    "publicId": "products/tank/y1tai3cs5civwjyt6c1c",
+    "category": "tank",
+    "folder": "products/tank"
+  },
+  {
+    "originalName": "st1.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506596/products/tank/wsh0ol0mzldl46oaufbo.jpg",
+    "publicId": "products/tank/wsh0ol0mzldl46oaufbo",
+    "category": "tank",
+    "folder": "products/tank"
+  },
+  {
+    "originalName": "st2.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506597/products/tank/ybyvi4t12pmvf6w1agpu.jpg",
+    "publicId": "products/tank/ybyvi4t12pmvf6w1agpu",
+    "category": "tank",
+    "folder": "products/tank"
+  },
+  {
+    "originalName": "st3.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506599/products/tank/t83bpx3rnxfyd4w8gwzy.jpg",
+    "publicId": "products/tank/t83bpx3rnxfyd4w8gwzy",
+    "category": "tank",
+    "folder": "products/tank"
+  },
+  {
+    "originalName": "st4.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506601/products/tank/n9qsvpmqh2y4plvozp5s.jpg",
+    "publicId": "products/tank/n9qsvpmqh2y4plvozp5s",
+    "category": "tank",
+    "folder": "products/tank"
+  },
+  {
+    "originalName": "st5.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506602/products/tank/msbuhgt22qu5fuepzd8u.jpg",
+    "publicId": "products/tank/msbuhgt22qu5fuepzd8u",
+    "category": "tank",
+    "folder": "products/tank"
+  },
+  {
+    "originalName": "st6.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506603/products/tank/uipxllslj6ii1jwh3y8b.jpg",
+    "publicId": "products/tank/uipxllslj6ii1jwh3y8b",
+    "category": "tank",
+    "folder": "products/tank"
+  },
+  {
+    "originalName": "st7.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506605/products/tank/nm4nzq0jaahelpr9yzsq.jpg",
+    "publicId": "products/tank/nm4nzq0jaahelpr9yzsq",
+    "category": "tank",
+    "folder": "products/tank"
+  },
+  {
+    "originalName": "st8.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506607/products/tank/qfhjgyv1reddeqlfnoj4.jpg",
+    "publicId": "products/tank/qfhjgyv1reddeqlfnoj4",
+    "category": "tank",
+    "folder": "products/tank"
+  },
+  {
+    "originalName": "st9.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506609/products/tank/sj12eus8aaag8njfdn6f.jpg",
+    "publicId": "products/tank/sj12eus8aaag8njfdn6f",
+    "category": "tank",
+    "folder": "products/tank"
+  },
+  {
+    "originalName": "print.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506612/products/prints/odqowpf0uxxssfxvnvhx.jpg",
+    "publicId": "products/prints/odqowpf0uxxssfxvnvhx",
+    "category": "prints",
+    "folder": "products/prints"
+  },
+  {
+    "originalName": "print1.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506613/products/prints/eke7pqnc3847frtkgbem.jpg",
+    "publicId": "products/prints/eke7pqnc3847frtkgbem",
+    "category": "prints",
+    "folder": "products/prints"
+  },
+  {
+    "originalName": "print11.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506614/products/prints/goxbhbr4qyidjzskhjza.jpg",
+    "publicId": "products/prints/goxbhbr4qyidjzskhjza",
+    "category": "prints",
+    "folder": "products/prints"
+  },
+  {
+    "originalName": "print2.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506616/products/prints/ocwvgyrjdmztzralb4j5.jpg",
+    "publicId": "products/prints/ocwvgyrjdmztzralb4j5",
+    "category": "prints",
+    "folder": "products/prints"
+  },
+  {
+    "originalName": "print3.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506617/products/prints/whvolgfrpouzncxmnnnb.jpg",
+    "publicId": "products/prints/whvolgfrpouzncxmnnnb",
+    "category": "prints",
+    "folder": "products/prints"
+  },
+  {
+    "originalName": "print4.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506623/products/prints/idzoksmx8xujwyfoygku.jpg",
+    "publicId": "products/prints/idzoksmx8xujwyfoygku",
+    "category": "prints",
+    "folder": "products/prints"
+  },
+  {
+    "originalName": "print5.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506625/products/prints/wtbjxiipu650gecrvskg.jpg",
+    "publicId": "products/prints/wtbjxiipu650gecrvskg",
+    "category": "prints",
+    "folder": "products/prints"
+  },
+  {
+    "originalName": "print6-i.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506627/products/prints/qrnglzx9lpibnpepg61x.jpg",
+    "publicId": "products/prints/qrnglzx9lpibnpepg61x",
+    "category": "prints",
+    "folder": "products/prints"
+  },
+  {
+    "originalName": "print6-ii.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506629/products/prints/faml2xvubvigvihsfwb7.jpg",
+    "publicId": "products/prints/faml2xvubvigvihsfwb7",
+    "category": "prints",
+    "folder": "products/prints"
+  },
+  {
+    "originalName": "print6.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506630/products/prints/sll983tepi6ezylcnloc.jpg",
+    "publicId": "products/prints/sll983tepi6ezylcnloc",
+    "category": "prints",
+    "folder": "products/prints"
+  },
+  {
+    "originalName": "banner.png",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506632/assets/ui/nhyoulwaf4nd1illaxly.jpg",
+    "publicId": "assets/ui/nhyoulwaf4nd1illaxly",
+    "category": "ui",
+    "folder": "assets/ui"
+  },
+  {
+    "originalName": "cart.png",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506633/assets/ui/fqgn8avkyedprvgwmzmb.jpg",
+    "publicId": "assets/ui/fqgn8avkyedprvgwmzmb",
+    "category": "ui",
+    "folder": "assets/ui"
+  },
+  {
+    "originalName": "cover_pic.png",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506636/assets/ui/suplh50xlfahfi95jkcn.png",
+    "publicId": "assets/ui/suplh50xlfahfi95jkcn",
+    "category": "ui",
+    "folder": "assets/ui"
+  },
+  {
+    "originalName": "pic2.png",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506651/assets/ui/lfpo8wd4jxsmwbtblzh5.jpg",
+    "publicId": "assets/ui/lfpo8wd4jxsmwbtblzh5",
+    "category": "ui",
+    "folder": "assets/ui"
+  },
+  {
+    "originalName": "pic3.png",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506653/assets/ui/onpys7pnxsbaownnbuxr.jpg",
+    "publicId": "assets/ui/onpys7pnxsbaownnbuxr",
+    "category": "ui",
+    "folder": "assets/ui"
+  },
+  {
+    "originalName": "pic4.png",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506654/assets/ui/qh1df7vwltktkutyuipm.jpg",
+    "publicId": "assets/ui/qh1df7vwltktkutyuipm",
+    "category": "ui",
+    "folder": "assets/ui"
+  },
+  {
+    "originalName": "pic5.png",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506656/assets/ui/yyi6p4umn4kebsob6uji.jpg",
+    "publicId": "assets/ui/yyi6p4umn4kebsob6uji",
+    "category": "ui",
+    "folder": "assets/ui"
+  },
+  {
+    "originalName": "pic6.png",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506658/assets/ui/poydstlzytjgpkswqzz5.jpg",
+    "publicId": "assets/ui/poydstlzytjgpkswqzz5",
+    "category": "ui",
+    "folder": "assets/ui"
+  },
+  {
+    "originalName": "pic7.png",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506660/assets/ui/xhwg4fzeyzhhhclzxnxr.jpg",
+    "publicId": "assets/ui/xhwg4fzeyzhhhclzxnxr",
+    "category": "ui",
+    "folder": "assets/ui"
+  },
+  {
+    "originalName": "search.png",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506661/assets/ui/n3p8ypy7cqwpevbw6l83.png",
+    "publicId": "assets/ui/n3p8ypy7cqwpevbw6l83",
+    "category": "ui",
+    "folder": "assets/ui"
+  },
+  {
+    "originalName": "user.png",
+    "cloudinaryUrl": "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506662/assets/ui/vohpbs51nmlt7bzlfhgn.png",
+    "publicId": "assets/ui/vohpbs51nmlt7bzlfhgn",
+    "category": "ui",
+    "folder": "assets/ui"
+  }
+]

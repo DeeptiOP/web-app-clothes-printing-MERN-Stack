@@ -1,0 +1,42 @@
+{
+  "name": "clothes-printing-backend",
+  "version": "1.0.0",
+  "description": "Backend API for clothes printing web application",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "seed": "node scripts/seedData.js",
+    "create-admin": "node scripts/createAdmin.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cloudinary": "^2.0.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.1",
+    "express": "^4.19.2",
+    "express-rate-limit": "^8.1.0",
+    "express-validator": "^7.0.1",
+    "form-data": "^4.0.4",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.1.1",
+    "multer": "^1.4.5-lts.1",
+    "node-fetch": "^3.3.2",
+    "nodemailer": "^7.0.5",
+    "react-icons": "^5.5.0",
+    "stripe": "^14.21.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.3"
+  },
+  "keywords": [
+    "express",
+    "mongodb",
+    "clothes",
+    "printing",
+    "api"
+  ],
+  "author": "Your Name",
+  "license": "MIT"
+}
