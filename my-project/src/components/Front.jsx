@@ -33,26 +33,26 @@ import tshirt from "../Assets/banner.png";
 import image_5 from "../Assets/banner.png";
 import image_6 from "../Assets/banner.png";
 
-const T_shirt = "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506597/products/tank/ybyvi4t12pmvf6w1agpu.jpg";
-const long = "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506575/products/shirts/kldqf3grcjb0ctok4gde.jpg";
-const hoodies = "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506584/products/oversized/tw5yummskewjgvpsggkv.jpg";
-const st3 = "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506588/products/oversized/kgqtshlsvfmtsyad5jro.jpg";
-const os3 = "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506597/products/tank/ybyvi4t12pmvf6w1agpu.jpg";
-const hoodie3 = "https://res.cloudinary.com/your-cloud-name/image/upload/v1699999999/hoodie3.jpg";
-const product15 = "https://res.cloudinary.com/your-cloud-name/image/upload/v1699999999/product15.jpg";
-const print1 = "https://res.cloudinary.com/your-cloud-name/image/upload/v1699999999/print1.jpg";
-const tshirt = "https://res.cloudinary.com/your-cloud-name/image/upload/v1699999999/banner.png";
-const image_5 = "https://res.cloudinary.com/your-cloud-name/image/upload/v1699999999/banner.png";
-const image_6 = "https://res.cloudinary.com/your-cloud-name/image/upload/v1699999999/banner.png";
+// const T_shirt = "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506597/products/tank/ybyvi4t12pmvf6w1agpu.jpg";
+// const long = "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506575/products/shirts/kldqf3grcjb0ctok4gde.jpg";
+// const hoodies = "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506584/products/oversized/tw5yummskewjgvpsggkv.jpg";
+// const st3 = "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506588/products/oversized/kgqtshlsvfmtsyad5jro.jpg";
+// const os3 = "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506597/products/tank/ybyvi4t12pmvf6w1agpu.jpg";
+// const hoodie3 = "https://res.cloudinary.com/your-cloud-name/image/upload/v1699999999/hoodie3.jpg";
+// const product15 = "https://res.cloudinary.com/your-cloud-name/image/upload/v1699999999/product15.jpg";
+// const print1 = "https://res.cloudinary.com/your-cloud-name/image/upload/v1699999999/print1.jpg";
+// const tshirt = "https://res.cloudinary.com/your-cloud-name/image/upload/v1699999999/banner.png";
+// const image_5 = "https://res.cloudinary.com/your-cloud-name/image/upload/v1699999999/banner.png";
+// const image_6 = "https://res.cloudinary.com/your-cloud-name/image/upload/v1699999999/banner.png";
 
-<section className="py-10">
-  <h2 className="text-xl font-bold mb-4">Our Products</h2>
-  <div className="flex gap-6">
-    <img src={T_shirt} alt="T-shirt" className="w-40 h-40 object-cover rounded-lg shadow" />
-    <img src={long} alt="Long Sleeve" className="w-40 h-40 object-cover rounded-lg shadow" />
-    <img src={hoodies} alt="Hoodie" className="w-40 h-40 object-cover rounded-lg shadow" />
-  </div>
-</section>
+// <section className="py-10">
+//   <h2 className="text-xl font-bold mb-4">Our Products</h2>
+//   <div className="flex gap-6">
+//     <img src={T_shirt} alt="T-shirt" className="w-40 h-40 object-cover rounded-lg shadow" />
+//     <img src={long} alt="Long Sleeve" className="w-40 h-40 object-cover rounded-lg shadow" />
+//     <img src={hoodies} alt="Hoodie" className="w-40 h-40 object-cover rounded-lg shadow" />
+//   </div>
+// </section>
 
 
 
