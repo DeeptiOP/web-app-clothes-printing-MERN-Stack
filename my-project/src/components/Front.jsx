@@ -33,6 +33,19 @@ import tshirt from "../Assets/banner.png";
 import image_5 from "../Assets/banner.png";
 import image_6 from "../Assets/banner.png";
 
+const st = "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506597/products/tank/ybyvi4t12pmvf6w1agpu.jpg";
+const st1 = "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506575/products/shirts/kldqf3grcjb0ctok4gde.jpg";
+const st5 = "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506584/products/oversized/tw5yummskewjgvpsggkv.jpg";
+const st3 = "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506588/products/oversized/kgqtshlsvfmtsyad5jro.jpg";
+const os3 = "https://res.cloudinary.com/dwryce3zm/image/upload/v1754506597/products/tank/ybyvi4t12pmvf6w1agpu.jpg";
+const hoodie3 = "https://res.cloudinary.com/your-cloud-name/image/upload/v1699999999/hoodie3.jpg";
+const product15 = "https://res.cloudinary.com/your-cloud-name/image/upload/v1699999999/product15.jpg";
+const print1 = "https://res.cloudinary.com/your-cloud-name/image/upload/v1699999999/print1.jpg";
+const tshirt = "https://res.cloudinary.com/your-cloud-name/image/upload/v1699999999/banner.png";
+const image_5 = "https://res.cloudinary.com/your-cloud-name/image/upload/v1699999999/banner.png";
+const image_6 = "https://res.cloudinary.com/your-cloud-name/image/upload/v1699999999/banner.png";
+
+
 // 3D Model Component
 function TShirtModel(props) {
   const { scene } = useGLTF("https://res.cloudinary.com/dwryce3zm/image/upload/v1754601840/Tshirt_lmx8ca.glb");
