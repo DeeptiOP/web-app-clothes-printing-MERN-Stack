@@ -2,7 +2,7 @@
 ---
 PrinTeeQ is a full-stack web application that allows users to customize, preview, and order printed clothing online. It offers a seamless experience for customers and administrators alike, with powerful backend support for managing products, users, and orders.
 
-🔗 Live Demo: https://deeptiop.github.io/web-app-clothes-printing-MERN-Stack/
+🔗 Live Demo: https://web-app-clothes-printing-mern-stack-s9kp-bldr653ps.vercel.app/
 
 📦 GitHub Repo: https://github.com/DeeptiOP/web-app-clothes-printing-MERN-Stack/tree/main
 
